@@ -1,0 +1,17 @@
+.index1 {
+  position: relative;
+  padding: 1em 0;
+  color: #a66;
+}
+.index1 label {
+  position: absolute;
+  font-size: 0.75em;
+}
+.index1.empty label {
+  font-size: 1em;
+}
+.index1 input {
+  border: 0;
+}
+
+/*# sourceMappingURL=index.css.map*/

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015"
+  },
+  "include": [
+    "__only_for_interpreting_webpack_config"
+  ]
+}
