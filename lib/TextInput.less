@@ -5,35 +5,39 @@
 //
 .text-input
 (
-  @input-border-bottom: 1px solid @default-color-border;
-  @input-focused-border-bottom: 1px solid @default-color-focus;
-  @input-invalid-border-bottom: 1px solid @default-color-error;
+  @default-color:@default-color-border;
+  @focus-color: @default-color-focus;
+  @invalid-color: @default-color-error;
   @label-opacity: 0.5;
   @label-focused-opacity: 1;
-  @label-focused-color: @default-color-focus;
+  @transition:@default-transition;
 )
 {
 
   position:relative;
-  padding-top:1em;
+  padding:1em 0;
 
   > input {
     display:block;
-    border:0;
     padding:0.5em 0;
     line-height:1;
     width: 100%;
-    border-bottom:@input-border-bottom;
+    border:0 solid @default-color;
+    border-bottom-width:1px;
+    transition:@transition;
 
     &:focus {
       outline: none;
-      border-bottom:@input-focused-border-bottom;
+      box-shadow:none;
+      border-color: @focus-color;
     }
     &:required {
+      outline:none;
       box-shadow:none;
     }
     &:invalid {
-      border-bottom:@input-invalid-border-bottom;
+      outline:none;
+      box-shadow:none;
     }
   }
 
@@ -41,23 +45,63 @@
     position:absolute;
     left:0;
     line-height:1;
-    transition:all 0.25s;
-    pointer-events: none;
+    transition:@transition;
     opacity:@label-opacity;
     top:1.5em;
   }
 
-  &.not-empty > label {
+  input:focus ~ label, &.not-empty > label {
     font-size:0.75em;
     top: 0.25em;
   }
 
   input:focus ~ label {
-    font-size:0.75em;
-    top: 0.25em;
     opacity:@label-focused-opacity;
-    color:@label-focused-color;
+    color:@focus-color;
   }
 
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+    &:before, &:after {
+      content: '';
+      height: 2px;
+      width: 0;
+      bottom: 0;
+      position: absolute;
+      background: @focus-color;
+      transition:@transition;
+    }
+    &:before {
+      left: 50%;
+    }
+    &:after {
+      right: 50%;
+    }
+  }
 
+  // active state
+  input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+  }
+
+  input:invalid:focus {
+    border-color: @invalid-color;
+  }
+  input:invalid:focus ~ label {
+    color: @invalid-color;
+  }
+  input:invalid:focus ~ .bar {
+    &:before, &:after {
+      background: @invalid-color;
+    }
+  }
+
+  .validation-message {
+    color:@invalid-color;
+    font-size:0.75em;
+    line-height:1;
+    padding:0.25em 0;
+  }
 }

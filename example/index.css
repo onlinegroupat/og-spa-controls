@@ -445,6 +445,33 @@ template {
 [hidden] {
   display: none;
 }
+/**
+ * Enables material icons on <i> tags
+ * Make sure to include a stylesheet link to material icons:
+ * <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" />
+ */
+i {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1em;
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+  vertical-align: middle;
+  transform: translateY(-0.1em);
+}
 body {
   font-family: sans-serif;
 }
@@ -453,85 +480,182 @@ body {
 }
 .example-text-input {
   position: relative;
-  padding-top: 1em;
+  padding: 1em 0;
 }
 .example-text-input > input {
   display: block;
-  border: 0;
   padding: 0.5em 0;
   line-height: 1;
   width: 100%;
-  border-bottom: 1px solid #ccc;
+  border: 0 solid #ccc;
+  border-bottom-width: 1px;
+  transition: all 0.25s;
 }
 .example-text-input > input:focus {
   outline: none;
-  border-bottom: 1px solid #336699;
+  box-shadow: none;
+  border-color: #336699;
 }
 .example-text-input > input:required {
+  outline: none;
   box-shadow: none;
 }
 .example-text-input > input:invalid {
-  border-bottom: 1px solid #660000;
+  outline: none;
+  box-shadow: none;
 }
 .example-text-input > label {
   position: absolute;
   left: 0;
   line-height: 1;
   transition: all 0.25s;
-  pointer-events: none;
   opacity: 0.5;
   top: 1.5em;
 }
+.example-text-input input:focus ~ label,
 .example-text-input.not-empty > label {
   font-size: 0.75em;
   top: 0.25em;
 }
 .example-text-input input:focus ~ label {
-  font-size: 0.75em;
-  top: 0.25em;
   opacity: 1;
   color: #336699;
 }
+.example-text-input .bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.example-text-input .bar:before,
+.example-text-input .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: #336699;
+  transition: all 0.25s;
+}
+.example-text-input .bar:before {
+  left: 50%;
+}
+.example-text-input .bar:after {
+  right: 50%;
+}
+.example-text-input input:focus ~ .bar:before,
+.example-text-input input:focus ~ .bar:after {
+  width: 50%;
+}
+.example-text-input input:invalid:focus {
+  border-color: #660000;
+}
+.example-text-input input:invalid:focus ~ label {
+  color: #660000;
+}
+.example-text-input input:invalid:focus ~ .bar:before,
+.example-text-input input:invalid:focus ~ .bar:after {
+  background: #660000;
+}
+.example-text-input .validation-message {
+  color: #660000;
+  font-size: 0.75em;
+  line-height: 1;
+  padding: 0.25em 0;
+}
 .example-text-input-custom {
   position: relative;
-  padding-top: 1em;
+  padding: 1em 0;
 }
 .example-text-input-custom > input {
   display: block;
-  border: 0;
   padding: 0.5em 0;
   line-height: 1;
   width: 100%;
-  border-bottom: 1px solid #ccc;
+  border: 0 solid #ccc;
+  border-bottom-width: 1px;
+  transition: all 0.25s;
 }
 .example-text-input-custom > input:focus {
   outline: none;
-  border-bottom: 2px dotted #669966;
+  box-shadow: none;
+  border-color: #339966;
 }
 .example-text-input-custom > input:required {
+  outline: none;
   box-shadow: none;
 }
 .example-text-input-custom > input:invalid {
-  border-bottom: 1px solid #660000;
+  outline: none;
+  box-shadow: none;
 }
 .example-text-input-custom > label {
   position: absolute;
   left: 0;
   line-height: 1;
   transition: all 0.25s;
-  pointer-events: none;
   opacity: 0.5;
   top: 1.5em;
 }
+.example-text-input-custom input:focus ~ label,
 .example-text-input-custom.not-empty > label {
   font-size: 0.75em;
   top: 0.25em;
 }
 .example-text-input-custom input:focus ~ label {
-  font-size: 0.75em;
-  top: 0.25em;
   opacity: 1;
-  color: #336699;
+  color: #339966;
+}
+.example-text-input-custom .bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.example-text-input-custom .bar:before,
+.example-text-input-custom .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: #339966;
+  transition: all 0.25s;
+}
+.example-text-input-custom .bar:before {
+  left: 50%;
+}
+.example-text-input-custom .bar:after {
+  right: 50%;
+}
+.example-text-input-custom input:focus ~ .bar:before,
+.example-text-input-custom input:focus ~ .bar:after {
+  width: 50%;
+}
+.example-text-input-custom input:invalid:focus {
+  border-color: #660000;
+}
+.example-text-input-custom input:invalid:focus ~ label {
+  color: #660000;
+}
+.example-text-input-custom input:invalid:focus ~ .bar:before,
+.example-text-input-custom input:invalid:focus ~ .bar:after {
+  background: #660000;
+}
+.example-text-input-custom .validation-message {
+  color: #660000;
+  font-size: 0.75em;
+  line-height: 1;
+  padding: 0.25em 0;
+}
+.example-button {
+  border-radius: 0.2em;
+  line-height: 1;
+  border: 0;
+  padding: 0.5em 1em;
+  background-color: #666;
+  color: #fff;
+}
+.example-button.primary {
+  background-color: #485;
 }
 
 /*# sourceMappingURL=index.css.map*/

@@ -2,11 +2,12 @@
 import * as React from "react";
 export interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
     className?: string;
-    label?: string;
+    label: string;
     inputRef?: (input: HTMLInputElement) => void;
 }
 export interface TextInputState {
     empty: boolean;
+    validationMessage: string;
 }
 export declare class TextInput extends React.Component<TextInputProps, TextInputState> {
     constructor(props?: TextInputProps);
@@ -14,7 +15,7 @@ export declare class TextInput extends React.Component<TextInputProps, TextInput
     private ref;
     private handleChange;
     private handleRef;
-    private updateHasValue();
+    private updateState();
     componentWillMount(): void;
     componentDidUpdate(): void;
     render(): JSX.Element;

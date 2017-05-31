@@ -51,7 +51,8 @@ const libraryConfig:Configuration = {
     externals: {
         "react": "react",
         "react-dom": "react-dom",
-        "uuid": "uuid"
+        "uuid": "uuid",
+        "typescript-string-enums": "typescript-string-enums"
     }
 };
 

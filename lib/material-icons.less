@@ -1,0 +1,35 @@
+
+/**
+ * Enables material icons on <i> tags
+ * Make sure to include a stylesheet link to material icons:
+ * <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" />
+ */
+
+
+.material-icons() {
+  i {
+    // Icon
+    font-family:'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1em;
+    display: inline-block;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+
+    vertical-align:middle;
+    transform: translateY(-.1em);
+  }
+}
