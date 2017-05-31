@@ -10636,13 +10636,15 @@ class TextInput extends React.Component {
         };
     }
     updateState() {
-        let newEmpty = !this.ref.value;
-        let newValidationMessage = this.ref.validationMessage || '';
-        if (this.state.empty != newEmpty || this.state.validationMessage != newValidationMessage) {
-            this.setState({
-                empty: newEmpty,
-                validationMessage: newValidationMessage
-            });
+        if (this.ref) {
+            let newEmpty = !this.ref.value;
+            let newValidationMessage = this.ref.validationMessage || '';
+            if (this.state.empty != newEmpty || this.state.validationMessage != newValidationMessage) {
+                this.setState({
+                    empty: newEmpty,
+                    validationMessage: newValidationMessage
+                });
+            }
         }
     }
     componentWillMount() {
