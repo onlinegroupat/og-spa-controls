@@ -9698,6 +9698,7 @@ class TextInput extends React.Component {
         this.handleRef = (ref) => {
             this.ref = ref;
             this.props.inputRef && this.props.inputRef(ref);
+            this.updateState();
         };
         this.state = {
             empty: true,
@@ -9771,12 +9772,31 @@ root.id = 'root';
 document.body.appendChild(root);
 let Example = (props) => React.createElement("div", { className: "example" }, props.children);
 //
+// Example showing a controlled input
+//
+class ControlledInputExample extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleChange = (e) => this.setState({ value: e.target.value });
+        this.state = { value: 'initialValue' };
+    }
+    render() {
+        return (React.createElement("div", null,
+            React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Controlled input", value: this.state.value, onChange: this.handleChange }),
+            React.createElement("p", null,
+                "The current value is ",
+                this.state.value)));
+    }
+}
 //
 //
-let examples = (React.createElement("div", null,
-    React.createElement(Example, null,
+//
+let examples = (React.createElement("article", null,
+    React.createElement("h1", null, "og-spa-controls examples"),
+    React.createElement("p", null, "This are examples showing the og-spa-controls in action. It is also very helpful to leave this page running during development."),
+    React.createElement("section", null,
+        React.createElement("h2", null, "input"),
         React.createElement("form", null,
-            React.createElement("h1", null, "input"),
             React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Default style" }),
             React.createElement(TextInput_1.TextInput, { className: "example-text-input-custom", label: "Custom focus color" }),
             React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Requires value", required: true }),
@@ -9784,12 +9804,15 @@ let examples = (React.createElement("div", null,
             React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Type email", type: "email" }),
             React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Type number", type: "number" }),
             React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Min length 2", minLength: 2 }),
-            React.createElement(Button_1.Button, { className: "example-button", primary: true, icon: MaterialIcon_1.MaterialIcon.save }, "Submit")),
-        React.createElement("h1", null, "icons"),
+            React.createElement(ControlledInputExample, null),
+            React.createElement(Button_1.Button, { className: "example-button", primary: true, icon: MaterialIcon_1.MaterialIcon.save }, "Submit"))),
+    React.createElement("section", null,
+        React.createElement("h2", null, "icons"),
         React.createElement(Icon_1.Icon, null, MaterialIcon_1.MaterialIcon.link),
         React.createElement(Icon_1.Icon, null, MaterialIcon_1.MaterialIcon.watch_later),
-        React.createElement(Icon_1.Icon, null, MaterialIcon_1.MaterialIcon.branding_watermark),
-        React.createElement("h1", null, "buttons"),
+        React.createElement(Icon_1.Icon, null, MaterialIcon_1.MaterialIcon.branding_watermark)),
+    React.createElement("section", null,
+        React.createElement("h2", null, "buttons"),
         React.createElement(Button_1.Button, { className: "example-button" }, "Normal button"),
         React.createElement(Button_1.Button, { className: "example-button", primary: true }, "Primary button"),
         React.createElement(Button_1.Button, { className: "example-button", icon: MaterialIcon_1.MaterialIcon.search }, "Icon button"),

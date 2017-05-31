@@ -474,9 +474,21 @@ i {
 }
 body {
   font-family: sans-serif;
+  background-color: #f6f6f6;
 }
-.example {
+article {
+  max-width: 960px;
+  margin: 1.5em auto;
+}
+section {
+  margin: 1.5em 0;
   padding: 1.5em;
+  background-color: #fff;
+}
+h1,
+h2 {
+  color: #333;
+  font-weight: 300;
 }
 .example-text-input {
   position: relative;

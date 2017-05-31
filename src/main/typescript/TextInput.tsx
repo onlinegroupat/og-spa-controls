@@ -35,6 +35,7 @@ export class TextInput extends React.Component<TextInputProps, TextInputState> {
     private handleRef = (ref:HTMLInputElement) => {
         this.ref = ref;
         this.props.inputRef && this.props.inputRef(ref);
+        this.updateState();
     };
 
     private updateState() {

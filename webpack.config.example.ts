@@ -49,7 +49,7 @@ const exampleConfig:Configuration = {
     },
 
     devServer: {
-        port: 3000,
+        port: 5432,
         hot: true
     },
 
