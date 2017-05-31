@@ -1,17 +1,63 @@
+@import 'defaults';
 
-.text-input() {
+//
+// Applies basic style to text inputs
+//
+.text-input
+(
+  @input-border-bottom: 1px solid @default-color-border;
+  @input-focused-border-bottom: 1px solid @default-color-focus;
+  @input-invalid-border-bottom: 1px solid @default-color-error;
+  @label-opacity: 0.5;
+  @label-focused-opacity: 1;
+  @label-focused-color: @default-color-focus;
+)
+{
+
   position:relative;
-  padding:1em 0;
+  padding-top:1em;
 
-  label {
-    position:absolute;
-    font-size:0.75em;
-  }
-  &.empty label {
-    font-size:1em;
-  }
-  input {
+  > input {
+    display:block;
     border:0;
+    padding:0.5em 0;
+    line-height:1;
+    width: 100%;
+    border-bottom:@input-border-bottom;
+
+    &:focus {
+      outline: none;
+      border-bottom:@input-focused-border-bottom;
+    }
+    &:required {
+      box-shadow:none;
+    }
+    &:invalid {
+      border-bottom:@input-invalid-border-bottom;
+    }
   }
+
+  > label {
+    position:absolute;
+    left:0;
+    line-height:1;
+    transition:all 0.25s;
+    pointer-events: none;
+    opacity:@label-opacity;
+    top:1.5em;
+  }
+
+  &.not-empty > label {
+    font-size:0.75em;
+    top: 0.25em;
+  }
+
+  input:focus ~ label {
+    font-size:0.75em;
+    top: 0.25em;
+    opacity:@label-focused-opacity;
+    color:@label-focused-color;
+  }
+
 
 }

@@ -1,0 +1,22 @@
+@import '../main/less/index';
+
+// Normalize
+.normalize();
+
+// Enable material icons
+.material-icons();
+
+body {
+  font-family: sans-serif;
+}
+
+
+.example {
+  padding:1.5em;
+}
+
+// Make actual classes from mixins
+.example-text-input { .text-input(); }
+.example-text-input-custom { .text-input(@focus-color: #339966); }
+
+.example-button { .button(); }

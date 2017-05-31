@@ -4,12 +4,13 @@ import {ClassList} from "./ClassList";
 
 export interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
     className?:string;
-    label?:string;
+    label:string;
     inputRef?:(input:HTMLInputElement) => void;
 }
 
 export interface TextInputState {
     empty:boolean;
+    validationMessage:string;
 }
 
 export class TextInput extends React.Component<TextInputProps, TextInputState> {
@@ -18,7 +19,8 @@ export class TextInput extends React.Component<TextInputProps, TextInputState> {
         super(props);
 
         this.state = {
-            empty: true
+            empty: true,
+            validationMessage: ''
         };
     }
 
@@ -26,7 +28,7 @@ export class TextInput extends React.Component<TextInputProps, TextInputState> {
     private ref:HTMLInputElement;
 
     private handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-        this.updateHasValue();
+        this.updateState();
         this.props.onChange && this.props.onChange(e);
     };
 
@@ -35,11 +37,15 @@ export class TextInput extends React.Component<TextInputProps, TextInputState> {
         this.props.inputRef && this.props.inputRef(ref);
     };
 
-    private updateHasValue() {
+    private updateState() {
         let newEmpty = !this.ref.value;
+        let newValidationMessage = this.ref.validationMessage || '';
 
-        if (this.state.empty != newEmpty) {
-            this.setState({ empty: newEmpty });
+        if (this.state.empty != newEmpty || this.state.validationMessage != newValidationMessage) {
+            this.setState({
+                empty: newEmpty,
+                validationMessage: newValidationMessage
+            });
         }
     }
 
@@ -48,15 +54,19 @@ export class TextInput extends React.Component<TextInputProps, TextInputState> {
     }
 
     componentDidUpdate() {
-        this.updateHasValue();
+        this.updateState();
     }
 
     render() {
+        const { className, ...inputProps } = this.props;
         return (
-            <div className={ClassList.compute(this.props.className, this.state.empty ? 'empty' : 'not-empty')}>
-                <input id={this.id} onChange={this.handleChange} ref={this.handleRef} {...this.props} />
-                { this.props.label && <label htmlFor={this.id}>{this.props.label}</label>}
-                <span className="bar" />
+            <div className={ClassList.compute(className, this.state.empty ? 'empty' : 'not-empty')}>
+                <input id={this.id} onChange={this.handleChange} ref={this.handleRef} {...inputProps} />
+                <label htmlFor={this.id}>
+                    {this.props.label}
+                </label>
+                <div className="bar" />
+                <div className="validation-message">{this.state.validationMessage}</div>
             </div>
         )
     }

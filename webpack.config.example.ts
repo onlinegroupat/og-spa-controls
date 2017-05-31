@@ -1,4 +1,3 @@
-
 const { CheckerPlugin } = require("awesome-typescript-loader");
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as ExtractTextPlugin from "extract-text-webpack-plugin";
@@ -41,7 +40,6 @@ const exampleConfig:Configuration = {
                     declaration: false
                 }
             },
-
             // Handle less files
             {
                 test: /\.less$/,
@@ -59,7 +57,8 @@ const exampleConfig:Configuration = {
         new CheckerPlugin(),
         extractCss,
         new HtmlWebpackPlugin({
-            filename: 'index.html'
+            filename: 'index.html',
+            template: 'src/example/index.html'
         })
     ]
 };

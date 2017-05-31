@@ -1,25 +1,107 @@
+@import 'defaults';
 
-.text-input() {
+//
+// Applies basic style to text inputs
+//
+.text-input
+(
+  @default-color:@default-color-border;
+  @focus-color: @default-color-focus;
+  @invalid-color: @default-color-error;
+  @label-opacity: 0.5;
+  @label-focused-opacity: 1;
+  @transition:@default-transition;
+)
+{
+
   position:relative;
   padding:1em 0;
 
-  label {
+  > input {
+    display:block;
+    padding:0.5em 0;
+    line-height:1;
+    width: 100%;
+    border:0 solid @default-color;
+    border-bottom-width:1px;
+    transition:@transition;
+
+    &:focus {
+      outline: none;
+      box-shadow:none;
+      border-color: @focus-color;
+    }
+    &:required {
+      outline:none;
+      box-shadow:none;
+    }
+    &:invalid {
+      outline:none;
+      box-shadow:none;
+    }
+  }
+
+  > label {
     position:absolute;
-    font-size:1em;
-    top:0.75em;
     left:0;
-    transition:all 0.25s;
+    line-height:1;
+    transition:@transition;
+    opacity:@label-opacity;
+    top:1.5em;
   }
 
-  &.not-empty label, input:focus + label {
-    top:0;
+  input:focus ~ label, &.not-empty > label {
     font-size:0.75em;
+    top: 0.25em;
   }
 
-  input {
-    border:0;
-    border-bottom:1px solid #ccc;
+  input:focus ~ label {
+    opacity:@label-focused-opacity;
+    color:@focus-color;
+  }
+
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+    &:before, &:after {
+      content: '';
+      height: 2px;
+      width: 0;
+      bottom: 0;
+      position: absolute;
+      background: @focus-color;
+      transition:@transition;
+    }
+    &:before {
+      left: 50%;
+    }
+    &:after {
+      right: 50%;
+    }
+  }
+
+  // active state
+  input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+  }
+
+  input:invalid:focus {
+    border-color: @invalid-color;
+  }
+  input:invalid:focus ~ label {
+    color: @invalid-color;
+  }
+  input:invalid:focus ~ .bar {
+    &:before, &:after {
+      background: @invalid-color;
+    }
+  }
+
+  .validation-message {
+    color:@invalid-color;
+    font-size:0.75em;
+    line-height:1;
     padding:0.25em 0;
   }
-
 }

@@ -9621,8 +9621,8 @@ class TextInput extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: ClassList_1.ClassList.compute(this.props.className, this.state.empty ? 'empty' : 'not-empty') },
-            this.props.label && React.createElement("label", { htmlFor: this.id }, this.props.label),
             React.createElement("input", Object.assign({ id: this.id, onChange: this.handleChange, ref: this.handleRef }, this.props)),
+            this.props.label && React.createElement("label", { htmlFor: this.id }, this.props.label),
             React.createElement("span", { className: "bar" })));
     }
 }
@@ -9652,26 +9652,26 @@ module.exports = __webpack_require__(117);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-console.log('bla bla');
 const ReactDOM = __webpack_require__(85);
 const React = __webpack_require__(50);
 const TextInput_1 = __webpack_require__(83);
 // require style
 __webpack_require__(84);
-console.log('hi from index');
 //
 // Create react root
 //
 let root = document.createElement('div');
 root.id = 'root';
 document.body.appendChild(root);
+let Example = (props) => React.createElement("div", { className: "example" }, props.children);
 //
 //
 //
 let examples = (React.createElement("div", null,
-    React.createElement("h1", null, "input"),
-    React.createElement("p", null, "This is the example section for input controls"),
-    React.createElement(TextInput_1.TextInput, { className: "input1", label: "Input1" })));
+    React.createElement(Example, null,
+        React.createElement("h1", null, "input"),
+        React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Default style" }),
+        React.createElement(TextInput_1.TextInput, { className: "example-text-input-custom", label: "Custom style" }))));
 //
 // Render examples
 //
