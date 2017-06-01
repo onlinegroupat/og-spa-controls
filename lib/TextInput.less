@@ -17,7 +17,7 @@
   position:relative;
   padding:1em 0;
 
-  > input {
+  input, textarea {
     display:block;
     padding:0.25em 0;
     line-height:1.5;
@@ -25,6 +25,8 @@
     border:0 solid @default-color;
     border-bottom-width:1px;
     transition:@transition;
+    overflow:hidden;
+    box-sizing:border-box;
 
     &:focus {
       outline: none;
@@ -41,23 +43,13 @@
     }
   }
 
-  > label {
+  label {
     position:absolute;
     left:0;
     line-height:1;
     transition:@transition;
     opacity:@label-opacity;
     top:1.5em;
-  }
-
-  input:focus ~ label, &.not-empty > label {
-    font-size:0.75em;
-    top: 0.25em;
-  }
-
-  input:focus ~ label {
-    opacity:@label-focused-opacity;
-    color:@focus-color;
   }
 
   .bar {
@@ -81,20 +73,43 @@
     }
   }
 
-  // active state
-  input:focus ~ .bar:before, input:focus ~ .bar:after {
-    width: 50%;
+  // small label on focus & not-empty
+  input:focus ~ label,
+  textarea:focus ~ label,
+  &.not-empty > label {
+    font-size:0.75em;
+    top: 0.25em;
   }
 
-  input:invalid:focus {
-    border-color: @invalid-color;
+  // focus state
+  input, textarea {
+    &:focus {
+      // label
+      & ~ label {
+        opacity:@label-focused-opacity;
+        color:@focus-color;
+      }
+      // bar
+      & ~ .bar {
+        &:before, &:after {
+          width: 50%;
+        }
+      }
+    }
   }
-  input:invalid:focus ~ label {
-    color: @invalid-color;
-  }
-  input:invalid:focus ~ .bar {
-    &:before, &:after {
-      background: @invalid-color;
+
+  // invalid state
+  input, textarea {
+    &:invalid:focus {
+      border-color: @invalid-color;
+    }
+    &:invalid:focus ~ label {
+      color: @invalid-color;
+    }
+    &:invalid:focus ~ .bar {
+      &:before, &:after {
+        background: @invalid-color;
+      }
     }
   }
 

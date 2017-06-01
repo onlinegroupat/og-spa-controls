@@ -1,9 +1,6 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
-import {TextInput} from "../main/typescript/TextInput";
-import {MaterialIcon} from "../main/typescript/MaterialIcon";
-import {Icon} from "../main/typescript/Icon";
-import {Button} from "../main/typescript/Button";
+import {TextInput, MaterialIcon, Icon, Button, TextAreaInput} from "../main/typescript/index";
 
 // require style
 require("./index.less");
@@ -16,6 +13,7 @@ root.id = 'root';
 document.body.appendChild(root);
 
 let Example = (props:{children:React.ReactNode}) => <div className="example">{props.children}</div>;
+
 //
 // Example showing a controlled input
 //
@@ -29,6 +27,25 @@ class ControlledInputExample extends React.Component<undefined, { value: string 
         return (
             <div>
                 <TextInput className="example-text-input" label="Controlled input" value={this.state.value} onChange={this.handleChange} />
+                <p>The current value is {this.state.value}</p>
+            </div>
+        );
+    }
+}
+
+//
+// Example showing a controlled input
+//
+class ControlledTextAreaExample extends React.Component<undefined, { value: string }> {
+    constructor(props:undefined) {
+        super(props);
+        this.state = { value: 'initialValue' };
+    }
+    private handleChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => this.setState({ value: e.target.value });
+    render() {
+        return (
+            <div>
+                <TextAreaInput className="example-text-input" label="Controlled textarea" value={this.state.value} onChange={this.handleChange} />
                 <p>The current value is {this.state.value}</p>
             </div>
         );
@@ -53,6 +70,17 @@ let examples = (
                 <TextInput className="example-text-input" label="Type number" type="number" />
                 <TextInput className="example-text-input" label="Min length 2" minLength={2} />
                 <ControlledInputExample />
+                <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
+            </form>
+        </section>
+        <section>
+            <h2>textarea</h2>
+            <form>
+                <TextAreaInput className="example-text-input" label="Default style" />
+                <TextAreaInput className="example-text-input-custom" label="Custom focus color" />
+                <TextAreaInput className="example-text-input" label="Requires value" required />
+                <TextAreaInput className="example-text-input" label="With rows=1" rows={1} />
+                <ControlledTextAreaExample />
                 <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
             </form>
         </section>

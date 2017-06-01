@@ -2,20 +2,21 @@ import * as React from "react";
 import * as uuid from "uuid";
 import {ClassList} from "./ClassList";
 
-export interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
+export interface TextAreaInputProps extends React.HTMLProps<HTMLTextAreaElement> {
     className?:string;
     label:string;
-    inputRef?:(input:HTMLInputElement) => void;
+    inputRef?:(input:HTMLTextAreaElement) => void;
 }
 
-export interface TextInputState {
+export interface TextAreaInputState {
     empty:boolean;
     validationMessage:string;
 }
 
-export class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
+// TODO: extract common base from TextInput and TextAreaInput
+export class TextAreaInput extends React.PureComponent<TextAreaInputProps, TextAreaInputState> {
 
-    constructor(props?:TextInputProps) {
+    constructor(props?:TextAreaInputProps) {
         super(props);
 
         this.state = {
@@ -25,18 +26,23 @@ export class TextInput extends React.PureComponent<TextInputProps, TextInputStat
     }
 
     private id:string;
-    private ref:HTMLInputElement;
+    private ref:HTMLTextAreaElement;
 
-    private handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    private handleChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
         this.updateState();
         this.props.onChange && this.props.onChange(e);
     };
 
-    private handleRef = (ref:HTMLInputElement) => {
+    private handleRef = (ref:HTMLTextAreaElement) => {
         this.ref = ref;
         this.props.inputRef && this.props.inputRef(ref);
         this.updateState();
     };
+
+    private updateHeight() {
+        this.ref.style.height = "";
+        this.ref.style.height = this.ref.scrollHeight + 1 + "px";
+    }
 
     private updateState() {
         if (this.ref) {
@@ -49,6 +55,7 @@ export class TextInput extends React.PureComponent<TextInputProps, TextInputStat
                     validationMessage: newValidationMessage
                 });
             }
+            this.updateHeight();
         }
     }
 
@@ -61,10 +68,10 @@ export class TextInput extends React.PureComponent<TextInputProps, TextInputStat
     }
 
     render() {
-        const { className, ...inputProps } = this.props;
+        const { className, ...textareaProps } = this.props;
         return (
             <div className={ClassList.compute(className, this.state.empty ? 'empty' : 'not-empty')}>
-                <input id={this.id} onChange={this.handleChange} ref={this.handleRef} {...inputProps} />
+                <textarea id={this.id} onChange={this.handleChange} ref={this.handleRef} {...textareaProps} />
                 <label htmlFor={this.id}>
                     {this.props.label}
                 </label>

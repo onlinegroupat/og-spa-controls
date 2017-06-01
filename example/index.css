@@ -494,7 +494,8 @@ h2 {
   position: relative;
   padding: 1em 0;
 }
-.example-text-input > input {
+.example-text-input input,
+.example-text-input textarea {
   display: block;
   padding: 0.25em 0;
   line-height: 1.5;
@@ -502,36 +503,32 @@ h2 {
   border: 0 solid #ccc;
   border-bottom-width: 1px;
   transition: all 0.25s;
+  overflow: hidden;
+  box-sizing: border-box;
 }
-.example-text-input > input:focus {
+.example-text-input input:focus,
+.example-text-input textarea:focus {
   outline: none;
   box-shadow: none;
   border-color: #336699;
 }
-.example-text-input > input:required {
+.example-text-input input:required,
+.example-text-input textarea:required {
   outline: none;
   box-shadow: none;
 }
-.example-text-input > input:invalid {
+.example-text-input input:invalid,
+.example-text-input textarea:invalid {
   outline: none;
   box-shadow: none;
 }
-.example-text-input > label {
+.example-text-input label {
   position: absolute;
   left: 0;
   line-height: 1;
   transition: all 0.25s;
   opacity: 0.5;
   top: 1.5em;
-}
-.example-text-input input:focus ~ label,
-.example-text-input.not-empty > label {
-  font-size: 0.75em;
-  top: 0.25em;
-}
-.example-text-input input:focus ~ label {
-  opacity: 1;
-  color: #336699;
 }
 .example-text-input .bar {
   position: relative;
@@ -554,18 +551,35 @@ h2 {
 .example-text-input .bar:after {
   right: 50%;
 }
+.example-text-input input:focus ~ label,
+.example-text-input textarea:focus ~ label,
+.example-text-input.not-empty > label {
+  font-size: 0.75em;
+  top: 0.25em;
+}
+.example-text-input input:focus ~ label,
+.example-text-input textarea:focus ~ label {
+  opacity: 1;
+  color: #336699;
+}
 .example-text-input input:focus ~ .bar:before,
-.example-text-input input:focus ~ .bar:after {
+.example-text-input textarea:focus ~ .bar:before,
+.example-text-input input:focus ~ .bar:after,
+.example-text-input textarea:focus ~ .bar:after {
   width: 50%;
 }
-.example-text-input input:invalid:focus {
+.example-text-input input:invalid:focus,
+.example-text-input textarea:invalid:focus {
   border-color: #660000;
 }
-.example-text-input input:invalid:focus ~ label {
+.example-text-input input:invalid:focus ~ label,
+.example-text-input textarea:invalid:focus ~ label {
   color: #660000;
 }
 .example-text-input input:invalid:focus ~ .bar:before,
-.example-text-input input:invalid:focus ~ .bar:after {
+.example-text-input textarea:invalid:focus ~ .bar:before,
+.example-text-input input:invalid:focus ~ .bar:after,
+.example-text-input textarea:invalid:focus ~ .bar:after {
   background: #660000;
 }
 .example-text-input .validation-message {
@@ -578,7 +592,8 @@ h2 {
   position: relative;
   padding: 1em 0;
 }
-.example-text-input-custom > input {
+.example-text-input-custom input,
+.example-text-input-custom textarea {
   display: block;
   padding: 0.25em 0;
   line-height: 1.5;
@@ -586,36 +601,32 @@ h2 {
   border: 0 solid #ccc;
   border-bottom-width: 1px;
   transition: all 0.25s;
+  overflow: hidden;
+  box-sizing: border-box;
 }
-.example-text-input-custom > input:focus {
+.example-text-input-custom input:focus,
+.example-text-input-custom textarea:focus {
   outline: none;
   box-shadow: none;
   border-color: #339966;
 }
-.example-text-input-custom > input:required {
+.example-text-input-custom input:required,
+.example-text-input-custom textarea:required {
   outline: none;
   box-shadow: none;
 }
-.example-text-input-custom > input:invalid {
+.example-text-input-custom input:invalid,
+.example-text-input-custom textarea:invalid {
   outline: none;
   box-shadow: none;
 }
-.example-text-input-custom > label {
+.example-text-input-custom label {
   position: absolute;
   left: 0;
   line-height: 1;
   transition: all 0.25s;
   opacity: 0.5;
   top: 1.5em;
-}
-.example-text-input-custom input:focus ~ label,
-.example-text-input-custom.not-empty > label {
-  font-size: 0.75em;
-  top: 0.25em;
-}
-.example-text-input-custom input:focus ~ label {
-  opacity: 1;
-  color: #339966;
 }
 .example-text-input-custom .bar {
   position: relative;
@@ -638,18 +649,35 @@ h2 {
 .example-text-input-custom .bar:after {
   right: 50%;
 }
+.example-text-input-custom input:focus ~ label,
+.example-text-input-custom textarea:focus ~ label,
+.example-text-input-custom.not-empty > label {
+  font-size: 0.75em;
+  top: 0.25em;
+}
+.example-text-input-custom input:focus ~ label,
+.example-text-input-custom textarea:focus ~ label {
+  opacity: 1;
+  color: #339966;
+}
 .example-text-input-custom input:focus ~ .bar:before,
-.example-text-input-custom input:focus ~ .bar:after {
+.example-text-input-custom textarea:focus ~ .bar:before,
+.example-text-input-custom input:focus ~ .bar:after,
+.example-text-input-custom textarea:focus ~ .bar:after {
   width: 50%;
 }
-.example-text-input-custom input:invalid:focus {
+.example-text-input-custom input:invalid:focus,
+.example-text-input-custom textarea:invalid:focus {
   border-color: #660000;
 }
-.example-text-input-custom input:invalid:focus ~ label {
+.example-text-input-custom input:invalid:focus ~ label,
+.example-text-input-custom textarea:invalid:focus ~ label {
   color: #660000;
 }
 .example-text-input-custom input:invalid:focus ~ .bar:before,
-.example-text-input-custom input:invalid:focus ~ .bar:after {
+.example-text-input-custom textarea:invalid:focus ~ .bar:before,
+.example-text-input-custom input:invalid:focus ~ .bar:after,
+.example-text-input-custom textarea:invalid:focus ~ .bar:after {
   background: #660000;
 }
 .example-text-input-custom .validation-message {
