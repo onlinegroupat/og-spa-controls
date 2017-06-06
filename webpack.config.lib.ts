@@ -37,6 +37,7 @@ const libraryConfig:Configuration = {
                     declarationDir: __dirname + '/lib',
                     experimentalDecorators: true,
                     traceResolution: true,
+                    strictNullChecks: true,
                     sourceRoot: __dirname + '/src/main/typescript'
                 }
             }

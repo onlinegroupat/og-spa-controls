@@ -17,7 +17,7 @@ let Example = (props:{children:React.ReactNode}) => <div className="example">{pr
 //
 // Example showing a controlled input
 //
-class ControlledInputExample extends React.Component<undefined, { value: string }> {
+class ControlledInputExample extends React.Component<{}, { value: string }> {
     constructor(props:undefined) {
         super(props);
         this.state = { value: 'initialValue' };
@@ -36,7 +36,7 @@ class ControlledInputExample extends React.Component<undefined, { value: string 
 //
 // Example showing a controlled input
 //
-class ControlledTextAreaExample extends React.Component<undefined, { value: string }> {
+class ControlledTextAreaExample extends React.Component<{}, { value: string }> {
     constructor(props:undefined) {
         super(props);
         this.state = { value: 'initialValue' };

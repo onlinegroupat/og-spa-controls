@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2015"
+    "target": "es2015",
+    "strictNullChecks": true
   },
   "include": [
     "__only_for_interpreting_webpack_config"

@@ -1,7 +1,10 @@
+
+type ClassNameType = string|undefined;
+
 export class ClassList {
     classList:string[];
 
-    constructor(...classNames:string[]) {
+    constructor(...classNames:ClassNameType[]) {
         this.classList = [];
         if (classNames) {
             for (let className of classNames) {
@@ -21,7 +24,7 @@ export class ClassList {
     }
 
 
-    public static compute(...classNames:string[]):string {
+    public static compute(...classNames:ClassNameType[]):string {
         return new ClassList(...classNames).toString();
     }
 }

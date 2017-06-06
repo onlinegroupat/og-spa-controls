@@ -37,6 +37,7 @@ const exampleConfig:Configuration = {
                     target: "es2015",
                     jsx: "react",
                     lib: ["dom", "es6"],
+                    strictNullChecks: true,
                     declaration: false
                 }
             },
