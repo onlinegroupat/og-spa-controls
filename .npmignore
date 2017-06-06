@@ -1,4 +1,7 @@
-src/**
+src/
+example/
+webpack.config.*
+tsconfig.json
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
