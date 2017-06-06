@@ -2,7 +2,7 @@
   "name": "og-spa-controls",
   "version": "1.0.0",
   "description": "React UI controls",
-  "main": "src/main/typescript",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": "https://github.com/onlinegroupat/og-spa-controls.git",
   "scripts": {
