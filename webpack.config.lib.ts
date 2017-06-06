@@ -29,7 +29,7 @@ const libraryConfig:Configuration = {
                 query: {
                     sourceMap: true,
                     noImplicitAny: true,
-                    module: "es2015",
+                    module: "commonjs",
                     target: "es2015",
                     jsx: "react",
                     lib: ["dom", "es6"],

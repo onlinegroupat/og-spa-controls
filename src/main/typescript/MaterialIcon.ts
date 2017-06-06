@@ -1,4 +1,4 @@
-import {Enum} from "og-ts-enum/src/index";
+import {Enum} from "og-ts-enum";
 
 export const MaterialIcon = Enum.fromObject({
     '3d_rotation':'3d_rotation',

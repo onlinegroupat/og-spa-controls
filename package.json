@@ -2,8 +2,9 @@
   "name": "og-spa-controls",
   "version": "1.0.0",
   "description": "React UI controls",
-  "main": "lib/index.js",
+  "main": "src/main/typescript",
   "types": "lib/index.d.ts",
+  "repository": "https://github.com/onlinegroupat/og-spa-controls.git",
   "scripts": {
     "clean": "rimraf example lib",
     "dev": "webpack-dev-server --config webpack.config.example.ts --hot --inline",

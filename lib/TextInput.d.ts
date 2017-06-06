@@ -9,7 +9,7 @@ export interface TextInputState {
     empty: boolean;
     validationMessage: string;
 }
-export declare class TextInput extends React.Component<TextInputProps, TextInputState> {
+export declare class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
     constructor(props?: TextInputProps);
     private id;
     private ref;
