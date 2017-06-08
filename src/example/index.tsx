@@ -2,6 +2,7 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {TextInput, MaterialIcon, Icon, Button, TextAreaInput} from "../main/typescript/index";
 import {SelectField} from "../main/typescript/SelectField";
+import {Checkbox} from "../main/typescript/Checkbox";
 
 // require style
 require("./index.less");
@@ -105,6 +106,19 @@ let examples = (
                     <option value="value2">Value2</option>
                     <option value="value3">Value3</option>
                 </SelectField>
+                <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
+            </form>
+        </section>
+        <section>
+            <h2>checkbox</h2>
+            <form>
+                <Checkbox className="example-checkbox">Default style</Checkbox>
+                <Checkbox className="example-checkbox" checked>Checked</Checkbox>
+                <Checkbox className="example-checkbox" checked>
+                    Checkbox with a very long label that includes<br/>
+                    line breaks and <small>some styling</small><br/>
+                    <strong>Yeah!</strong>
+                </Checkbox>
                 <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
             </form>
         </section>

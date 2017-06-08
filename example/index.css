@@ -731,5 +731,14 @@ h2 {
 .example-button.primary {
   background-color: #485;
 }
+.example-checkbox {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0.25em 0;
+  align-items: center;
+}
+.example-checkbox input[type="checkbox"] {
+  margin: 0.25em 0.5em 0.25em 0.25em;
+}
 
 /*# sourceMappingURL=index.css.map*/
