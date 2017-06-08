@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import * as React from "react";
-export interface SelectFieldProps extends React.HTMLProps<HTMLSelectElement> {
+export interface SelectFieldProps extends React.HTMLAttributes<HTMLSelectElement> {
     className?: string;
     label: string;
     selectRef?: (input: HTMLSelectElement) => void;
