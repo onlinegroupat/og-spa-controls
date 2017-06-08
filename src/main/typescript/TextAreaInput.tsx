@@ -2,7 +2,7 @@ import * as React from "react";
 import * as uuid from "uuid";
 import {ClassList} from "./ClassList";
 
-export interface TextAreaInputProps extends React.HTMLProps<HTMLTextAreaElement> {
+export interface TextAreaInputProps extends React.HTMLAttributes<HTMLTextAreaElement> {
     className?:string;
     label:string;
     textAreaRef?:(input:HTMLTextAreaElement) => void;
