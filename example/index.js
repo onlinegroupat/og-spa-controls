@@ -9841,6 +9841,9 @@ class ControlledTextAreaExample extends React.Component {
                 this.state.value)));
     }
 }
+let MyCheckbox = (props) => React.createElement(Checkbox_1.Checkbox, Object.assign({}, props));
+let MyButton = (props) => React.createElement(index_1.Button, Object.assign({}, props));
+let MyTextInput = (props) => React.createElement(index_1.TextInput, Object.assign({}, props));
 //
 //
 //

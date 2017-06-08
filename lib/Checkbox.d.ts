@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import * as React from "react";
-export interface CheckboxProps extends React.HTMLProps<HTMLInputElement> {
+export interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
     className?: string;
     inputRef?: (input: HTMLInputElement) => void;
 }

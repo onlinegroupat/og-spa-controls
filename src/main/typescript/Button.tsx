@@ -4,7 +4,7 @@ import {ClassList} from "./ClassList";
 import {MaterialIcon} from "./MaterialIcon";
 import {Icon} from "./Icon";
 
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     primary?:boolean;
     icon?:MaterialIcon;
 }

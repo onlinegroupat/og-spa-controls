@@ -2,7 +2,9 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {TextInput, MaterialIcon, Icon, Button, TextAreaInput} from "../main/typescript/index";
 import {SelectField} from "../main/typescript/SelectField";
-import {Checkbox} from "../main/typescript/Checkbox";
+import {Checkbox, CheckboxProps} from "../main/typescript/Checkbox";
+import {ButtonProps} from "../main/typescript/Button";
+import {TextInputProps} from "../main/typescript/TextInput";
 
 // require style
 require("./index.less");
