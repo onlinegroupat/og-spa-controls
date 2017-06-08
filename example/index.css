@@ -494,6 +494,7 @@ h2 {
   display: inline-block;
   position: relative;
   padding: 1em 0;
+  max-width: 100%;
   display: block;
   margin: 1em 0;
 }
@@ -509,6 +510,7 @@ h2 {
   transition: all 0.25s;
   overflow: hidden;
   box-sizing: border-box;
+  max-width: 100%;
 }
 .example-text-input input:focus,
 .example-text-input textarea:focus,
@@ -609,6 +611,7 @@ h2 {
   display: inline-block;
   position: relative;
   padding: 1em 0;
+  max-width: 100%;
   display: block;
   margin: 1em 0;
 }
@@ -624,6 +627,7 @@ h2 {
   transition: all 0.25s;
   overflow: hidden;
   box-sizing: border-box;
+  max-width: 100%;
 }
 .example-text-input-custom input:focus,
 .example-text-input-custom textarea:focus,
@@ -732,7 +736,7 @@ h2 {
   background-color: #485;
 }
 .example-checkbox {
-  display: flex;
+  display: inline-flex;
   flex-flow: row nowrap;
   padding: 0.25em 0;
   align-items: center;

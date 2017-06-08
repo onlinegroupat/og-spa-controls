@@ -1,10 +1,11 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {TextInput, MaterialIcon, Icon, Button, TextAreaInput} from "../main/typescript/index";
-import {SelectField} from "../main/typescript/SelectField";
+import {SelectField, SelectFieldProps} from "../main/typescript/SelectField";
 import {Checkbox, CheckboxProps} from "../main/typescript/Checkbox";
 import {ButtonProps} from "../main/typescript/Button";
 import {TextInputProps} from "../main/typescript/TextInput";
+import {TextAreaInputProps} from "../main/typescript/TextAreaInput";
 
 // require style
 require("./index.less");
@@ -55,6 +56,12 @@ class ControlledTextAreaExample extends React.Component<{}, { value: string }> {
         );
     }
 }
+
+let MyCheckbox = (props:CheckboxProps) => <Checkbox className="example-checkbox" {...props} />;
+let MyButton = (props:ButtonProps) => <Button className="example-button" {...props} />;
+let MyTextInput = (props:TextInputProps) => <TextInput className="example-text-input" {...props} />;
+let MyTextAreaInput = (props:TextAreaInputProps) => <TextAreaInput className="example-text-input" {...props} />;
+let MySelectField = (props:SelectFieldProps) => <SelectField className="example-text-input" {...props} />;
 
 //
 //
