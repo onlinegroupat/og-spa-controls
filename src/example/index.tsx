@@ -1,6 +1,7 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {TextInput, MaterialIcon, Icon, Button, TextAreaInput} from "../main/typescript/index";
+import {SelectField} from "../main/typescript/SelectField";
 
 // require style
 require("./index.less");
@@ -81,6 +82,29 @@ let examples = (
                 <TextAreaInput className="example-text-input" label="Requires value" required />
                 <TextAreaInput className="example-text-input" label="With rows=1" rows={1} />
                 <ControlledTextAreaExample />
+                <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
+            </form>
+        </section>
+        <section>
+            <h2>select</h2>
+            <form>
+                <SelectField className="example-text-input" label="Default style">
+                    <option value="value1">Value1</option>
+                    <option value="value2">Value2</option>
+                    <option value="value3">Value3</option>
+                </SelectField>
+                <SelectField className="example-text-input" label="Empty option">
+                    <option value=""></option>
+                    <option value="value1">Value1</option>
+                    <option value="value2">Value2</option>
+                    <option value="value3">Value3</option>
+                </SelectField>
+                <SelectField className="example-text-input" label="Required" required>
+                    <option value=""></option>
+                    <option value="value1">Value1</option>
+                    <option value="value2">Value2</option>
+                    <option value="value3">Value3</option>
+                </SelectField>
                 <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
             </form>
         </section>

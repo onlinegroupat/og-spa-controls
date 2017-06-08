@@ -2,21 +2,20 @@ import * as React from "react";
 import * as uuid from "uuid";
 import {ClassList} from "./ClassList";
 
-export interface TextAreaInputProps extends React.HTMLProps<HTMLTextAreaElement> {
+export interface SelectFieldProps extends React.HTMLProps<HTMLSelectElement> {
     className?:string;
     label:string;
-    textAreaRef?:(input:HTMLTextAreaElement) => void;
+    selectRef?:(input:HTMLSelectElement) => void;
 }
 
-export interface TextAreaInputState {
+export interface SelectFieldState {
     empty:boolean;
     validationMessage:string;
 }
+// TODO: extract common functionality shared with TextInput and TextAreaInput
+export class SelectField extends React.PureComponent<SelectFieldProps, SelectFieldState> {
 
-// TODO: extract common base from TextInput and TextAreaInput
-export class TextAreaInput extends React.PureComponent<TextAreaInputProps, TextAreaInputState> {
-
-    constructor(props?:TextAreaInputProps) {
+    constructor(props?:SelectFieldProps) {
         super(props);
 
         this.state = {
@@ -26,23 +25,18 @@ export class TextAreaInput extends React.PureComponent<TextAreaInputProps, TextA
     }
 
     private id:string;
-    private ref:HTMLTextAreaElement;
+    private ref:HTMLSelectElement;
 
-    private handleChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
+    private handleChange = (e:React.ChangeEvent<HTMLSelectElement>) => {
         this.updateState();
         this.props.onChange && this.props.onChange(e);
     };
 
-    private handleRef = (ref:HTMLTextAreaElement) => {
+    private handleRef = (ref:HTMLSelectElement) => {
         this.ref = ref;
-        this.props.textAreaRef && this.props.textAreaRef(ref);
+        this.props.selectRef && this.props.selectRef(ref);
         this.updateState();
     };
-
-    private updateHeight() {
-        this.ref.style.height = "";
-        this.ref.style.height = this.ref.scrollHeight + 1 + "px";
-    }
 
     private updateState() {
         if (this.ref) {
@@ -55,7 +49,6 @@ export class TextAreaInput extends React.PureComponent<TextAreaInputProps, TextA
                     validationMessage: newValidationMessage
                 });
             }
-            this.updateHeight();
         }
     }
 
@@ -68,10 +61,12 @@ export class TextAreaInput extends React.PureComponent<TextAreaInputProps, TextA
     }
 
     render() {
-        const { className, ...textareaProps } = this.props;
+        const { className, ...selectProps } = this.props;
         return (
             <div className={ClassList.compute(className, this.state.empty ? 'empty' : 'not-empty')}>
-                <textarea id={this.id} onChange={this.handleChange} ref={this.handleRef} {...textareaProps} />
+                <select id={this.id} onChange={this.handleChange} ref={this.handleRef} {...selectProps}>
+                    { this.props.children }
+                </select>
                 <label htmlFor={this.id}>
                     {this.props.label}
                 </label>

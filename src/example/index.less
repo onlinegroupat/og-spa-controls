@@ -28,7 +28,16 @@ h1, h2 {
 }
 
 // Make actual classes from mixins
-.example-text-input { .text-input(); }
-.example-text-input-custom { .text-input(@focus-color: #339966); }
-
-.example-button { .button(); }
+.example-text-input {
+  .text-input();
+  display:block;
+  margin:1em 0;
+}
+.example-text-input-custom {
+  .text-input(@focus-color: #339966);
+  display:block;
+  margin:1em 0;
+}
+.example-button {
+  .button();
+}
