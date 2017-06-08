@@ -491,11 +491,15 @@ h2 {
   font-weight: 300;
 }
 .example-text-input {
+  display: inline-block;
   position: relative;
   padding: 1em 0;
+  display: block;
+  margin: 1em 0;
 }
 .example-text-input input,
-.example-text-input textarea {
+.example-text-input textarea,
+.example-text-input select {
   display: block;
   padding: 0.25em 0;
   line-height: 1.5;
@@ -507,18 +511,21 @@ h2 {
   box-sizing: border-box;
 }
 .example-text-input input:focus,
-.example-text-input textarea:focus {
+.example-text-input textarea:focus,
+.example-text-input select:focus {
   outline: none;
   box-shadow: none;
   border-color: #336699;
 }
 .example-text-input input:required,
-.example-text-input textarea:required {
+.example-text-input textarea:required,
+.example-text-input select:required {
   outline: none;
   box-shadow: none;
 }
 .example-text-input input:invalid,
-.example-text-input textarea:invalid {
+.example-text-input textarea:invalid,
+.example-text-input select:invalid {
   outline: none;
   box-shadow: none;
 }
@@ -553,47 +560,61 @@ h2 {
 }
 .example-text-input input:focus ~ label,
 .example-text-input textarea:focus ~ label,
+.example-text-input select:focus ~ label,
 .example-text-input.not-empty > label {
   font-size: 0.75em;
   top: 0.25em;
 }
 .example-text-input input:focus ~ label,
-.example-text-input textarea:focus ~ label {
+.example-text-input textarea:focus ~ label,
+.example-text-input select:focus ~ label {
   opacity: 1;
   color: #336699;
 }
 .example-text-input input:focus ~ .bar:before,
 .example-text-input textarea:focus ~ .bar:before,
+.example-text-input select:focus ~ .bar:before,
 .example-text-input input:focus ~ .bar:after,
-.example-text-input textarea:focus ~ .bar:after {
+.example-text-input textarea:focus ~ .bar:after,
+.example-text-input select:focus ~ .bar:after {
   width: 50%;
 }
 .example-text-input input:invalid:focus,
-.example-text-input textarea:invalid:focus {
+.example-text-input textarea:invalid:focus,
+.example-text-input select:invalid:focus {
   border-color: #660000;
 }
 .example-text-input input:invalid:focus ~ label,
-.example-text-input textarea:invalid:focus ~ label {
+.example-text-input textarea:invalid:focus ~ label,
+.example-text-input select:invalid:focus ~ label {
   color: #660000;
 }
 .example-text-input input:invalid:focus ~ .bar:before,
 .example-text-input textarea:invalid:focus ~ .bar:before,
+.example-text-input select:invalid:focus ~ .bar:before,
 .example-text-input input:invalid:focus ~ .bar:after,
-.example-text-input textarea:invalid:focus ~ .bar:after {
+.example-text-input textarea:invalid:focus ~ .bar:after,
+.example-text-input select:invalid:focus ~ .bar:after {
   background: #660000;
 }
 .example-text-input .validation-message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   color: #660000;
   font-size: 0.75em;
   line-height: 1;
-  padding: 0.25em 0;
 }
 .example-text-input-custom {
+  display: inline-block;
   position: relative;
   padding: 1em 0;
+  display: block;
+  margin: 1em 0;
 }
 .example-text-input-custom input,
-.example-text-input-custom textarea {
+.example-text-input-custom textarea,
+.example-text-input-custom select {
   display: block;
   padding: 0.25em 0;
   line-height: 1.5;
@@ -605,18 +626,21 @@ h2 {
   box-sizing: border-box;
 }
 .example-text-input-custom input:focus,
-.example-text-input-custom textarea:focus {
+.example-text-input-custom textarea:focus,
+.example-text-input-custom select:focus {
   outline: none;
   box-shadow: none;
   border-color: #339966;
 }
 .example-text-input-custom input:required,
-.example-text-input-custom textarea:required {
+.example-text-input-custom textarea:required,
+.example-text-input-custom select:required {
   outline: none;
   box-shadow: none;
 }
 .example-text-input-custom input:invalid,
-.example-text-input-custom textarea:invalid {
+.example-text-input-custom textarea:invalid,
+.example-text-input-custom select:invalid {
   outline: none;
   box-shadow: none;
 }
@@ -651,40 +675,50 @@ h2 {
 }
 .example-text-input-custom input:focus ~ label,
 .example-text-input-custom textarea:focus ~ label,
+.example-text-input-custom select:focus ~ label,
 .example-text-input-custom.not-empty > label {
   font-size: 0.75em;
   top: 0.25em;
 }
 .example-text-input-custom input:focus ~ label,
-.example-text-input-custom textarea:focus ~ label {
+.example-text-input-custom textarea:focus ~ label,
+.example-text-input-custom select:focus ~ label {
   opacity: 1;
   color: #339966;
 }
 .example-text-input-custom input:focus ~ .bar:before,
 .example-text-input-custom textarea:focus ~ .bar:before,
+.example-text-input-custom select:focus ~ .bar:before,
 .example-text-input-custom input:focus ~ .bar:after,
-.example-text-input-custom textarea:focus ~ .bar:after {
+.example-text-input-custom textarea:focus ~ .bar:after,
+.example-text-input-custom select:focus ~ .bar:after {
   width: 50%;
 }
 .example-text-input-custom input:invalid:focus,
-.example-text-input-custom textarea:invalid:focus {
+.example-text-input-custom textarea:invalid:focus,
+.example-text-input-custom select:invalid:focus {
   border-color: #660000;
 }
 .example-text-input-custom input:invalid:focus ~ label,
-.example-text-input-custom textarea:invalid:focus ~ label {
+.example-text-input-custom textarea:invalid:focus ~ label,
+.example-text-input-custom select:invalid:focus ~ label {
   color: #660000;
 }
 .example-text-input-custom input:invalid:focus ~ .bar:before,
 .example-text-input-custom textarea:invalid:focus ~ .bar:before,
+.example-text-input-custom select:invalid:focus ~ .bar:before,
 .example-text-input-custom input:invalid:focus ~ .bar:after,
-.example-text-input-custom textarea:invalid:focus ~ .bar:after {
+.example-text-input-custom textarea:invalid:focus ~ .bar:after,
+.example-text-input-custom select:invalid:focus ~ .bar:after {
   background: #660000;
 }
 .example-text-input-custom .validation-message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   color: #660000;
   font-size: 0.75em;
   line-height: 1;
-  padding: 0.25em 0;
 }
 .example-button {
   border-radius: 0.2em;

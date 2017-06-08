@@ -13,11 +13,11 @@
   @transition:@default-transition;
 )
 {
-
+  display:inline-block;
   position:relative;
   padding:1em 0;
 
-  input, textarea {
+  input, textarea, select {
     display:block;
     padding:0.25em 0;
     line-height:1.5;
@@ -76,13 +76,14 @@
   // small label on focus & not-empty
   input:focus ~ label,
   textarea:focus ~ label,
+  select:focus ~ label,
   &.not-empty > label {
     font-size:0.75em;
     top: 0.25em;
   }
 
   // focus state
-  input, textarea {
+  input, textarea, select {
     &:focus {
       // label
       & ~ label {
@@ -99,7 +100,7 @@
   }
 
   // invalid state
-  input, textarea {
+  input, textarea, select {
     &:invalid:focus {
       border-color: @invalid-color;
     }
@@ -114,9 +115,11 @@
   }
 
   .validation-message {
+    position:absolute;
+    bottom:0;
+    left:0;
     color:@invalid-color;
     font-size:0.75em;
     line-height:1;
-    padding:0.25em 0;
   }
 }

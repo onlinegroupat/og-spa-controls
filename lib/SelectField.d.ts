@@ -1,21 +1,20 @@
 /// <reference types="react" />
 import * as React from "react";
-export interface TextAreaInputProps extends React.HTMLProps<HTMLTextAreaElement> {
+export interface SelectFieldProps extends React.HTMLProps<HTMLSelectElement> {
     className?: string;
     label: string;
-    textAreaRef?: (input: HTMLTextAreaElement) => void;
+    selectRef?: (input: HTMLSelectElement) => void;
 }
-export interface TextAreaInputState {
+export interface SelectFieldState {
     empty: boolean;
     validationMessage: string;
 }
-export declare class TextAreaInput extends React.PureComponent<TextAreaInputProps, TextAreaInputState> {
-    constructor(props?: TextAreaInputProps);
+export declare class SelectField extends React.PureComponent<SelectFieldProps, SelectFieldState> {
+    constructor(props?: SelectFieldProps);
     private id;
     private ref;
     private handleChange;
     private handleRef;
-    private updateHeight();
     private updateState();
     componentWillMount(): void;
     componentDidUpdate(): void;
