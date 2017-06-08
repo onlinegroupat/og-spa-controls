@@ -1,8 +1,7 @@
 /// <reference types="react" />
 import * as React from "react";
-import { HTMLAttributes } from "react";
 import { MaterialIcon } from "./MaterialIcon";
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     primary?: boolean;
     icon?: MaterialIcon;
 }
