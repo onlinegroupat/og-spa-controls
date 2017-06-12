@@ -10342,6 +10342,7 @@ var TextAreaInput_1 = __webpack_require__(95);
 exports.TextAreaInput = TextAreaInput_1.TextAreaInput;
 var Checkbox_1 = __webpack_require__(54);
 exports.Checkbox = Checkbox_1.Checkbox;
+exports.CheckboxGroup = Checkbox_1.CheckboxGroup;
 var Button_1 = __webpack_require__(93);
 exports.Button = Button_1.Button;
 var Icon_1 = __webpack_require__(56);
