@@ -30,17 +30,20 @@ h1, h2 {
 // Make actual classes from mixins
 .example-text-input {
   .text-input();
-  display:block;
-  margin:1em 0;
+  margin:1em;
 }
 .example-text-input-custom {
   .text-input(@focus-color: #339966);
-  display:block;
-  margin:1em 0;
+  margin:1em;
 }
 .example-button {
   .button();
 }
 .example-checkbox {
   .checkbox();
+  margin:1em;
+}
+.example-checkbox-group {
+  .checkbox-group();
+  margin:1em;
 }

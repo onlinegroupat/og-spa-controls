@@ -7,6 +7,20 @@
   input[type="checkbox"] {
     margin:0.25em 0.5em 0.25em 0.25em;
   }
+}
 
+.checkbox-group() {
+  display:inline-block;
+  flex-flow:row wrap;
 
+  > label {
+    display:block;
+    font-size:0.75em;
+  }
+  > .checkboxes {
+    display:block;
+    > * {
+      margin-right:0.5em;
+    }
+  }
 }

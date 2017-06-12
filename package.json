@@ -38,8 +38,10 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "@types/prop-types": "^15.5.1",
     "normalize.css": "^7.0.0",
     "og-ts-enum": "git+https://github.com/onlinegroupat/og-ts-enum.git",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "uuid": "^3.0.1"

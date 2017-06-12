@@ -495,8 +495,7 @@ h2 {
   position: relative;
   padding: 1em 0;
   max-width: 100%;
-  display: block;
-  margin: 1em 0;
+  margin: 1em;
 }
 .example-text-input input,
 .example-text-input textarea,
@@ -612,8 +611,7 @@ h2 {
   position: relative;
   padding: 1em 0;
   max-width: 100%;
-  display: block;
-  margin: 1em 0;
+  margin: 1em;
 }
 .example-text-input-custom input,
 .example-text-input-custom textarea,
@@ -740,9 +738,25 @@ h2 {
   flex-flow: row nowrap;
   padding: 0.25em 0;
   align-items: center;
+  margin: 1em;
 }
 .example-checkbox input[type="checkbox"] {
   margin: 0.25em 0.5em 0.25em 0.25em;
+}
+.example-checkbox-group {
+  display: inline-block;
+  flex-flow: row wrap;
+  margin: 1em;
+}
+.example-checkbox-group > label {
+  display: block;
+  font-size: 0.75em;
+}
+.example-checkbox-group > .checkboxes {
+  display: block;
+}
+.example-checkbox-group > .checkboxes > * {
+  margin-right: 0.5em;
 }
 
 /*# sourceMappingURL=index.css.map*/
