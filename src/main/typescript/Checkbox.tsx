@@ -77,7 +77,6 @@ export class Checkbox extends React.PureComponent<CheckboxProps, CheckboxState> 
     };
 
     private handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-        console.log('Checkbox: handleChange', this.context);
         // call change handler of parent CheckboxGroup
         this.context.checkboxGroup.onChange(e);
         // call handler that was set via props
@@ -91,7 +90,7 @@ export class Checkbox extends React.PureComponent<CheckboxProps, CheckboxState> 
     shouldComponentUpdate?(nextProps: Readonly<CheckboxProps>, nextState: Readonly<CheckboxState>, nextContext: any) {
         // poor man's fix to the problem, that context change is not considered in PureComponent's shouldComponentUpdate
         // see https://medium.com/@mweststrate/how-to-safely-use-react-context-b7e343eff076
-        // in our case it is probably very much okay, to handle it like this:
+        // in our case it is probably very much okay to handle it like this:
         if (nextContext.checkboxGroup && nextContext.checkboxGroup.checked) {
             return true;
         }
@@ -110,12 +109,9 @@ export class Checkbox extends React.PureComponent<CheckboxProps, CheckboxState> 
         // handle a CheckboxGroup parent
         let checkboxGroup = this.context.checkboxGroup;
         if (checkboxGroup) {
-            console.log('Checkbox: checkboxGroup', checkboxGroup);
             // we only override the check property, if specified by the parent CheckboxGroup
             if (checkboxGroup.checked && value) {
-                console.log('Checkbox.render: checkboxGroup.checked', checkboxGroup.checked, 'value', value);
                 checked = checkboxGroup.checked.indexOf(value) >= 0;
-                console.log('Checkbox.render: checked', checked);
            }
             // we only override the onChange handler if we are nested in a CheckboxGroup
             if (checkboxGroup.onChange) {
