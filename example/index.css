@@ -510,6 +510,7 @@ h2 {
   overflow: hidden;
   box-sizing: border-box;
   max-width: 100%;
+  background: transparent;
 }
 .example-text-input input:focus,
 .example-text-input textarea:focus,
@@ -626,6 +627,7 @@ h2 {
   overflow: hidden;
   box-sizing: border-box;
   max-width: 100%;
+  background: transparent;
 }
 .example-text-input-custom input:focus,
 .example-text-input-custom textarea:focus,
