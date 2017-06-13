@@ -1,5 +1,5 @@
 
-type ClassNameType = string|undefined;
+export type ClassNameType = string|undefined;
 
 export class ClassList {
     classList:string[];
@@ -15,16 +15,15 @@ export class ClassList {
         }
     }
 
-    public add(className:string) {
+    add(className:string) {
         this.classList.push(className);
     }
 
-    public toString():string {
+    toString():string {
         return this.classList.join(' ');
     }
 
-
-    public static compute(...classNames:ClassNameType[]):string {
+    static compute(...classNames:ClassNameType[]):string {
         return new ClassList(...classNames).toString();
     }
 }
