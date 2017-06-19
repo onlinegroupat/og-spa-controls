@@ -10532,6 +10532,7 @@ let examples = (React.createElement("article", null,
     React.createElement("section", null,
         React.createElement("h2", null, "buttons"),
         React.createElement(index_1.Button, { className: "example-button" }, "Normal button"),
+        React.createElement(index_1.Button, { className: "example-button", disabled: true }, "Disabled button"),
         React.createElement(index_1.Button, { className: "example-button", primary: true }, "Primary button"),
         React.createElement(index_1.Button, { className: "example-button", icon: index_1.MaterialIcon.search }, "Icon button"),
         React.createElement(index_1.Button, { className: "example-button", icon: index_1.MaterialIcon.search, primary: true }, "Primary Icon button"))));

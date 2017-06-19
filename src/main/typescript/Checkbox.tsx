@@ -94,7 +94,7 @@ export class Checkbox extends React.PureComponent<CheckboxProps, CheckboxState> 
         if (nextContext.checkboxGroup && nextContext.checkboxGroup.checked) {
             return true;
         }
-        // need this check because this method is
+        // need this check because this method is declared optional
         else if (super.shouldComponentUpdate) {
             return super.shouldComponentUpdate && super.shouldComponentUpdate(nextProps, nextState, nextContext);
         }

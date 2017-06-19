@@ -735,6 +735,9 @@ h2 {
 .example-button.primary {
   background-color: #485;
 }
+.example-button[disabled] {
+  opacity: 0.5;
+}
 .example-checkbox {
   display: inline-flex;
   flex-flow: row nowrap;
