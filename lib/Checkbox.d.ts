@@ -28,7 +28,7 @@ export interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
 }
 export interface CheckboxState {
 }
-export declare class Checkbox extends React.PureComponent<CheckboxProps, CheckboxState> {
+export declare class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     constructor(props?: CheckboxProps);
     static contextTypes: {
         checkboxGroup: PropTypes.Requireable<any>;
@@ -38,6 +38,5 @@ export declare class Checkbox extends React.PureComponent<CheckboxProps, Checkbo
     private handleRef;
     private handleChange;
     componentWillMount(): void;
-    shouldComponentUpdate?(nextProps: Readonly<CheckboxProps>, nextState: Readonly<CheckboxState>, nextContext: any): boolean;
     render(): JSX.Element;
 }

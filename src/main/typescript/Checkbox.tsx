@@ -58,7 +58,7 @@ export interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
 export interface CheckboxState {
 }
 
-export class Checkbox extends React.PureComponent<CheckboxProps, CheckboxState> {
+export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
 
     constructor(props?: CheckboxProps) {
         super(props);
@@ -85,22 +85,6 @@ export class Checkbox extends React.PureComponent<CheckboxProps, CheckboxState> 
 
     componentWillMount() {
         this.id = this.props.id || uuid();
-    }
-
-    shouldComponentUpdate?(nextProps: Readonly<CheckboxProps>, nextState: Readonly<CheckboxState>, nextContext: any) {
-        // poor man's fix to the problem, that context change is not considered in PureComponent's shouldComponentUpdate
-        // see https://medium.com/@mweststrate/how-to-safely-use-react-context-b7e343eff076
-        // in our case it is probably very much okay to handle it like this:
-        if (nextContext.checkboxGroup && nextContext.checkboxGroup.checked) {
-            return true;
-        }
-        // need this check because this method is declared optional
-        else if (super.shouldComponentUpdate) {
-            return super.shouldComponentUpdate && super.shouldComponentUpdate(nextProps, nextState, nextContext);
-        }
-        else {
-            throw new TypeError('considered unreachable');
-        }
     }
 
     render() {
