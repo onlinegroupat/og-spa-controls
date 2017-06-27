@@ -1,9 +1,11 @@
 import * as React from "react";
 
-export type ChildrenProps = {
+export interface ChildrenProps {
     children?:React.ReactNode;
 }
 
-export type ClassNameProps = {
+export interface ClassNameProps {
     className?:string;
 }
+
+export const __ForceTypeDeclarationGeneration = '__this_forces_generation_of_type_definition';

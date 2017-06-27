@@ -54,7 +54,9 @@ const libraryConfig:Configuration = {
         "react": "react",
         "react-dom": "react-dom",
         "uuid": "uuid",
-        "typescript-string-enums": "typescript-string-enums"
+        "og-ts-enum": "og-ts-enum",
+        "prop-types": "prop-types",
+        "@types/prop-types": "@types/prop-types"
     }
 };
 
