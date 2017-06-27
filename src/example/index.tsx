@@ -6,6 +6,7 @@ import {Checkbox, CheckboxGroup, CheckboxProps} from "../main/typescript/Checkbo
 import {ButtonProps} from "../main/typescript/Button";
 import {TextInputProps} from "../main/typescript/TextInput";
 import {TextAreaInputProps} from "../main/typescript/TextAreaInput";
+import {Dropdown, DropdownToggle, DropdownPopup} from "../main/typescript/Dropdown";
 
 // require style
 require("./index.less");
@@ -207,6 +208,19 @@ let examples = (
             <Button className="example-button" primary>Primary button</Button>
             <Button className="example-button" icon={MaterialIcon.search}>Icon button</Button>
             <Button className="example-button" icon={MaterialIcon.search} primary>Primary Icon button</Button>
+        </section>
+        <section>
+            <h2>dropdown</h2>
+            <Dropdown className="example-dropdown">
+                <DropdownToggle>
+                    <Button className="example-button">Toggle dropdown</Button>
+                </DropdownToggle>
+                <DropdownPopup>
+                    <Button className="example-button">Item 1</Button>
+                    <Button className="example-button">Item 2</Button>
+                    <Button className="example-button">Item 3</Button>
+                </DropdownPopup>
+            </Dropdown>
         </section>
     </article>
 );

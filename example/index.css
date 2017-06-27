@@ -763,5 +763,16 @@ h2 {
 .example-checkbox-group > .checkboxes > * {
   margin-right: 0.5em;
 }
+.example-dropdown {
+  position: relative;
+}
+.example-dropdown .popup {
+  position: absolute;
+  top: 100%;
+  visibility: hidden;
+}
+.example-dropdown.open .popup {
+  visibility: visible;
+}
 
 /*# sourceMappingURL=index.css.map*/
