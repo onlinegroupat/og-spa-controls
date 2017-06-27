@@ -6,3 +6,4 @@ export { Button, ButtonProps } from "./Button";
 export { Icon } from "./Icon";
 export { MaterialIcon } from "./MaterialIcon";
 export { ClassList } from "./ClassList";
+export { Dropdown, DropdownToggle, DropdownPopup } from "./Dropdown";

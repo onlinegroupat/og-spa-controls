@@ -1,0 +1,128 @@
+@import 'defaults';
+
+//
+// Applies basic style to text inputs
+//
+.text-input
+(
+  @default-color:@default-color-border;
+  @focus-color: @default-color-focus;
+  @invalid-color: @default-color-error;
+  @label-opacity: 0.5;
+  @label-focused-opacity: 1;
+  @transition:@default-transition;
+)
+{
+  display:inline-block;
+  position:relative;
+  padding:1em 0;
+  max-width:100%;
+
+  input, textarea, select {
+    display:block;
+    padding:0.25em 0;
+    line-height:1.5;
+    width: 100%;
+    border:0 solid @default-color;
+    border-bottom-width:1px;
+    transition:@transition;
+    overflow:hidden;
+    box-sizing:border-box;
+    max-width:100%;
+    background:transparent;
+
+    &:focus {
+      outline: none;
+      box-shadow:none;
+      border-color: @focus-color;
+    }
+    &:required {
+      outline:none;
+      box-shadow:none;
+    }
+    &:invalid {
+      outline:none;
+      box-shadow:none;
+    }
+  }
+
+  label {
+    position:absolute;
+    left:0;
+    line-height:1;
+    transition:@transition;
+    opacity:@label-opacity;
+    top:1.5em;
+  }
+
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+    &:before, &:after {
+      content: '';
+      height: 2px;
+      width: 0;
+      bottom: 0;
+      position: absolute;
+      background: @focus-color;
+      transition:@transition;
+    }
+    &:before {
+      left: 50%;
+    }
+    &:after {
+      right: 50%;
+    }
+  }
+
+  // small label on focus & not-empty
+  input:focus ~ label,
+  textarea:focus ~ label,
+  select:focus ~ label,
+  &.not-empty > label {
+    font-size:0.75em;
+    top: 0.25em;
+  }
+
+  // focus state
+  input, textarea, select {
+    &:focus {
+      // label
+      & ~ label {
+        opacity:@label-focused-opacity;
+        color:@focus-color;
+      }
+      // bar
+      & ~ .bar {
+        &:before, &:after {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  // invalid state
+  input, textarea, select {
+    &:invalid:focus {
+      border-color: @invalid-color;
+    }
+    &:invalid:focus ~ label {
+      color: @invalid-color;
+    }
+    &:invalid:focus ~ .bar {
+      &:before, &:after {
+        background: @invalid-color;
+      }
+    }
+  }
+
+  .validation-message {
+    position:absolute;
+    bottom:0;
+    left:0;
+    color:@invalid-color;
+    font-size:0.75em;
+    line-height:1;
+  }
+}
