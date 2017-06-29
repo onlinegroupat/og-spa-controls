@@ -1,0 +1,23 @@
+@import 'defaults';
+
+.button
+(
+  @background-color: @default-color-button;
+  @color: @default-color-button-text;
+  @background-color-primary: @default-color-button-primary;
+) {
+  border-radius:0.2em;
+  line-height:1;
+  border:0;
+  padding:0.5em 1em;
+  background-color: @background-color;
+  color: @color;
+
+  &.primary {
+    background-color: @background-color-primary;
+  }
+
+  &[disabled] {
+    opacity:0.5;
+  }
+}
