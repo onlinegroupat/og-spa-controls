@@ -190,6 +190,7 @@ let examples = (
                                onChange={e => console.log(`${e.target.name} changed to ${e.target.checked}`)}>
                     <Checkbox className="example-checkbox" value="1">one</Checkbox>
                     <Checkbox className="example-checkbox" value="2">two</Checkbox>
+                    <Checkbox className="example-checkbox" value="3" disabled>disabled</Checkbox>
                 </CheckboxGroup>
                 <ControlledCheckboxGroupExample/>
                 <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
