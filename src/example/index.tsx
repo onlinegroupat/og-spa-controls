@@ -45,6 +45,29 @@ class ControlledInputExample extends React.Component<{}, { value: string }> {
 //
 // Example showing a controlled input
 //
+class ControlledDateInputExample extends React.Component<{}, { value: Date }> {
+    constructor(props: undefined) {
+        super(props);
+        this.state = {value: new Date()};
+    }
+
+    private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => this.setState({value: e.target.valueAsDate});
+
+    render() {
+        return (
+            <div>
+                <TextInput type="date" className="example-text-input" label="Controlled date input"
+                           value={this.state.value as any as string}
+                           onChange={this.handleChange}/>
+                <p>The current value is {this.state.value.toLocaleDateString()}</p>
+            </div>
+        );
+    }
+}
+
+//
+// Example showing a controlled input
+//
 class ControlledTextAreaExample extends React.Component<{}, { value: string }> {
     constructor(props: undefined) {
         super(props);
@@ -127,6 +150,7 @@ let examples = (
                 <TextInput className="example-text-input" label="Type number" type="number"/>
                 <TextInput className="example-text-input" label="Min length 2" minLength={2}/>
                 <ControlledInputExample />
+                <ControlledDateInputExample />
                 <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
             </form>
         </section>

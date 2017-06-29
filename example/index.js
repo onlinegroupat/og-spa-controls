@@ -10448,6 +10448,23 @@ class ControlledInputExample extends React.Component {
 //
 // Example showing a controlled input
 //
+class ControlledDateInputExample extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleChange = (e) => this.setState({ value: e.target.valueAsDate });
+        this.state = { value: new Date() };
+    }
+    render() {
+        return (React.createElement("div", null,
+            React.createElement(index_1.TextInput, { type: "date", className: "example-text-input", label: "Controlled date input", value: this.state.value, onChange: this.handleChange }),
+            React.createElement("p", null,
+                "The current value is ",
+                this.state.value.toLocaleDateString())));
+    }
+}
+//
+// Example showing a controlled input
+//
 class ControlledTextAreaExample extends React.Component {
     constructor(props) {
         super(props);
@@ -10514,6 +10531,7 @@ let examples = (React.createElement("article", null,
             React.createElement(index_1.TextInput, { className: "example-text-input", label: "Type number", type: "number" }),
             React.createElement(index_1.TextInput, { className: "example-text-input", label: "Min length 2", minLength: 2 }),
             React.createElement(ControlledInputExample, null),
+            React.createElement(ControlledDateInputExample, null),
             React.createElement(index_1.Button, { className: "example-button", primary: true, icon: index_1.MaterialIcon.save }, "Submit"))),
     React.createElement("section", null,
         React.createElement("h2", null, "textarea"),
@@ -10563,7 +10581,8 @@ let examples = (React.createElement("article", null,
                 React.createElement(Checkbox_1.Checkbox, { className: "example-checkbox", value: "2" }, "two")),
             React.createElement(Checkbox_1.CheckboxGroup, { className: "example-checkbox-group", label: "Checkbox group with event handler (console!)", onChange: e => console.log(`${e.target.name} changed to ${e.target.checked}`) },
                 React.createElement(Checkbox_1.Checkbox, { className: "example-checkbox", value: "1" }, "one"),
-                React.createElement(Checkbox_1.Checkbox, { className: "example-checkbox", value: "2" }, "two")),
+                React.createElement(Checkbox_1.Checkbox, { className: "example-checkbox", value: "2" }, "two"),
+                React.createElement(Checkbox_1.Checkbox, { className: "example-checkbox", value: "3", disabled: true }, "disabled")),
             React.createElement(ControlledCheckboxGroupExample, null),
             React.createElement(index_1.Button, { className: "example-button", primary: true, icon: index_1.MaterialIcon.save }, "Submit"))),
     React.createElement("section", null,

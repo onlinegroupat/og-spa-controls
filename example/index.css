@@ -748,6 +748,9 @@ h2 {
 .example-checkbox input[type="checkbox"] {
   margin: 0.25em 0.5em 0.25em 0.25em;
 }
+.example-checkbox input[type="checkbox"]:disabled ~ label {
+  opacity: 0.5;
+}
 .example-checkbox-group {
   display: inline-block;
   flex-flow: row wrap;
