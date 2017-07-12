@@ -29,8 +29,8 @@ export class TextInput extends React.PureComponent<TextInputProps, TextInputStat
     private ref:HTMLInputElement;
 
     private handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-        this.updateState();
         this.props.onChange && this.props.onChange(e);
+        this.updateState();
     };
 
     private handleRef = (ref:HTMLInputElement) => {
