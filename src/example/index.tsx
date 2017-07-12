@@ -52,7 +52,7 @@ class ControlledDateInputExample extends React.Component<{}, { value: string }> 
         this.state = {value: ''};
     }
 
-    private handleChange = (e:DateChangeEvent) => this.setState({value: e.valueAsIsoDate});
+    private handleChange = (e:DateChangeEvent) => this.setState({value: e.valueAsIsoDate || ''});
 
     render() {
         console.log('render: value = ', this.state.value);

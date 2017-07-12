@@ -1,4 +1,5 @@
 export { TextInput, TextInputProps } from "./TextInput";
+export { DateInput, DateInputProps } from "./DateInput";
 export { SelectField, SelectFieldProps } from "./SelectField";
 export { TextAreaInput, TextAreaInputProps } from "./TextAreaInput";
 export { Checkbox, CheckboxProps, CheckboxGroup, CheckboxGroupProps } from "./Checkbox";

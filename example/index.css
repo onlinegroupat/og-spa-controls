@@ -531,6 +531,11 @@ h2 {
   outline: none;
   box-shadow: none;
 }
+.example-text-input input::placeholder,
+.example-text-input textarea::placeholder,
+.example-text-input select::placeholder {
+  display: none;
+}
 .example-text-input label {
   position: absolute;
   left: 0;
@@ -601,7 +606,8 @@ h2 {
 }
 .example-text-input .validation-message {
   position: absolute;
-  bottom: 0;
+  top: 100%;
+  transform: translateY(-1em);
   left: 0;
   color: #660000;
   font-size: 0.75em;
@@ -647,6 +653,11 @@ h2 {
 .example-text-input-custom select:invalid {
   outline: none;
   box-shadow: none;
+}
+.example-text-input-custom input::placeholder,
+.example-text-input-custom textarea::placeholder,
+.example-text-input-custom select::placeholder {
+  display: none;
 }
 .example-text-input-custom label {
   position: absolute;
@@ -718,7 +729,8 @@ h2 {
 }
 .example-text-input-custom .validation-message {
   position: absolute;
-  bottom: 0;
+  top: 100%;
+  transform: translateY(-1em);
   left: 0;
   color: #660000;
   font-size: 0.75em;

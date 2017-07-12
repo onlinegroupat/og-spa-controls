@@ -5,7 +5,7 @@ import * as moment from "moment";
 export class DateChangeEvent {
     valid:boolean;
     value:string;
-    valueAsIsoDate:string;
+    valueAsIsoDate?:string;
     // valueAsDate:Date; to support Date objects as values
 }
 
