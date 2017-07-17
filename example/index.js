@@ -11301,6 +11301,15 @@ exports.Checkbox = Checkbox;
 
 "use strict";
 
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(13);
 const TextInput_1 = __webpack_require__(60);
@@ -11320,7 +11329,7 @@ class DateInput extends React.Component {
         this.handleBlur = (e) => {
             this.props.onBlur && this.props.onBlur(e);
             let dateChangeEvent = this.updateState(false);
-            if (dateChangeEvent.valid) {
+            if (dateChangeEvent.valid && dateChangeEvent.valueAsIsoDate) {
                 this.inputRef.value = moment(dateChangeEvent.valueAsIsoDate, IsoDateFormat, true).format(this.format);
                 // manually dispatch an event to notify the value has changed
                 this.inputRef.dispatchEvent(new Event('input', { bubbles: true }));
@@ -11363,7 +11372,8 @@ class DateInput extends React.Component {
             let date = moment(this.props.valueAsIsoDate, IsoDateFormat);
             value = date.format(this.format);
         }
-        return React.createElement(TextInput_1.TextInput, Object.assign({}, this.props, { value: value, onChange: this.handleChange, onBlur: this.handleBlur, inputRef: this.handleInputRef }));
+        const _a = this.props, { format, acceptFormat, invalidMessage, valueAsIsoDate, onDateChange, inputRef } = _a, inputProps = __rest(_a, ["format", "acceptFormat", "invalidMessage", "valueAsIsoDate", "onDateChange", "inputRef"]);
+        return React.createElement(TextInput_1.TextInput, Object.assign({}, inputProps, { value: value, onChange: this.handleChange, onBlur: this.handleBlur, inputRef: this.handleInputRef }));
     }
 }
 exports.DateInput = DateInput;
@@ -11551,7 +11561,7 @@ class TextInput extends React.PureComponent {
         this.updateState();
     }
     render() {
-        const _a = this.props, { className } = _a, inputProps = __rest(_a, ["className"]);
+        const _a = this.props, { className, inputRef } = _a, inputProps = __rest(_a, ["className", "inputRef"]);
         return (React.createElement("div", { className: ClassList_1.ClassList.compute(className, this.state.empty ? 'empty' : 'not-empty') },
             React.createElement("input", Object.assign({ id: this.id, onChange: this.handleChange, ref: this.handleRef }, inputProps)),
             React.createElement("label", { htmlFor: this.id }, this.props.label),

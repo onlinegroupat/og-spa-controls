@@ -55,6 +55,7 @@ const libraryConfig:Configuration = {
         "react-dom": "react-dom",
         "uuid": "uuid",
         "og-ts-enum": "og-ts-enum",
+        "moment": "moment",
         "prop-types": "prop-types",
         "@types/prop-types": "@types/prop-types"
     }
