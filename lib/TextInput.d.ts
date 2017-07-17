@@ -1,7 +1,6 @@
 /// <reference types="react" />
 import * as React from "react";
-import { HTMLAttributes } from "react";
-export interface TextInputProps extends HTMLAttributes<HTMLInputElement> {
+export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     className?: string;
     label: string;
     inputRef?: (input: HTMLInputElement) => void;

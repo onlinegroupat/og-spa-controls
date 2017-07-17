@@ -7,9 +7,7 @@ export interface CheckboxGroupProps {
     checked?: string[];
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
-export interface CheckboxGroupState {
-}
-export declare class CheckboxGroup extends React.PureComponent<CheckboxGroupProps, CheckboxGroupState> {
+export declare class CheckboxGroup extends React.PureComponent<CheckboxGroupProps> {
     constructor(props?: CheckboxGroupProps);
     getChildContext(): {
         checkboxGroup: {
@@ -22,13 +20,11 @@ export declare class CheckboxGroup extends React.PureComponent<CheckboxGroupProp
     };
     render(): JSX.Element;
 }
-export interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
     className?: string;
     inputRef?: (input: HTMLInputElement) => void;
 }
-export interface CheckboxState {
-}
-export declare class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
+export declare class Checkbox extends React.Component<CheckboxProps> {
     constructor(props?: CheckboxProps);
     static contextTypes: {
         checkboxGroup: PropTypes.Requireable<any>;

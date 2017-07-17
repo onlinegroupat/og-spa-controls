@@ -1,9 +1,8 @@
 import * as React from "react";
 import * as uuid from "uuid";
 import {ClassList} from "./ClassList";
-import {HTMLAttributes, Ref} from "react";
 
-export interface TextInputProps extends HTMLAttributes<HTMLInputElement> {
+export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     className?:string;
     label:string;
     inputRef?:(input:HTMLInputElement) => void;

@@ -10,14 +10,11 @@ export interface CheckboxGroupProps {
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export interface CheckboxGroupState {
-}
-
 const CheckboxGroupContextTypes = {
     checkboxGroup: PropTypes.object
 };
 
-export class CheckboxGroup extends React.PureComponent<CheckboxGroupProps, CheckboxGroupState> {
+export class CheckboxGroup extends React.PureComponent<CheckboxGroupProps> {
 
     constructor(props?: CheckboxGroupProps) {
         super(props);
@@ -50,15 +47,12 @@ export class CheckboxGroup extends React.PureComponent<CheckboxGroupProps, Check
     }
 }
 
-export interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
     className?: string;
     inputRef?: (input: HTMLInputElement) => void;
 }
 
-export interface CheckboxState {
-}
-
-export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
+export class Checkbox extends React.Component<CheckboxProps> {
 
     constructor(props?: CheckboxProps) {
         super(props);

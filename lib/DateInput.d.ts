@@ -13,7 +13,7 @@ export interface DateInputProps extends TextInputProps {
     valueAsIsoDate?: string;
     onDateChange?: (e: DateChangeEvent) => void;
 }
-export declare class DateInput extends React.Component<DateInputProps, undefined> {
+export declare class DateInput extends React.Component<DateInputProps> {
     private inputRef;
     readonly format: string;
     readonly acceptFormat: string;

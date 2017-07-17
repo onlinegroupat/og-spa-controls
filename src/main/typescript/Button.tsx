@@ -4,16 +4,12 @@ import {ClassList} from "./ClassList";
 import {MaterialIcon} from "./MaterialIcon";
 import {Icon} from "./Icon";
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     primary?:boolean;
     icon?:MaterialIcon;
 }
 
-export interface ButtonState {
-
-}
-
-export class Button extends React.Component<ButtonProps, ButtonState> {
+export class Button extends React.Component<ButtonProps> {
     render() {
         const { className, primary, icon, children, ...buttonProps } = this.props;
         return (

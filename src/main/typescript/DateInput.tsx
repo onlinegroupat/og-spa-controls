@@ -20,7 +20,7 @@ export interface DateInputProps extends TextInputProps {
 
 const IsoDateFormat = 'YYYY-MM-DD';
 
-export class DateInput extends React.Component<DateInputProps, undefined> {
+export class DateInput extends React.Component<DateInputProps> {
 
     private inputRef:HTMLInputElement;
 

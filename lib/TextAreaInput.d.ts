@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import * as React from "react";
-export interface TextAreaInputProps extends React.HTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaInputProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     className?: string;
     label: string;
     textAreaRef?: (input: HTMLTextAreaElement) => void;
