@@ -47,7 +47,7 @@ export class DateInput extends React.Component<DateInputProps, undefined> {
         this.props.onBlur && this.props.onBlur(e);
 
         let dateChangeEvent = this.updateState(false);
-        if (dateChangeEvent.valid) {
+        if (dateChangeEvent.valid && dateChangeEvent.valueAsIsoDate) {
             this.inputRef.value = moment(dateChangeEvent.valueAsIsoDate, IsoDateFormat, true).format(this.format);
             // manually dispatch an event to notify the value has changed
             this.inputRef.dispatchEvent(new Event('input', { bubbles: true }));
@@ -90,7 +90,9 @@ export class DateInput extends React.Component<DateInputProps, undefined> {
             value = date.format(this.format);
         }
 
-        return <TextInput {...this.props}
+        const { format, acceptFormat, invalidMessage, valueAsIsoDate, onDateChange, inputRef, ...inputProps } = this.props;
+
+        return <TextInput {...inputProps}
                           value={value}
                           onChange={this.handleChange}
                           onBlur={this.handleBlur}

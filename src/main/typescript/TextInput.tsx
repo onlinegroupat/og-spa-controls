@@ -62,7 +62,7 @@ export class TextInput extends React.PureComponent<TextInputProps, TextInputStat
     }
 
     render() {
-        const { className, ...inputProps } = this.props;
+        const { className, inputRef, ...inputProps } = this.props;
         return (
             <div className={ClassList.compute(className, this.state.empty ? 'empty' : 'not-empty')}>
                 <input id={this.id} onChange={this.handleChange} ref={this.handleRef} {...inputProps} />
