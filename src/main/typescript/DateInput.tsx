@@ -1,21 +1,14 @@
 import * as React from "react";
 import {TextInput, TextInputProps} from "./TextInput";
 import * as moment from "moment";
-
-export class DateChangeEvent {
-    valid:boolean;
-    value:string;
-    valueAsIsoDate?:string;
-    // valueAsDate:Date; to support Date objects as values
-}
+import {MomentInput, unitOfTime} from "moment";
 
 export interface DateInputProps extends TextInputProps {
     format?:string;
     acceptFormat?:string;
     invalidMessage?:string;
-    valueAsIsoDate?:string;
-    // valueAsDate?:Date; to support Date objects as values
-    onDateChange?:(e:DateChangeEvent) => void;
+    dateValue?:moment.Moment|null;
+    onDateChange?:(newValue:moment.Moment|null) => void;
 }
 
 const IsoDateFormat = 'YYYY-MM-DD';
@@ -39,42 +32,31 @@ export class DateInput extends React.Component<DateInputProps> {
     private handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         this.props.onChange && this.props.onChange(e);
 
-        let dateChangeEvent = this.updateState(true);
-        this.props.onDateChange && this.props.onDateChange(dateChangeEvent);
+        let newValue = this.updateState(true);
+        this.props.onDateChange && this.props.onDateChange(newValue);
     };
 
     private handleBlur = (e:React.FocusEvent<HTMLInputElement>) => {
         this.props.onBlur && this.props.onBlur(e);
 
-        let dateChangeEvent = this.updateState(false);
-        if (dateChangeEvent.valid && dateChangeEvent.valueAsIsoDate) {
-            this.inputRef.value = moment(dateChangeEvent.valueAsIsoDate, IsoDateFormat, true).format(this.format);
-            // manually dispatch an event to notify the value has changed
-            this.inputRef.dispatchEvent(new Event('input', { bubbles: true }));
+        let newValue = this.updateState(false);
+        if (newValue != null && newValue.isValid()) {
+            this.inputRef.value = newValue.format(this.format);
+            this.props.onDateChange && this.props.onDateChange(newValue);
         }
 
     };
 
-    private updateState(strict:boolean):DateChangeEvent {
-        let valid = true;
-        let valueAsIsoDate;
+    private updateState(strict:boolean) {
+        let dateValue = null;
         let value = this.inputRef.value;
 
         if (value) {
-            let date = moment(this.inputRef.value, this.acceptFormat, strict);
-
-            if (date.isValid()) {
-                valueAsIsoDate = date.format(IsoDateFormat);
-
-                valid = true;
-            }
-            else {
-                valid = false;
-            }
+            dateValue = moment(this.inputRef.value, this.acceptFormat, strict);
         }
-        this.inputRef.setCustomValidity(valid ? '' : this.invalidMessage);
+        this.inputRef.setCustomValidity((!dateValue || dateValue.isValid()) ? '' : this.invalidMessage);
 
-        return { valid, valueAsIsoDate, value };
+        return dateValue;
     }
 
     private handleInputRef = (input:HTMLInputElement) => {
@@ -85,12 +67,18 @@ export class DateInput extends React.Component<DateInputProps> {
     render() {
         let value = this.props.value;
 
-        if (this.props.valueAsIsoDate) {
-            let date = moment(this.props.valueAsIsoDate, IsoDateFormat);
-            value = date.format(this.format);
+        if (typeof this.props.dateValue !== 'undefined') {
+            if (this.props.dateValue !== null) {
+                if (this.props.dateValue.isValid()) {
+                    value = this.props.dateValue.format(this.format);
+                }
+            }
+            else {
+                value = '';
+            }
         }
 
-        const { format, acceptFormat, invalidMessage, valueAsIsoDate, onDateChange, inputRef, ...inputProps } = this.props;
+        const { format, acceptFormat, invalidMessage, dateValue, onDateChange, inputRef, ...inputProps } = this.props;
 
         return <TextInput {...inputProps}
                           value={value}

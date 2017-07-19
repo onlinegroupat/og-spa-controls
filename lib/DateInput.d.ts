@@ -1,17 +1,13 @@
 /// <reference types="react" />
 import * as React from "react";
 import { TextInputProps } from "./TextInput";
-export declare class DateChangeEvent {
-    valid: boolean;
-    value: string;
-    valueAsIsoDate?: string;
-}
+import * as moment from "moment";
 export interface DateInputProps extends TextInputProps {
     format?: string;
     acceptFormat?: string;
     invalidMessage?: string;
-    valueAsIsoDate?: string;
-    onDateChange?: (e: DateChangeEvent) => void;
+    dateValue?: moment.Moment | null;
+    onDateChange?: (newValue: moment.Moment | null) => void;
 }
 export declare class DateInput extends React.Component<DateInputProps> {
     private inputRef;

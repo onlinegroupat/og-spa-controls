@@ -7,7 +7,8 @@ import {ButtonProps} from "../main/typescript/Button";
 import {TextInputProps} from "../main/typescript/TextInput";
 import {TextAreaInputProps} from "../main/typescript/TextAreaInput";
 import {Dropdown, DropdownToggle, DropdownPopup} from "../main/typescript/Dropdown";
-import {DateChangeEvent, DateInput} from "../main/typescript/DateInput";
+import {DateInput} from "../main/typescript/DateInput";
+import * as moment from "moment";
 
 // require style
 require("./index.less");
@@ -46,25 +47,26 @@ class ControlledInputExample extends React.Component<{}, { value: string }> {
 //
 // Example showing a controlled input
 //
-class ControlledDateInputExample extends React.Component<{}, { value: string }> {
+class ControlledDateInputExample extends React.Component<{}, { value: moment.Moment|null }> {
     constructor(props: undefined) {
         super(props);
-        this.state = {value: ''};
+        this.state = {value: moment()};
     }
 
-    private handleChange = (e:DateChangeEvent) => this.setState({value: e.valueAsIsoDate || ''});
+    private handleChange = (newValue:moment.Moment) => this.setState({value: newValue});
 
     render() {
-        console.log('render: value = ', this.state.value);
+        console.log('ControlledDateInputExample.render: value = ', this.state.value);
 
         return (
             <div>
                 <DateInput className="example-text-input" label="Controlled date input"
-                           valueAsIsoDate={this.state.value}
+                           dateValue={this.state.value}
                            format="DD.MM.YYYY"
                            acceptFormat="D.M.YYYY"
                            onDateChange={this.handleChange}/>
-                <p>The current value is {this.state.value}</p>
+                <Button onClick={e => this.setState({ value: null })}>Reset</Button>
+                <p>The current value is {this.state.value ? this.state.value.format() : 'null'}</p>
             </div>
         );
     }
