@@ -1,0 +1,30 @@
+.radio-button() {
+  display:inline-flex;
+  flex-flow:row nowrap;
+  padding:0.25em 0;
+  align-items:center;
+
+  input[type="radio"] {
+    margin:0.25em 0.5em 0.25em 0.25em;
+
+    &:disabled ~ label {
+      opacity:0.5;
+    }
+  }
+}
+
+.radio-group() {
+  display:inline-block;
+  flex-flow:row wrap;
+
+  > label {
+    display:block;
+    font-size:0.75em;
+  }
+  > .radio-buttons {
+    display:block;
+    > * {
+      margin-right:0.5em;
+    }
+  }
+}

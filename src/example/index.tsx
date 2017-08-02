@@ -9,6 +9,7 @@ import {TextAreaInputProps} from "../main/typescript/TextAreaInput";
 import {Dropdown, DropdownToggle, DropdownPopup} from "../main/typescript/Dropdown";
 import {DateInput} from "../main/typescript/DateInput";
 import * as moment from "moment";
+import {RadioButton, RadioGroup} from "../main/typescript/RadioButton";
 
 // require style
 require("./index.less");
@@ -47,26 +48,37 @@ class ControlledInputExample extends React.Component<{}, { value: string }> {
 //
 // Example showing a controlled input
 //
-class ControlledDateInputExample extends React.Component<{}, { value: moment.Moment|null }> {
+class ControlledDateInputExample extends React.Component<{}, { value: moment.Moment | null, stringValue?: string }> {
     constructor(props: undefined) {
         super(props);
         this.state = {value: moment()};
     }
 
-    private handleChange = (newValue:moment.Moment) => this.setState({value: newValue});
-
+    private handleChange = (newValue: moment.Moment) => this.setState({value: newValue});
+    private handleStringChange = (newValue: moment.Moment) => this.setState({stringValue: newValue.isValid() ? newValue.format('DD.MM.YYYY') : ''});
     render() {
         console.log('ControlledDateInputExample.render: value = ', this.state.value);
 
         return (
             <div>
-                <DateInput className="example-text-input" label="Controlled date input"
-                           dateValue={this.state.value}
-                           format="DD.MM.YYYY"
-                           acceptFormat="D.M.YYYY"
-                           onDateChange={this.handleChange}/>
-                <Button onClick={e => this.setState({ value: null })}>Reset</Button>
-                <p>The current value is {this.state.value ? this.state.value.format() : 'null'}</p>
+                <div>
+                    <DateInput className="example-text-input" label="stored as moment object"
+                               dateValue={this.state.value}
+                               format="DD.MM.YYYY"
+                               acceptFormat="D.M.YYYY"
+                               onDateChange={this.handleChange}/>
+                    <Button onClick={e => this.setState({value: null})}>Reset</Button>
+                    <span>The current value is {this.state.value ? this.state.value.format() : 'null'}</span>
+                </div>
+                <div>
+                    <DateInput className="example-text-input" label="stored as string"
+                               dateValue={this.state.stringValue ? moment(this.state.stringValue, 'DD.MM.YYYY', true) : null}
+                               format="DD.MM.YYYY"
+                               acceptFormat="D.M.YYYY"
+                               onDateChange={this.handleStringChange}/>
+                    <Button onClick={e => this.setState({stringValue: ''})}>Reset</Button>
+                    <span>The current value is {this.state.stringValue || ''}</span>
+                </div>
             </div>
         );
     }
@@ -127,6 +139,35 @@ class ControlledCheckboxGroupExample extends React.Component<{}, { checked: stri
                     <Checkbox className="example-checkbox" value="2">two</Checkbox>
                 </CheckboxGroup>
                 <p>Currently checked are: { this.state.checked.join(', ') }</p>
+            </div>
+        )
+    }
+}
+
+class ControlledRadioGroupExample extends React.Component<{}, { checked: string }> {
+    constructor(props: undefined) {
+        super(props);
+        this.state = {checked: '1'};
+    }
+
+    private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.checked) {
+            this.setState({checked: e.target.value});
+            console.log(`ControlledCheckboxGroupExample.handleChange: adding ${e.target.value}`);
+        }
+    };
+
+    render() {
+        console.log('ControlledCheckboxGroupExample.render: checked', this.state.checked);
+        return (
+            <div>
+                <RadioGroup className="example-radio-group" label="Controlled radio group"
+                               checked={this.state.checked}
+                               onChange={this.handleChange}>
+                    <RadioButton className="example-radio-button" value="1">one</RadioButton>
+                    <RadioButton className="example-radio-button" value="2">two</RadioButton>
+                </RadioGroup>
+                <p>Currently checked are: { this.state.checked }</p>
             </div>
         )
     }
@@ -224,6 +265,38 @@ let examples = (
                     <Checkbox className="example-checkbox" value="3" disabled>disabled</Checkbox>
                 </CheckboxGroup>
                 <ControlledCheckboxGroupExample/>
+                <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
+            </form>
+        </section>
+        <section>
+            <h2>radio button</h2>
+            <form>
+                <RadioButton className="example-radio-button">Default style</RadioButton>
+                <RadioButton className="example-radio-button" checked>Checked</RadioButton>
+                <RadioButton className="example-radio-button" checked>
+                    Checkbox with a very long label that includes<br/>
+                    line breaks and
+                    <small>some styling</small>
+                    <br/>
+                    <strong>Yeah!</strong>
+                </RadioButton>
+                <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
+            </form>
+        </section>
+        <section>
+            <h2>radio group</h2>
+            <form>
+                <RadioGroup className="example-radio-group" label="Default radio group">
+                    <RadioButton className="example-radio-button" value="1">one</RadioButton>
+                    <RadioButton className="example-radio-button" value="2">two</RadioButton>
+                </RadioGroup>
+                <RadioGroup className="example-checkbox-group" label="Radio group with event handler (console!)"
+                               onChange={e => console.log(`${e.target.name} changed to ${e.target.checked}`)}>
+                    <RadioButton className="example-radio-group" value="1">one</RadioButton>
+                    <RadioButton className="example-radio-group" value="2">two</RadioButton>
+                    <RadioButton className="example-radio-group" value="3" disabled>disabled</RadioButton>
+                </RadioGroup>
+                <ControlledRadioGroupExample/>
                 <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
             </form>
         </section>

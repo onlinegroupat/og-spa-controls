@@ -3,6 +3,7 @@ export { DateInput, DateInputProps } from "./DateInput";
 export { SelectField, SelectFieldProps } from "./SelectField";
 export { TextAreaInput, TextAreaInputProps } from "./TextAreaInput";
 export { Checkbox, CheckboxProps, CheckboxGroup, CheckboxGroupProps } from "./Checkbox";
+export { RadioButton, RadioButtonProps, RadioGroup, RadioGroupProps } from "./RadioButton";
 export { Button, ButtonProps } from "./Button";
 export { Icon } from "./Icon";
 export { MaterialIcon } from "./MaterialIcon";

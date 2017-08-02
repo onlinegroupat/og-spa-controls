@@ -1,7 +1,6 @@
 import * as React from "react";
 import {TextInput, TextInputProps} from "./TextInput";
 import * as moment from "moment";
-import {MomentInput, unitOfTime} from "moment";
 
 export interface DateInputProps extends TextInputProps {
     format?:string;
