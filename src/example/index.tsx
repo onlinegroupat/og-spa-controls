@@ -3,7 +3,7 @@ import * as React from "react";
 import {Button, Icon, MaterialIcon, TextAreaInput, TextInput} from "../main/typescript/index";
 import {SelectField, SelectFieldProps} from "../main/typescript/SelectField";
 import {Checkbox, CheckboxGroup, CheckboxProps} from "../main/typescript/Checkbox";
-import {ButtonProps} from "../main/typescript/Button";
+import {ButtonGroup, ButtonProps} from "../main/typescript/Button";
 import {TextInputProps} from "../main/typescript/TextInput";
 import {TextAreaInputProps} from "../main/typescript/TextAreaInput";
 import {Dropdown, DropdownToggle, DropdownPopup} from "../main/typescript/Dropdown";
@@ -313,6 +313,14 @@ let examples = (
             <Button className="example-button" primary>Primary button</Button>
             <Button className="example-button" icon={MaterialIcon.search}>Icon button</Button>
             <Button className="example-button" icon={MaterialIcon.search} primary>Primary Icon button</Button>
+            <ButtonGroup className="example-button-group">
+                <Button className="example-button" primary>Primary button</Button>
+                <Button className="example-button" icon={MaterialIcon.search}>Icon button</Button>
+                <Button className="example-button" icon={MaterialIcon.search}>Icon button</Button>
+                <Button className="example-button" icon={MaterialIcon.search}>Icon button</Button>
+                <Button className="example-button" icon={MaterialIcon.search}>Icon button</Button>
+                <Button className="example-button" icon={MaterialIcon.search} primary>Primary Icon button</Button>
+            </ButtonGroup>
         </section>
         <section>
             <h2>dropdown</h2>

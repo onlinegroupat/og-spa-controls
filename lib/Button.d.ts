@@ -8,3 +8,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export declare class Button extends React.Component<ButtonProps> {
     render(): JSX.Element;
 }
+export declare class ButtonGroup extends React.Component<React.HTMLAttributes<HTMLDivElement>> {
+    render(): JSX.Element;
+}

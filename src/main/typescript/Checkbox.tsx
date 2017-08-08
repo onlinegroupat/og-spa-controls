@@ -72,7 +72,11 @@ export class Checkbox extends React.Component<CheckboxProps> {
 
     private handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         // call change handler of parent CheckboxGroup
-        this.context.checkboxGroup.onChange(e);
+        if (this.context.checkboxGroup) {
+            if (this.context.checkboxGroup.onChange) {
+                this.context.checkboxGroup.onChange(e);
+            }
+        }
         // call handler that was set via props
         this.props.onChange && this.props.onChange(e);
     };

@@ -21,3 +21,10 @@ export class Button extends React.Component<ButtonProps> {
         );
     }
 }
+
+// only a div for now...
+export class ButtonGroup extends React.Component<React.HTMLAttributes<HTMLDivElement>> {
+    render() {
+        return <div {...this.props}/>;
+    }
+}

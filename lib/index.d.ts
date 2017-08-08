@@ -4,7 +4,7 @@ export { SelectField, SelectFieldProps } from "./SelectField";
 export { TextAreaInput, TextAreaInputProps } from "./TextAreaInput";
 export { Checkbox, CheckboxProps, CheckboxGroup, CheckboxGroupProps } from "./Checkbox";
 export { RadioButton, RadioButtonProps, RadioGroup, RadioGroupProps } from "./RadioButton";
-export { Button, ButtonProps } from "./Button";
+export { Button, ButtonProps, ButtonGroup } from "./Button";
 export { Icon } from "./Icon";
 export { MaterialIcon } from "./MaterialIcon";
 export { ClassList } from "./ClassList";
