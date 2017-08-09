@@ -10,3 +10,5 @@ export { MaterialIcon } from "./MaterialIcon";
 export { ClassList } from "./ClassList";
 export { Dropdown, DropdownToggle, DropdownPopup } from "./Dropdown";
 export { ChildrenProps, ClassNameProps, __ForceTypeDeclarationGeneration } from "./types";
+export { Bouncer } from "./Bouncer";
+export { Spinner } from "./Spinner";

@@ -844,5 +844,94 @@ h2 {
 .example-dropdown.open .popup {
   visibility: visible;
 }
+.example-bouncer {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateY(-0.1em);
+}
+.example-bouncer .container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.example-bouncer .container div {
+  width: 1em;
+  height: 1em;
+  background-color: #333;
+  margin: 0.125em;
+  border-radius: 100%;
+  display: block;
+  -webkit-animation: og-spa-bouncer-bounce-delay 1.4s infinite ease-in-out both;
+  animation: og-spa-bouncer-bounce-delay 1.4s infinite ease-in-out both;
+}
+.example-bouncer .container .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.example-bouncer .container .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+@-webkit-keyframes og-spa-bouncer-bounce-delay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes og-spa-bouncer-bounce-delay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.example-spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  transform: scale(2) translateY(-0.1em);
+  transform-origin: center center;
+}
+.example-spinner svg {
+  width: 100%;
+  height: 100%;
+  animation: rotate 2s linear infinite;
+}
+.example-spinner svg circle {
+  stroke-dasharray: 1,200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite;
+  stroke-linecap: round;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}
 
 /*# sourceMappingURL=index.css.map*/
