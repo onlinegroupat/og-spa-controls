@@ -10,6 +10,8 @@ import {Dropdown, DropdownToggle, DropdownPopup} from "../main/typescript/Dropdo
 import {DateInput} from "../main/typescript/DateInput";
 import * as moment from "moment";
 import {RadioButton, RadioGroup} from "../main/typescript/RadioButton";
+import {Bouncer} from "../main/typescript/Bouncer";
+import {Spinner} from "../main/typescript/Spinner";
 
 // require style
 require("./index.less");
@@ -334,6 +336,19 @@ let examples = (
                     <Button className="example-button">Item 3</Button>
                 </DropdownPopup>
             </Dropdown>
+        </section>
+        <section>
+            <h2>progress</h2>
+            <p>
+                Bouncer: <Bouncer className="example-bouncer"></Bouncer>
+                Spinner: <Spinner className="example-spinner"></Spinner>
+            </p>
+            <p>
+                spinner colors:
+                <Spinner className="example-spinner" style={{ color:"red" }}></Spinner>
+                <Spinner className="example-spinner" style={{ color:"blue" }}></Spinner>
+                <Spinner className="example-spinner" style={{ color:"green" }}></Spinner>
+            </p>
         </section>
     </article>
 );
