@@ -933,5 +933,52 @@ h2 {
     stroke-dashoffset: -124;
   }
 }
+.example-data-table {
+  display: block;
+}
+.example-data-table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.example-data-table th,
+.example-data-table td {
+  padding: 0.25em 0.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.example-data-table .align-left {
+  text-align: left;
+}
+.example-data-table .align-center {
+  text-align: center;
+}
+.example-data-table .align-right {
+  text-align: right;
+}
+.example-data-table .clickable {
+  cursor: pointer;
+}
+.example-data-table table > tbody > tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+.example-data-table table tbody.row-group:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+.example-data-table tbody {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.example-data-table td {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+.example-data-table table > tbody > tr:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.example-data-table table tbody.row-group:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
 
 /*# sourceMappingURL=index.css.map*/

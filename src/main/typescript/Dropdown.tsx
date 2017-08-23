@@ -2,7 +2,7 @@ import * as React from "react";
 import {ClassList} from "./ClassList";
 import {ChildrenProps, ClassNameProps} from "./types";
 
-export interface DropdownState {
+interface DropdownState {
     open:boolean;
 }
 
