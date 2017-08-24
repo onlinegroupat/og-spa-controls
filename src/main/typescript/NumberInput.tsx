@@ -1,13 +1,14 @@
 import * as React from "react";
 import {TextInput, TextInputProps} from "./TextInput";
 
-export interface GermanNumberInputProps extends TextInputProps {
+export interface NumberInputProps extends TextInputProps {
+    localeFormat: Intl.NumberFormat;
     invalidMessage?:string;
     numberValue?:number;
     onNumberValueChange?:(newValue?:any) => void;
 }
 
-export class GermanNumberInput extends React.Component<GermanNumberInputProps> {
+export class NumberInput extends React.Component<NumberInputProps> {
 
     componentWillReceiveProps(nextProps:NumberInputProps) {
         this.thousandSeparator = this.localeFormat.format(1111).replace(/1/g, '');
@@ -21,7 +22,7 @@ export class GermanNumberInput extends React.Component<GermanNumberInputProps> {
     private hasFocus = false;
 
     get localeFormat() {
-        return new Intl.NumberFormat('DE-de', { minimumFractionDigits: 2, maximumFractionDigits: 2});;
+        return this.props.localeFormat;
     }
 
     get invalidMessage() {
@@ -85,6 +86,18 @@ export class GermanNumberInput extends React.Component<GermanNumberInputProps> {
         this.props.inputRef && this.props.inputRef(input);
     };
 
+    private handleKeyDown = () => {
+        
+    }
+    private handleKeyPress = (event:React.KeyboardEvent<HTMLInputElement>) => {
+        let keyValue:string = String.fromCharCode(event.charCode);
+        let regex_cell:RegExp = /[^[0-9,.]]*/gi;
+        if (keyValue.match(regex_cell)) {
+            event.preventDefault();
+        }
+        
+      }
+
     render() {
         let { value, invalidMessage, numberValue, onNumberValueChange, inputRef, ...inputProps } = this.props;
         if (!this.hasFocus) {
@@ -94,8 +107,8 @@ export class GermanNumberInput extends React.Component<GermanNumberInputProps> {
         }
 
         return <TextInput {...inputProps}
-                          pattern="[0-9.]*[,][0-9]{1,2}"
                           value={value}
+                          onKeyPress={this.handleKeyPress}
                           onChange={this.handleChange}
                           onBlur={this.handleBlur}
                           onFocus={this.handleFocus}

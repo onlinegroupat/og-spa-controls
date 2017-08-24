@@ -101,7 +101,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
             }
         }
 
-        return (
+       return (
             <div className={className}>
                 <input type="checkbox" id={this.id} ref={this.handleRef}
                        value={value} checked={checked} onChange={onChange} {...inputProps} />
@@ -110,5 +110,6 @@ export class Checkbox extends React.Component<CheckboxProps> {
                 </label>
             </div>
         )
+
     }
 }

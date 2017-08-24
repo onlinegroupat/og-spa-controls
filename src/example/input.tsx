@@ -4,7 +4,7 @@ import {MaterialIcon} from "../main/typescript/MaterialIcon";
 import {Button} from "../main/typescript/Button";
 import {TextInput} from "../main/typescript/TextInput";
 import {DateInput} from "../main/typescript/DateInput";
-import {GermanNumberInput} from "../main/typescript/GermanNumberInput";
+import {NumberInput} from "../main/typescript/NumberInput";
 
 //
 // Example showing a controlled input
@@ -78,7 +78,52 @@ class ControlledGermanNumberInputExample extends React.Component<{}, {value: st
         return (
             <div>
                 <div>
-                    <GermanNumberInput className ="example-text-input" label="currency number"
+                    <NumberInput className ="example-text-input" label="german currency number"
+                    localeFormat = {new Intl.NumberFormat('DE-de', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                    numberValue = {this.state.numberValue}
+                    onNumberValueChange = {this.handleNumberChange}/>
+                    <span>The current value is {this.state.numberValue}</span>
+                </div>
+            </div>
+        );
+    }
+}
+
+class ControlledEnglishNumberInputExample extends React.Component<{}, {value: string | null, numberValue?: number}> {
+    constructor(props: undefined) {
+        super(props);
+        this.state = {value: ''};
+    }
+
+    private handleNumberChange = (newValue: number) => this.setState({numberValue: newValue});
+    render() {
+        return (
+            <div>
+                <div>
+                    <NumberInput className ="example-text-input" label="english currency number"
+                    localeFormat = {new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                    numberValue = {this.state.numberValue}
+                    onNumberValueChange = {this.handleNumberChange}/>
+                    <span>The current value is {this.state.numberValue}</span>
+                </div>
+            </div>
+        );
+    }
+}
+
+class ControlledChineseNumberInputExample extends React.Component<{}, {value: string | null, numberValue?: number}> {
+    constructor(props: undefined) {
+        super(props);
+        this.state = {value: ''};
+    }
+
+    private handleNumberChange = (newValue: number) => this.setState({numberValue: newValue});
+    render() {
+        return (
+            <div>
+                <div>
+                    <NumberInput className ="example-text-input" label="chinese currency number"
+                    localeFormat = {new Intl.NumberFormat('zh-Hans-CN-u-nu-hanidec', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
                     numberValue = {this.state.numberValue}
                     onNumberValueChange = {this.handleNumberChange}/>
                     <span>The current value is {this.state.numberValue}</span>
@@ -102,6 +147,8 @@ export const InputSection = () => (
             <ControlledInputExample />
             <ControlledDateInputExample />
             <ControlledGermanNumberInputExample />
+            <ControlledEnglishNumberInputExample />
+            <ControlledChineseNumberInputExample />
             <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
         </form>
     </section>
