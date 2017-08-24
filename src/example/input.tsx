@@ -4,6 +4,7 @@ import {MaterialIcon} from "../main/typescript/MaterialIcon";
 import {Button} from "../main/typescript/Button";
 import {TextInput} from "../main/typescript/TextInput";
 import {DateInput} from "../main/typescript/DateInput";
+import {GermanNumberInput} from "../main/typescript/GermanNumberInput";
 
 //
 // Example showing a controlled input
@@ -66,6 +67,27 @@ class ControlledDateInputExample extends React.Component<{}, { value: moment.Mom
     }
 }
 
+class ControlledGermanNumberInputExample extends React.Component<{}, {value: string | null, numberValue?: number}> {
+    constructor(props: undefined) {
+        super(props);
+        this.state = {value: ''};
+    }
+
+    private handleNumberChange = (newValue: number) => this.setState({numberValue: newValue});
+    render() {
+        return (
+            <div>
+                <div>
+                    <GermanNumberInput className ="example-text-input" label="currency number"
+                    numberValue = {this.state.numberValue}
+                    onNumberValueChange = {this.handleNumberChange}/>
+                    <span>The current value is {this.state.numberValue}</span>
+                </div>
+            </div>
+        );
+    }
+}
+
 export const InputSection = () => (
     <section>
         <h2>input</h2>
@@ -79,6 +101,7 @@ export const InputSection = () => (
             <TextInput className="example-text-input" label="Min length 2" minLength={2}/>
             <ControlledInputExample />
             <ControlledDateInputExample />
+            <ControlledGermanNumberInputExample />
             <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
         </form>
     </section>

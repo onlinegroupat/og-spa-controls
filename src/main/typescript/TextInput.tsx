@@ -20,7 +20,7 @@ export class TextInput extends React.PureComponent<TextInputProps, TextInputStat
 
         this.state = {
             empty: true,
-            validationMessage: ''
+            validationMessage: '',
         };
     }
 
