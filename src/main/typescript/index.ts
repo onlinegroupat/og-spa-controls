@@ -13,3 +13,4 @@ export {ChildrenProps, ClassNameProps, __ForceTypeDeclarationGeneration} from ".
 export * from "./Bouncer";
 export * from "./Spinner";
 export * from "./DataTable";
+export * from "./NumberInput";

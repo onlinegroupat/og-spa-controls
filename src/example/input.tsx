@@ -79,9 +79,9 @@ class ControlledGermanNumberInputExample extends React.Component<{}, {value: st
             <div>
                 <div>
                     <NumberInput className ="example-text-input" label="german currency number"
-                    localeFormat = {new Intl.NumberFormat('DE-de', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
-                    numberValue = {this.state.numberValue}
-                    onNumberValueChange = {this.handleNumberChange}/>
+                                 numberFormat= {new Intl.NumberFormat('DE-de', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                                 numberValue = {this.state.numberValue}
+                                 onNumberValueChange = {this.handleNumberChange}/>
                     <span>The current value is {this.state.numberValue}</span>
                 </div>
             </div>
@@ -101,9 +101,9 @@ class ControlledEnglishNumberInputExample extends React.Component<{}, {value: s
             <div>
                 <div>
                     <NumberInput className ="example-text-input" label="english currency number"
-                    localeFormat = {new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
-                    numberValue = {this.state.numberValue}
-                    onNumberValueChange = {this.handleNumberChange}/>
+                                 numberFormat= {new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                                 numberValue = {this.state.numberValue}
+                                 onNumberValueChange = {this.handleNumberChange}/>
                     <span>The current value is {this.state.numberValue}</span>
                 </div>
             </div>
@@ -123,9 +123,9 @@ class ControlledChineseNumberInputExample extends React.Component<{}, {value: s
             <div>
                 <div>
                     <NumberInput className ="example-text-input" label="chinese currency number"
-                    localeFormat = {new Intl.NumberFormat('zh-Hans-CN-u-nu-hanidec', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
-                    numberValue = {this.state.numberValue}
-                    onNumberValueChange = {this.handleNumberChange}/>
+                                 numberFormat= {new Intl.NumberFormat('zh-Hans-CN-u-nu-hanidec', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                                 numberValue = {this.state.numberValue}
+                                 onNumberValueChange = {this.handleNumberChange}/>
                     <span>The current value is {this.state.numberValue}</span>
                 </div>
             </div>
