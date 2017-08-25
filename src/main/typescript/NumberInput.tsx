@@ -2,7 +2,7 @@ import * as React from "react";
 import {TextInput, TextInputProps} from "./TextInput";
 
 export interface NumberInputProps extends TextInputProps {
-    numberFormat: Intl.NumberFormat;
+    numberFormat?: Intl.NumberFormat;
     invalidMessage?: string;
     numberValue?: number;
     onNumberValueChange?: (newValue?: any) => void;
@@ -47,6 +47,7 @@ export class NumberInput extends React.Component<NumberInputProps> {
 
         let newValue = this.updateState();
         if (this.isValid(newValue) && newValue) {
+
             this.inputRef.value = this.numberFormat.format(newValue);
             this.props.onNumberValueChange && this.props.onNumberValueChange(newValue);
         }
@@ -96,6 +97,7 @@ export class NumberInput extends React.Component<NumberInputProps> {
 
     render() {
         let {value, invalidMessage, numberValue, onNumberValueChange, inputRef, ...inputProps} = this.props;
+
         if (!this.hasFocus) {
             if (typeof this.props.numberValue === "number" && this.isValid(this.props.numberValue)) {
                 value = this.numberFormat.format(this.props.numberValue);

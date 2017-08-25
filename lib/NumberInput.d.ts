@@ -2,7 +2,7 @@
 import * as React from "react";
 import { TextInputProps } from "./TextInput";
 export interface NumberInputProps extends TextInputProps {
-    numberFormat: Intl.NumberFormat;
+    numberFormat?: Intl.NumberFormat;
     invalidMessage?: string;
     numberValue?: number;
     onNumberValueChange?: (newValue?: any) => void;

@@ -133,6 +133,29 @@ class ControlledChineseNumberInputExample extends React.Component<{}, {value: s
     }
 }
 
+//Shouldn't be used because it's swichting between controlled to uncontrolled input ...
+class ControlledNumberWithoutDefaultValueInputExample extends React.Component<{}, {numberValue?: number}> {
+    constructor(props: undefined) {
+        super(props);
+        this.state = {numberValue: 12.39}; // inital Value because value = null can not be parsed ...
+    }
+
+    private handleNumberChange = (newValue: number) => this.setState({numberValue: newValue});
+    render() {
+        return (
+            <div>
+                <div>
+                    <NumberInput className ="example-text-input noDefaultValueInput" label="no value bind"
+                                 numberFormat= {new Intl.NumberFormat('DE-de', { minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                                 numberValue = {this.state.numberValue}
+                                 onNumberValueChange = {this.handleNumberChange}/>
+                    <span>The current value is {this.state.numberValue}</span>
+                </div>
+            </div>
+        );
+    }
+}
+
 export const InputSection = () => (
     <section>
         <h2>input</h2>
@@ -149,6 +172,7 @@ export const InputSection = () => (
             <ControlledGermanNumberInputExample />
             <ControlledEnglishNumberInputExample />
             <ControlledChineseNumberInputExample />
+            <ControlledNumberWithoutDefaultValueInputExample/>
             <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
         </form>
     </section>
