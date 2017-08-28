@@ -27678,7 +27678,7 @@ class NumberInput extends React.Component {
         return Number.parseFloat(value);
     }
     isValid(numberValue) {
-        return typeof numberValue !== 'undefined' && !Number.isNaN(numberValue);
+        return typeof numberValue === 'number' && !Number.isNaN(numberValue);
     }
     render() {
         let _a = this.props, { value, invalidMessage, numberValue, numberFormat, onNumberChange, inputRef } = _a, inputProps = __rest(_a, ["value", "invalidMessage", "numberValue", "numberFormat", "onNumberChange", "inputRef"]);

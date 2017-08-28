@@ -93,7 +93,7 @@ export class NumberInput extends React.Component<NumberInputProps> {
     }
 
     private isValid(numberValue?: number): boolean {
-        return typeof numberValue !== 'undefined' && !Number.isNaN(numberValue);
+        return typeof numberValue === 'number' && !Number.isNaN(numberValue);
     }
 
     private handleInputRef = (input: HTMLInputElement) => {
