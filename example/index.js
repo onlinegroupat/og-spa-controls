@@ -27613,7 +27613,7 @@ class NumberInput extends React.Component {
         this.handleChange = (e) => {
             this.props.onChange && this.props.onChange(e);
             let newValue = this.updateState();
-            this.props.onNumberValueChange && this.props.onNumberValueChange(newValue);
+            this.props.onNumberChange && this.props.onNumberChange(newValue);
         };
         this.handleFocus = (e) => {
             this.hasFocus = true;
@@ -27624,7 +27624,7 @@ class NumberInput extends React.Component {
             let newValue = this.updateState();
             if (this.isValid(newValue) && newValue) {
                 this.inputRef.value = this.numberFormat.format(newValue);
-                this.props.onNumberValueChange && this.props.onNumberValueChange(newValue);
+                this.props.onNumberChange && this.props.onNumberChange(newValue);
             }
         };
         this.handleInputRef = (input) => {
@@ -27678,7 +27678,7 @@ class NumberInput extends React.Component {
         return typeof numberValue !== 'undefined' && !Number.isNaN(numberValue);
     }
     render() {
-        let _a = this.props, { value, invalidMessage, numberValue, numberFormat, onNumberValueChange, inputRef } = _a, inputProps = __rest(_a, ["value", "invalidMessage", "numberValue", "numberFormat", "onNumberValueChange", "inputRef"]);
+        let _a = this.props, { value, invalidMessage, numberValue, numberFormat, onNumberChange, inputRef } = _a, inputProps = __rest(_a, ["value", "invalidMessage", "numberValue", "numberFormat", "onNumberChange", "inputRef"]);
         const isControlled = this.props.hasOwnProperty('numberValue');
         if (isControlled && !this.hasFocus) {
             if (typeof this.props.numberValue === "number" && this.isValid(this.props.numberValue)) {
@@ -40807,7 +40807,7 @@ class ControlledGermanNumberInputExample extends React.Component {
     render() {
         return (React.createElement("div", null,
             React.createElement("div", null,
-                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "german currency number", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
+                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "german currency number", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberChange: this.handleNumberChange }),
                 React.createElement("span", null,
                     "The current value is ",
                     this.state.numberValue))));
@@ -40823,7 +40823,7 @@ class ControlledEnglishNumberInputExample extends React.Component {
     render() {
         return (React.createElement("div", null,
             React.createElement("div", null,
-                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "english currency number", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
+                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "english currency number", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberChange: this.handleNumberChange }),
                 React.createElement("span", null,
                     "The current value is ",
                     this.state.numberValue))));
@@ -40842,7 +40842,7 @@ class ControlledChineseNumberInputExample extends React.Component {
     render() {
         return (React.createElement("div", null,
             React.createElement("div", null,
-                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "chinese currency number", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
+                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "chinese currency number", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberChange: this.handleNumberChange }),
                 React.createElement("span", null,
                     "The current value is ",
                     this.state.numberValue))));
@@ -40862,7 +40862,7 @@ class ControlledNumberWithoutDefaultValueInputExample extends React.Component {
     render() {
         return (React.createElement("div", null,
             React.createElement("div", null,
-                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input noDefaultValueInput", label: "no value bind", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
+                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input noDefaultValueInput", label: "no value bind", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberChange: this.handleNumberChange }),
                 React.createElement("span", null,
                     "The current value is ",
                     this.state.numberValue))));

@@ -5,7 +5,7 @@ export interface NumberInputProps extends TextInputProps {
     numberFormat?: Intl.NumberFormat;
     invalidMessage?: string;
     numberValue?: number;
-    onNumberValueChange?: (newValue?: any) => void;
+    onNumberChange?: (newValue?: number) => void;
 }
 
 export class NumberInput extends React.Component<NumberInputProps> {
@@ -19,7 +19,7 @@ export class NumberInput extends React.Component<NumberInputProps> {
 
     private static readonly DefaultNumberFormat = new Intl.NumberFormat();
 
-    constructor(props:NumberInputProps) {
+    constructor(props: NumberInputProps) {
         super(props);
 
         this.initFormat(props);
@@ -43,7 +43,7 @@ export class NumberInput extends React.Component<NumberInputProps> {
         this.thousandSeparator = numberFormat.format(1111).replace(/[01]/g, '').replace(this.decimalSeparator, '');
     }
 
-    private static replaceAll(str:string, search:string, replacement:string) {
+    private static replaceAll(str: string, search: string, replacement: string) {
         return str.split(search).join(replacement);
     }
 
@@ -51,7 +51,7 @@ export class NumberInput extends React.Component<NumberInputProps> {
         this.props.onChange && this.props.onChange(e);
 
         let newValue = this.updateState();
-        this.props.onNumberValueChange && this.props.onNumberValueChange(newValue);
+        this.props.onNumberChange && this.props.onNumberChange(newValue);
     };
 
     private handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -66,7 +66,7 @@ export class NumberInput extends React.Component<NumberInputProps> {
         let newValue = this.updateState();
         if (this.isValid(newValue) && newValue) {
             this.inputRef.value = this.numberFormat.format(newValue);
-            this.props.onNumberValueChange && this.props.onNumberValueChange(newValue);
+            this.props.onNumberChange && this.props.onNumberChange(newValue);
         }
     };
 
@@ -109,7 +109,7 @@ export class NumberInput extends React.Component<NumberInputProps> {
     };
 
     render() {
-        let {value, invalidMessage, numberValue, numberFormat, onNumberValueChange, inputRef, ...inputProps} = this.props;
+        let {value, invalidMessage, numberValue, numberFormat, onNumberChange, inputRef, ...inputProps} = this.props;
 
         const isControlled = this.props.hasOwnProperty('numberValue');
 

@@ -5,7 +5,7 @@ export interface NumberInputProps extends TextInputProps {
     numberFormat?: Intl.NumberFormat;
     invalidMessage?: string;
     numberValue?: number;
-    onNumberValueChange?: (newValue?: any) => void;
+    onNumberChange?: (newValue?: number) => void;
 }
 export declare class NumberInput extends React.Component<NumberInputProps> {
     private inputRef;

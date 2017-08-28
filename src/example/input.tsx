@@ -85,7 +85,7 @@ class ControlledGermanNumberInputExample extends React.Component<{}, { value: st
                     <NumberInput className="example-text-input" label="german currency number"
                                  numberFormat={this.numberFormat}
                                  numberValue={this.state.numberValue}
-                                 onNumberValueChange={this.handleNumberChange}/>
+                                 onNumberChange={this.handleNumberChange}/>
                     <span>The current value is {this.state.numberValue}</span>
                 </div>
             </div>
@@ -110,7 +110,7 @@ class ControlledEnglishNumberInputExample extends React.Component<{}, { value: s
                     <NumberInput className="example-text-input" label="english currency number"
                                  numberFormat={this.numberFormat}
                                  numberValue={this.state.numberValue}
-                                 onNumberValueChange={this.handleNumberChange}/>
+                                 onNumberChange={this.handleNumberChange}/>
                     <span>The current value is {this.state.numberValue}</span>
                 </div>
             </div>
@@ -138,7 +138,7 @@ class ControlledChineseNumberInputExample extends React.Component<{}, { value: s
                     <NumberInput className="example-text-input" label="chinese currency number"
                                  numberFormat={this.numberFormat}
                                  numberValue={this.state.numberValue}
-                                 onNumberValueChange={this.handleNumberChange}/>
+                                 onNumberChange={this.handleNumberChange}/>
                     <span>The current value is {this.state.numberValue}</span>
                 </div>
             </div>
@@ -167,7 +167,7 @@ class ControlledNumberWithoutDefaultValueInputExample extends React.Component<{}
                     <NumberInput className="example-text-input noDefaultValueInput" label="no value bind"
                                  numberFormat={this.numberFormat}
                                  numberValue={this.state.numberValue}
-                                 onNumberValueChange={this.handleNumberChange}/>
+                                 onNumberChange={this.handleNumberChange}/>
                     <span>The current value is {this.state.numberValue}</span>
                 </div>
             </div>
