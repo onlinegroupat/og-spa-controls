@@ -16131,11 +16131,10 @@ class DateInput extends React.Component {
     }
     render() {
         let value = this.props.value;
-        if (typeof this.props.dateValue !== 'undefined') {
-            if (this.props.dateValue !== null) {
-                if (this.props.dateValue.isValid()) {
-                    value = this.props.dateValue.format(this.format);
-                }
+        if (this.props.hasOwnProperty('dateValue')) {
+            const dateValue = this.props.dateValue;
+            if (dateValue && dateValue.isValid()) {
+                value = dateValue.format(this.format);
             }
             else {
                 value = '';
@@ -27608,8 +27607,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(5);
 const TextInput_1 = __webpack_require__(38);
 class NumberInput extends React.Component {
-    constructor() {
-        super(...arguments);
+    constructor(props) {
+        super(props);
         this.hasFocus = false;
         this.handleChange = (e) => {
             this.props.onChange && this.props.onChange(e);
@@ -27634,21 +27633,28 @@ class NumberInput extends React.Component {
         };
         this.handleKeyPress = (event) => {
             let keyValue = String.fromCharCode(event.charCode);
-            let regex_cell = /[^[0-9,.]]*/gi;
-            if (keyValue.match(regex_cell)) {
+            if (!keyValue.match(/[0-9]/g) && keyValue !== this.thousandSeparator && keyValue !== this.decimalSeparator) {
                 event.preventDefault();
             }
         };
+        this.initFormat(props);
     }
     get numberFormat() {
-        return this.props.numberFormat;
+        return this.props.numberFormat || NumberInput.DefaultNumberFormat;
     }
     get invalidMessage() {
-        return this.props.invalidMessage || 'Falsche Eingabe.';
+        return this.props.invalidMessage || 'Invalid number.';
     }
     componentWillReceiveProps(nextProps) {
-        this.thousandSeparator = this.numberFormat.format(1111).replace(/1/g, '');
-        this.decimalSeparator = this.numberFormat.format(1.1).replace(/1/g, '');
+        this.initFormat(nextProps);
+    }
+    initFormat(props) {
+        let numberFormat = props.numberFormat || NumberInput.DefaultNumberFormat;
+        this.decimalSeparator = numberFormat.format(1.1).replace(/[01]/g, '');
+        this.thousandSeparator = numberFormat.format(1111).replace(/[01]/g, '').replace(this.decimalSeparator, '');
+    }
+    static replaceAll(str, search, replacement) {
+        return str.split(search).join(replacement);
     }
     updateState() {
         let numberValue = undefined;
@@ -27664,19 +27670,17 @@ class NumberInput extends React.Component {
         return numberValue;
     }
     parseNumber(value) {
-        value = value.replace(/[^0-9,.]/g, "");
-        value = value.replace(/[.]/g, "");
-        value = value.replace(/[,]/g, ".");
-        let numberValue = Number.parseFloat(value);
-        numberValue = Number.parseFloat(numberValue.toFixed(2));
-        return numberValue;
+        value = NumberInput.replaceAll(value, this.thousandSeparator, "");
+        value = NumberInput.replaceAll(value, this.decimalSeparator, ".");
+        return Number.parseFloat(value);
     }
     isValid(numberValue) {
         return typeof numberValue !== 'undefined' && !Number.isNaN(numberValue);
     }
     render() {
-        let _a = this.props, { value, invalidMessage, numberValue, onNumberValueChange, inputRef } = _a, inputProps = __rest(_a, ["value", "invalidMessage", "numberValue", "onNumberValueChange", "inputRef"]);
-        if (!this.hasFocus) {
+        let _a = this.props, { value, invalidMessage, numberValue, numberFormat, onNumberValueChange, inputRef } = _a, inputProps = __rest(_a, ["value", "invalidMessage", "numberValue", "numberFormat", "onNumberValueChange", "inputRef"]);
+        const isControlled = this.props.hasOwnProperty('numberValue');
+        if (isControlled && !this.hasFocus) {
             if (typeof this.props.numberValue === "number" && this.isValid(this.props.numberValue)) {
                 value = this.numberFormat.format(this.props.numberValue);
             }
@@ -27684,6 +27688,7 @@ class NumberInput extends React.Component {
         return React.createElement(TextInput_1.TextInput, Object.assign({}, inputProps, { value: value, onKeyPress: this.handleKeyPress, onChange: this.handleChange, onBlur: this.handleBlur, onFocus: this.handleFocus, inputRef: this.handleInputRef }));
     }
 }
+NumberInput.DefaultNumberFormat = new Intl.NumberFormat();
 exports.NumberInput = NumberInput;
 
 
@@ -40752,8 +40757,8 @@ const NumberInput_1 = __webpack_require__(217);
 // Example showing a controlled input
 //
 class ControlledInputExample extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.handleChange = (e) => this.setState({ value: e.target.value });
         this.state = { value: 'initialValue' };
     }
@@ -40769,8 +40774,8 @@ class ControlledInputExample extends React.Component {
 // Example showing a controlled input
 //
 class ControlledDateInputExample extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.handleChange = (newValue) => this.setState({ value: newValue });
         this.handleStringChange = (newValue) => this.setState({ stringValue: newValue.isValid() ? newValue.format('DD.MM.YYYY') : '' });
         this.state = { value: moment() };
@@ -40793,45 +40798,71 @@ class ControlledDateInputExample extends React.Component {
     }
 }
 class ControlledGermanNumberInputExample extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
+        this.numberFormat = new Intl.NumberFormat('DE-de', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         this.handleNumberChange = (newValue) => this.setState({ numberValue: newValue });
         this.state = { value: '' };
     }
     render() {
         return (React.createElement("div", null,
             React.createElement("div", null,
-                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "german currency number", numberFormat: new Intl.NumberFormat('DE-de', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
+                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "german currency number", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
                 React.createElement("span", null,
                     "The current value is ",
                     this.state.numberValue))));
     }
 }
 class ControlledEnglishNumberInputExample extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
+        this.numberFormat = new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         this.handleNumberChange = (newValue) => this.setState({ numberValue: newValue });
         this.state = { value: '' };
     }
     render() {
         return (React.createElement("div", null,
             React.createElement("div", null,
-                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "english currency number", numberFormat: new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
+                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "english currency number", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
                 React.createElement("span", null,
                     "The current value is ",
                     this.state.numberValue))));
     }
 }
 class ControlledChineseNumberInputExample extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
+        this.numberFormat = new Intl.NumberFormat('zh-Hans-CN-u-nu-hanidec', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
         this.handleNumberChange = (newValue) => this.setState({ numberValue: newValue });
         this.state = { value: '' };
     }
     render() {
         return (React.createElement("div", null,
             React.createElement("div", null,
-                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "chinese currency number", numberFormat: new Intl.NumberFormat('zh-Hans-CN-u-nu-hanidec', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
+                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "chinese currency number", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
+                React.createElement("span", null,
+                    "The current value is ",
+                    this.state.numberValue))));
+    }
+}
+//Shouldn't be used because it's swichting between controlled to uncontrolled input ...
+class ControlledNumberWithoutDefaultValueInputExample extends React.Component {
+    constructor() {
+        super();
+        this.numberFormat = new Intl.NumberFormat('DE-de', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+        this.handleNumberChange = (newValue) => this.setState({ numberValue: newValue });
+        this.state = { numberValue: 12.39 }; // inital Value because value = null can not be parsed ...
+    }
+    render() {
+        return (React.createElement("div", null,
+            React.createElement("div", null,
+                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input noDefaultValueInput", label: "no value bind", numberFormat: this.numberFormat, numberValue: this.state.numberValue, onNumberValueChange: this.handleNumberChange }),
                 React.createElement("span", null,
                     "The current value is ",
                     this.state.numberValue))));
@@ -40852,6 +40883,7 @@ exports.InputSection = () => (React.createElement("section", null,
         React.createElement(ControlledGermanNumberInputExample, null),
         React.createElement(ControlledEnglishNumberInputExample, null),
         React.createElement(ControlledChineseNumberInputExample, null),
+        React.createElement(ControlledNumberWithoutDefaultValueInputExample, null),
         React.createElement(Button_1.Button, { className: "example-button", primary: true, icon: MaterialIcon_1.MaterialIcon.save }, "Submit"))));
 
 

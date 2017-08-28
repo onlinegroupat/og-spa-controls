@@ -3,18 +3,18 @@ import {TextInput, TextInputProps} from "./TextInput";
 import * as moment from "moment";
 
 export interface DateInputProps extends TextInputProps {
-    format?:string;
-    acceptFormat?:string;
-    invalidMessage?:string;
-    dateValue?:moment.Moment|null;
-    onDateChange?:(newValue:moment.Moment|null) => void;
+    format?: string;
+    acceptFormat?: string;
+    invalidMessage?: string;
+    dateValue?: moment.Moment | null;
+    onDateChange?: (newValue: moment.Moment | null) => void;
 }
 
 const IsoDateFormat = 'YYYY-MM-DD';
 
 export class DateInput extends React.Component<DateInputProps> {
 
-    private inputRef:HTMLInputElement;
+    private inputRef: HTMLInputElement;
 
     get format() {
         return this.props.format || IsoDateFormat;
@@ -28,14 +28,14 @@ export class DateInput extends React.Component<DateInputProps> {
         return this.props.invalidMessage || 'Invalid date.';
     }
 
-    private handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.props.onChange && this.props.onChange(e);
 
         let newValue = this.updateState(true);
         this.props.onDateChange && this.props.onDateChange(newValue);
     };
 
-    private handleBlur = (e:React.FocusEvent<HTMLInputElement>) => {
+    private handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         this.props.onBlur && this.props.onBlur(e);
 
         let newValue = this.updateState(false);
@@ -46,7 +46,7 @@ export class DateInput extends React.Component<DateInputProps> {
 
     };
 
-    private updateState(strict:boolean) {
+    private updateState(strict: boolean) {
         let dateValue = null;
         let value = this.inputRef.value;
 
@@ -58,7 +58,7 @@ export class DateInput extends React.Component<DateInputProps> {
         return dateValue;
     }
 
-    private handleInputRef = (input:HTMLInputElement) => {
+    private handleInputRef = (input: HTMLInputElement) => {
         this.inputRef = input;
         this.props.inputRef && this.props.inputRef(input);
     };
@@ -66,23 +66,22 @@ export class DateInput extends React.Component<DateInputProps> {
     render() {
         let value = this.props.value;
 
-        if (typeof this.props.dateValue !== 'undefined') {
-            if (this.props.dateValue !== null) {
-                if (this.props.dateValue.isValid()) {
-                    value = this.props.dateValue.format(this.format);
-                }
+        if (this.props.hasOwnProperty('dateValue')) {
+            const dateValue = this.props.dateValue;
+            if (dateValue && dateValue.isValid()) {
+                value = dateValue.format(this.format);
             }
             else {
                 value = '';
             }
         }
 
-        const { format, acceptFormat, invalidMessage, dateValue, onDateChange, inputRef, ...inputProps } = this.props;
+        const {format, acceptFormat, invalidMessage, dateValue, onDateChange, inputRef, ...inputProps} = this.props;
 
         return <TextInput {...inputProps}
                           value={value}
                           onChange={this.handleChange}
                           onBlur={this.handleBlur}
-                          inputRef={this.handleInputRef} />
+                          inputRef={this.handleInputRef}/>
     }
 }

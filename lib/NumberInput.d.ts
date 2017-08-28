@@ -12,9 +12,13 @@ export declare class NumberInput extends React.Component<NumberInputProps> {
     private thousandSeparator;
     private decimalSeparator;
     private hasFocus;
+    private static readonly DefaultNumberFormat;
+    constructor(props: NumberInputProps);
     readonly numberFormat: Intl.NumberFormat;
     readonly invalidMessage: string;
     componentWillReceiveProps(nextProps: NumberInputProps): void;
+    private initFormat(props);
+    private static replaceAll(str, search, replacement);
     private handleChange;
     private handleFocus;
     private handleBlur;

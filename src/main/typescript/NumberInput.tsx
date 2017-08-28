@@ -14,19 +14,37 @@ export class NumberInput extends React.Component<NumberInputProps> {
 
     private thousandSeparator: string;
     private decimalSeparator: string;
+
     private hasFocus = false;
 
+    private static readonly DefaultNumberFormat = new Intl.NumberFormat();
+
+    constructor(props:NumberInputProps) {
+        super(props);
+
+        this.initFormat(props);
+    }
+
     get numberFormat() {
-        return this.props.numberFormat;
+        return this.props.numberFormat || NumberInput.DefaultNumberFormat;
     }
 
     get invalidMessage() {
-        return this.props.invalidMessage || 'Falsche Eingabe.';
+        return this.props.invalidMessage || 'Invalid number.';
     }
 
     componentWillReceiveProps(nextProps: NumberInputProps) {
-        this.thousandSeparator = this.numberFormat.format(1111).replace(/1/g, '');
-        this.decimalSeparator = this.numberFormat.format(1.1).replace(/1/g, '');
+        this.initFormat(nextProps);
+    }
+
+    private initFormat(props: NumberInputProps) {
+        let numberFormat = props.numberFormat || NumberInput.DefaultNumberFormat;
+        this.decimalSeparator = numberFormat.format(1.1).replace(/[01]/g, '');
+        this.thousandSeparator = numberFormat.format(1111).replace(/[01]/g, '').replace(this.decimalSeparator, '');
+    }
+
+    private static replaceAll(str:string, search:string, replacement:string) {
+        return str.split(search).join(replacement);
     }
 
     private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +65,6 @@ export class NumberInput extends React.Component<NumberInputProps> {
 
         let newValue = this.updateState();
         if (this.isValid(newValue) && newValue) {
-
             this.inputRef.value = this.numberFormat.format(newValue);
             this.props.onNumberValueChange && this.props.onNumberValueChange(newValue);
         }
@@ -70,12 +87,9 @@ export class NumberInput extends React.Component<NumberInputProps> {
     }
 
     private parseNumber(value: string) {
-        value = value.replace(/[^0-9,.]/g, "");
-        value = value.replace(/[.]/g, "");
-        value = value.replace(/[,]/g, ".");
-        let numberValue = Number.parseFloat(value);
-        numberValue = Number.parseFloat(numberValue.toFixed(2));
-        return numberValue;
+        value = NumberInput.replaceAll(value, this.thousandSeparator, "");
+        value = NumberInput.replaceAll(value, this.decimalSeparator, ".");
+        return Number.parseFloat(value);
     }
 
     private isValid(numberValue?: number): boolean {
@@ -88,17 +102,18 @@ export class NumberInput extends React.Component<NumberInputProps> {
     };
 
     private handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        let keyValue: string = String.fromCharCode(event.charCode);
-        let regex_cell: RegExp = /[^[0-9,.]]*/gi;
-        if (keyValue.match(regex_cell)) {
+        let keyValue = String.fromCharCode(event.charCode);
+        if (!keyValue.match(/[0-9]/g) && keyValue !== this.thousandSeparator && keyValue !== this.decimalSeparator) {
             event.preventDefault();
         }
     };
 
     render() {
-        let {value, invalidMessage, numberValue, onNumberValueChange, inputRef, ...inputProps} = this.props;
+        let {value, invalidMessage, numberValue, numberFormat, onNumberValueChange, inputRef, ...inputProps} = this.props;
 
-        if (!this.hasFocus) {
+        const isControlled = this.props.hasOwnProperty('numberValue');
+
+        if (isControlled && !this.hasFocus) {
             if (typeof this.props.numberValue === "number" && this.isValid(this.props.numberValue)) {
                 value = this.numberFormat.format(this.props.numberValue);
             }
