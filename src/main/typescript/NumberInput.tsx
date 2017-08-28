@@ -114,8 +114,12 @@ export class NumberInput extends React.Component<NumberInputProps> {
         const isControlled = this.props.hasOwnProperty('numberValue');
 
         if (isControlled && !this.hasFocus) {
-            if (typeof this.props.numberValue === "number" && this.isValid(this.props.numberValue)) {
-                value = this.numberFormat.format(this.props.numberValue);
+            const numberValue = this.props.numberValue;
+            if (this.isValid(numberValue)) {
+                value = this.numberFormat.format(numberValue as number);
+            }
+            else {
+                value = '';
             }
         }
 

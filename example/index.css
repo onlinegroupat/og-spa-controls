@@ -544,10 +544,6 @@ h2 {
   opacity: 0.5;
   top: 1.5em;
 }
-.example-text-input .noDefaultValueInput label {
-  font-size: 0.75em !important;
-  top: 0.25em !important;
-}
 .example-text-input .bar {
   position: relative;
   display: block;
@@ -670,10 +666,6 @@ h2 {
   transition: all 0.25s;
   opacity: 0.5;
   top: 1.5em;
-}
-.example-text-input-custom .noDefaultValueInput label {
-  font-size: 0.75em !important;
-  top: 0.25em !important;
 }
 .example-text-input-custom .bar {
   position: relative;

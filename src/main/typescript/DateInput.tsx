@@ -15,6 +15,7 @@ const IsoDateFormat = 'YYYY-MM-DD';
 export class DateInput extends React.Component<DateInputProps> {
 
     private inputRef: HTMLInputElement;
+    private hasFocus: boolean;
 
     get format() {
         return this.props.format || IsoDateFormat;
@@ -35,8 +36,12 @@ export class DateInput extends React.Component<DateInputProps> {
         this.props.onDateChange && this.props.onDateChange(newValue);
     };
 
+    private handleFocus = () => this.hasFocus = true;
+
     private handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         this.props.onBlur && this.props.onBlur(e);
+
+        this.hasFocus = false;
 
         let newValue = this.updateState(false);
         if (newValue != null && newValue.isValid()) {
@@ -66,7 +71,9 @@ export class DateInput extends React.Component<DateInputProps> {
     render() {
         let value = this.props.value;
 
-        if (this.props.hasOwnProperty('dateValue')) {
+        const isControlled = this.props.hasOwnProperty('dateValue');
+
+        if (isControlled && !this.hasFocus) {
             const dateValue = this.props.dateValue;
             if (dateValue && dateValue.isValid()) {
                 value = dateValue.format(this.format);
@@ -81,6 +88,7 @@ export class DateInput extends React.Component<DateInputProps> {
         return <TextInput {...inputProps}
                           value={value}
                           onChange={this.handleChange}
+                          onFocus={this.handleFocus}
                           onBlur={this.handleBlur}
                           inputRef={this.handleInputRef}/>
     }
