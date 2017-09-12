@@ -68,19 +68,19 @@ class ControlledDateInputExample extends React.Component<{}, { value: moment.Mom
     }
 }
 
-class ControlledNumberInputExample extends React.Component<{}, { numberValue?: number }> {
+class ControlledNumberInputExample extends React.Component<{}, { numberValue?: number, yearNumberValue?:number }> {
     constructor() {
         super();
-        this.state = { numberValue: undefined };
+        this.state = { numberValue: undefined, yearNumberValue: undefined };
     }
-
-
 
     private germanNumberFormat = new Intl.NumberFormat('DE-de', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     private englishNumberFormat = new Intl.NumberFormat('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     private chineseNumberFormat = new Intl.NumberFormat('zh-Hans-CN-u-nu-hanidec', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    private yearNumberFormat = new Intl.NumberFormat('DE-de', {minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: false});
 
     private handleNumberChange = (newValue: number) => this.setState({numberValue: newValue});
+    private handleYearNumberChange = (newValue: number) => this.setState({yearNumberValue: newValue});
     private handleReset = () => this.setState({ numberValue: undefined});
 
     render() {
@@ -101,6 +101,13 @@ class ControlledNumberInputExample extends React.Component<{}, { numberValue?: n
                                  onNumberChange={this.handleNumberChange}/>
                     <Button onClick={this.handleReset}>Reset</Button>
                     <span>The current value is {this.state.numberValue}</span>
+                </div>
+                <div>
+                    <NumberInput className="example-text-input" label="year"
+                                 numberFormat={this.yearNumberFormat}
+                                 numberValue={this.state.yearNumberValue}
+                                 onNumberChange={this.handleYearNumberChange}/>
+                    <span>The current year value is {this.state.yearNumberValue}</span>
                 </div>
             </div>
         );

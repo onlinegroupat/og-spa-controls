@@ -87,8 +87,12 @@ export class NumberInput extends React.Component<NumberInputProps> {
     }
 
     private parseNumber(value: string) {
-        value = NumberInput.replaceAll(value, this.thousandSeparator, "");
-        value = NumberInput.replaceAll(value, this.decimalSeparator, ".");
+        if (this.thousandSeparator) {
+            value = NumberInput.replaceAll(value, this.thousandSeparator, "");
+        }
+        if (this.decimalSeparator) {
+            value = NumberInput.replaceAll(value, this.decimalSeparator, ".");
+        }
         return Number.parseFloat(value);
     }
 

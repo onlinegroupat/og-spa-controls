@@ -27673,8 +27673,12 @@ class NumberInput extends React.Component {
         return numberValue;
     }
     parseNumber(value) {
-        value = NumberInput.replaceAll(value, this.thousandSeparator, "");
-        value = NumberInput.replaceAll(value, this.decimalSeparator, ".");
+        if (this.thousandSeparator) {
+            value = NumberInput.replaceAll(value, this.thousandSeparator, "");
+        }
+        if (this.decimalSeparator) {
+            value = NumberInput.replaceAll(value, this.decimalSeparator, ".");
+        }
         return Number.parseFloat(value);
     }
     isValid(numberValue) {
@@ -40810,9 +40814,11 @@ class ControlledNumberInputExample extends React.Component {
         this.germanNumberFormat = new Intl.NumberFormat('DE-de', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         this.englishNumberFormat = new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         this.chineseNumberFormat = new Intl.NumberFormat('zh-Hans-CN-u-nu-hanidec', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        this.yearNumberFormat = new Intl.NumberFormat('DE-de', { minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: false });
         this.handleNumberChange = (newValue) => this.setState({ numberValue: newValue });
+        this.handleYearNumberChange = (newValue) => this.setState({ yearNumberValue: newValue });
         this.handleReset = () => this.setState({ numberValue: undefined });
-        this.state = { numberValue: undefined };
+        this.state = { numberValue: undefined, yearNumberValue: undefined };
     }
     render() {
         return (React.createElement("div", null,
@@ -40823,7 +40829,12 @@ class ControlledNumberInputExample extends React.Component {
                 React.createElement(Button_1.Button, { onClick: this.handleReset }, "Reset"),
                 React.createElement("span", null,
                     "The current value is ",
-                    this.state.numberValue))));
+                    this.state.numberValue)),
+            React.createElement("div", null,
+                React.createElement(NumberInput_1.NumberInput, { className: "example-text-input", label: "year", numberFormat: this.yearNumberFormat, numberValue: this.state.yearNumberValue, onNumberChange: this.handleYearNumberChange }),
+                React.createElement("span", null,
+                    "The current year value is ",
+                    this.state.yearNumberValue))));
     }
 }
 exports.InputSection = () => (React.createElement("section", null,
