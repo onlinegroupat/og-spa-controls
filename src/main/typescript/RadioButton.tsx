@@ -89,7 +89,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
     }
 
     render() {
-        let {className, children, value, checked, onChange, name, ...inputProps} = this.props;
+        let {className, children, value, checked, onChange, name, title, ...inputProps} = this.props;
 
         // handle a RadioGroup parent
         let radioGroup = this.context.radioGroup;
@@ -107,7 +107,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
         }
 
         return (
-            <div className={className}>
+            <div className={className} title={title}>
                 <input type="radio" id={this.id} ref={this.handleRef} name={name}
                        value={value} checked={checked} onChange={onChange} {...inputProps} />
                 <label htmlFor={this.id}>
