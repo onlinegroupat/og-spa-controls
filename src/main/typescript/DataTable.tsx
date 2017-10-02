@@ -1,9 +1,9 @@
 import * as React from "react";
+import * as PropTypes from "prop-types";
 import {Icon} from "./Icon";
 import {MaterialIcon} from "./MaterialIcon";
 import {ClassList} from "./ClassList";
 import {ChildrenProps, ClassNameProps} from "./types";
-import {PropTypes} from "react";
 
 export const SortIndicator = (props:{ direction?:'asc'|'desc' }) => {
     switch (props.direction) {

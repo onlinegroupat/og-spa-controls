@@ -61,9 +61,9 @@ export const RadioGroupSection = () => (
             </RadioGroup>
             <RadioGroup className="example-checkbox-group" label="Radio group with event handler (console!)"
                         onChange={e => console.log(`${e.target.name} changed to ${e.target.checked}`)}>
-                <RadioButton className="example-radio-group" value="1">one</RadioButton>
-                <RadioButton className="example-radio-group" value="2">two</RadioButton>
-                <RadioButton className="example-radio-group" value="3" disabled>disabled</RadioButton>
+                <RadioButton className="example-radio-button" value="1">one</RadioButton>
+                <RadioButton className="example-radio-button" value="2">two</RadioButton>
+                <RadioButton className="example-radio-button" value="3" disabled>disabled</RadioButton>
             </RadioGroup>
             <ControlledRadioGroupExample/>
             <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>

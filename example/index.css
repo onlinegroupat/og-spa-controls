@@ -746,6 +746,23 @@ h2 {
   cursor: pointer;
   position: relative;
 }
+.example-button.danger {
+  color: #660000;
+}
+.example-button.primary {
+  background-color: #485;
+}
+.example-button.primary.danger {
+  background-color: #660000;
+  color: #fff;
+}
+.example-button.secondary {
+  background-color: transparent;
+  color: #485;
+}
+.example-button.secondary.danger {
+  color: #660000;
+}
 .example-button:hover:after {
   position: absolute;
   content: '';
@@ -756,8 +773,8 @@ h2 {
   background: rgba(255, 255, 255, 0.1);
   opacity: 1;
 }
-.example-button.primary {
-  background-color: #485;
+.example-button.secondary:hover {
+  text-decoration: underline;
 }
 .example-button[disabled] {
   opacity: 0.5;

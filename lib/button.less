@@ -5,6 +5,7 @@
   @background-color: @default-color-button;
   @color: @default-color-button-text;
   @background-color-primary: @default-color-button-primary;
+  @color-danger: @default-color-error;
 ) {
   border-radius:0.2em;
   line-height:1.5;
@@ -14,6 +15,24 @@
   color: @color;
   cursor:pointer;
   position:relative;
+
+  &.danger {
+    color: @color-danger;
+  }
+  &.primary {
+    background-color: @background-color-primary;
+  }
+  &.primary.danger {
+    background-color: @color-danger;
+    color: @color;
+  }
+  &.secondary {
+    background-color: transparent;
+    color:@background-color-primary;
+  }
+  &.secondary.danger {
+    color: @color-danger;
+  }
 
   &:hover {
     &:after {
@@ -28,8 +47,8 @@
     }
   }
 
-  &.primary {
-    background-color: @background-color-primary;
+  &.secondary:hover {
+    text-decoration: underline;
   }
 
   &[disabled] {

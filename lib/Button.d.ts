@@ -3,6 +3,8 @@ import * as React from "react";
 import { MaterialIcon } from "./MaterialIcon";
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     primary?: boolean;
+    secondary?: boolean;
+    danger?: boolean;
     icon?: MaterialIcon;
 }
 export declare class Button extends React.Component<ButtonProps> {

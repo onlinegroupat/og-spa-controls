@@ -6,14 +6,24 @@ import {Icon} from "./Icon";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     primary?:boolean;
+    secondary?:boolean;
+    danger?:boolean;
     icon?:MaterialIcon;
 }
 
 export class Button extends React.Component<ButtonProps> {
     render() {
-        const { className, primary, icon, children, ...buttonProps } = this.props;
+        const { className, primary, secondary, danger, icon, children, ...buttonProps } = this.props;
+
+        const classList = ClassList.compute(
+            className,
+            primary ? 'primary' : undefined,
+            secondary ? 'secondary' : undefined,
+            danger ? 'danger' : undefined,
+        );
+
         return (
-            <button className={ClassList.compute(className, primary ? 'primary' : undefined)} {...buttonProps}>
+            <button className={classList} {...buttonProps}>
                 {icon && <Icon>{icon}</Icon>}
                 {' '}
                 {children}

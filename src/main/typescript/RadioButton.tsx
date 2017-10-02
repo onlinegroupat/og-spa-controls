@@ -2,7 +2,6 @@ import * as React from "react";
 import * as uuid from "uuid";
 import * as PropTypes from "prop-types";
 
-
 export interface RadioGroupProps {
     className?: string;
     label?: string;

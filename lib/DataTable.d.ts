@@ -1,5 +1,6 @@
 /// <reference types="react" />
 import * as React from "react";
+import * as PropTypes from "prop-types";
 import { ChildrenProps, ClassNameProps } from "./types";
 export declare const SortIndicator: (props: {
     direction?: "asc" | "desc" | undefined;
@@ -17,7 +18,7 @@ export declare class DataTable extends React.Component<DataTableProps> {
         };
     };
     static childContextTypes: {
-        dataTable: React.Requireable<any>;
+        dataTable: PropTypes.Requireable<any>;
     };
     private handleSelectedChange;
     render(): JSX.Element;
