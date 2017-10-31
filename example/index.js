@@ -6153,7 +6153,7 @@ class TextInput extends React.PureComponent {
             React.createElement("input", Object.assign({ id: this.id, onChange: this.handleChange, ref: this.handleRef }, inputProps)),
             React.createElement("label", { htmlFor: this.id }, this.props.label),
             React.createElement("div", { className: "bar" }),
-            React.createElement("div", { className: "validation-message" }, this.state.validationMessage)));
+            React.createElement("div", { className: ClassList_1.ClassList.compute('message', this.state.validationMessage && 'validation-message') }, this.state.validationMessage || this.props.message)));
     }
 }
 exports.TextInput = TextInput;
@@ -18084,7 +18084,7 @@ class RadioButton extends React.Component {
         this.id = this.props.id || uuid();
     }
     render() {
-        let _a = this.props, { className, children, value, checked, onChange, name } = _a, inputProps = __rest(_a, ["className", "children", "value", "checked", "onChange", "name"]);
+        let _a = this.props, { className, children, value, checked, onChange, name, title } = _a, inputProps = __rest(_a, ["className", "children", "value", "checked", "onChange", "name", "title"]);
         // handle a RadioGroup parent
         let radioGroup = this.context.radioGroup;
         if (radioGroup) {
@@ -18098,7 +18098,7 @@ class RadioButton extends React.Component {
             }
             name = radioGroup.name;
         }
-        return (React.createElement("div", { className: className },
+        return (React.createElement("div", { className: className, title: title },
             React.createElement("input", Object.assign({ type: "radio", id: this.id, ref: this.handleRef, name: name, value: value, checked: checked, onChange: onChange }, inputProps)),
             React.createElement("label", { htmlFor: this.id }, children)));
     }
@@ -39532,6 +39532,7 @@ exports.InputSection = () => (React.createElement("section", null,
         React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Type email", type: "email" }),
         React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Type number", type: "number" }),
         React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "Min length 2", minLength: 2 }),
+        React.createElement(TextInput_1.TextInput, { className: "example-text-input", label: "With message", message: "Hello, world!", minLength: 2 }),
         React.createElement(ControlledInputExample, null),
         React.createElement(Button_1.Button, { className: "example-button", primary: true, icon: MaterialIcon_1.MaterialIcon.save }, "Submit")),
     React.createElement(ControlledDateInputExample, null),

@@ -604,14 +604,16 @@ h2 {
 .example-text-input select:invalid:focus ~ .bar:after {
   background: #660000;
 }
-.example-text-input .validation-message {
+.example-text-input .message {
   position: absolute;
   top: 100%;
   transform: translateY(-1em);
   left: 0;
-  color: #660000;
   font-size: 0.75em;
   line-height: 1;
+}
+.example-text-input .validation-message {
+  color: #660000;
 }
 .example-text-input-custom {
   display: inline-block;
@@ -727,14 +729,16 @@ h2 {
 .example-text-input-custom select:invalid:focus ~ .bar:after {
   background: #660000;
 }
-.example-text-input-custom .validation-message {
+.example-text-input-custom .message {
   position: absolute;
   top: 100%;
   transform: translateY(-1em);
   left: 0;
-  color: #660000;
   font-size: 0.75em;
   line-height: 1;
+}
+.example-text-input-custom .validation-message {
+  color: #660000;
 }
 .example-button {
   border-radius: 0.2em;

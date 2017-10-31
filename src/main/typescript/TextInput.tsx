@@ -6,6 +6,7 @@ export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputEleme
     className?:string;
     label:string;
     inputRef?:(input:HTMLInputElement) => void;
+    message?:string;
 }
 
 export interface TextInputState {
@@ -69,7 +70,9 @@ export class TextInput extends React.PureComponent<TextInputProps, TextInputStat
                     {this.props.label}
                 </label>
                 <div className="bar" />
-                <div className="validation-message">{this.state.validationMessage}</div>
+                <div className={ClassList.compute('message', this.state.validationMessage && 'validation-message')}>
+                    {this.state.validationMessage || this.props.message}
+                </div>
             </div>
         )
     }

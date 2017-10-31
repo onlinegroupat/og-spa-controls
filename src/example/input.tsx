@@ -125,6 +125,7 @@ export const InputSection = () => (
             <TextInput className="example-text-input" label="Type email" type="email"/>
             <TextInput className="example-text-input" label="Type number" type="number"/>
             <TextInput className="example-text-input" label="Min length 2" minLength={2}/>
+            <TextInput className="example-text-input" label="With message" message="Hello, world!" minLength={2}/>
             <ControlledInputExample />
             <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
         </form>
