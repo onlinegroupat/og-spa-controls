@@ -6,7 +6,7 @@ export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputEleme
     className?:string;
     label:string;
     inputRef?:(input:HTMLInputElement) => void;
-    message?:string;
+    message?:React.ReactNode;
 }
 
 export interface TextInputState {
