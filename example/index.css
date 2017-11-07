@@ -536,6 +536,9 @@ h2 {
 .example-text-input select::placeholder {
   display: none;
 }
+.example-text-input select {
+  height: calc(2em + 1px);
+}
 .example-text-input label {
   position: absolute;
   left: 0;
@@ -660,6 +663,9 @@ h2 {
 .example-text-input-custom textarea::placeholder,
 .example-text-input-custom select::placeholder {
   display: none;
+}
+.example-text-input-custom select {
+  height: calc(2em + 1px);
 }
 .example-text-input-custom label {
   position: absolute;
