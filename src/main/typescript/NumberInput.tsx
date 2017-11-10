@@ -107,7 +107,7 @@ export class NumberInput extends React.Component<NumberInputProps> {
 
     private handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         let keyValue = String.fromCharCode(event.charCode);
-        if (!keyValue.match(/[0-9]/g) && keyValue !== this.thousandSeparator && keyValue !== this.decimalSeparator) {
+        if (!keyValue.match(/[\-0-9]/g) && keyValue !== this.thousandSeparator && keyValue !== this.decimalSeparator) {
             event.preventDefault();
         }
     };
