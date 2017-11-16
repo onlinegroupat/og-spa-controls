@@ -6,8 +6,8 @@ export interface DateInputProps extends TextInputProps {
     format?: string;
     acceptFormat?: string;
     invalidMessage?: string;
-    dateValue?: moment.Moment | null;
-    onDateChange?: (newValue: moment.Moment | null) => void;
+    dateValue?: moment.Moment;
+    onDateChange?: (newValue?: moment.Moment) => void;
 }
 
 const IsoDateFormat = 'YYYY-MM-DD';
@@ -44,7 +44,7 @@ export class DateInput extends React.Component<DateInputProps> {
         this.hasFocus = false;
 
         let newValue = this.updateState(false);
-        if (newValue != null && newValue.isValid()) {
+        if (newValue && newValue.isValid()) {
             this.inputRef.value = newValue.format(this.format);
             this.props.onDateChange && this.props.onDateChange(newValue);
         }
@@ -52,7 +52,7 @@ export class DateInput extends React.Component<DateInputProps> {
     };
 
     private updateState(strict: boolean) {
-        let dateValue = null;
+        let dateValue = undefined;
         let value = this.inputRef.value;
 
         if (value) {

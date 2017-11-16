@@ -6,8 +6,8 @@ export interface DateInputProps extends TextInputProps {
     format?: string;
     acceptFormat?: string;
     invalidMessage?: string;
-    dateValue?: moment.Moment | null;
-    onDateChange?: (newValue: moment.Moment | null) => void;
+    dateValue?: moment.Moment;
+    onDateChange?: (newValue?: moment.Moment) => void;
 }
 export declare class DateInput extends React.Component<DateInputProps> {
     private inputRef;

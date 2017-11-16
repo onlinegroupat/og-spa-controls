@@ -31,14 +31,14 @@ class ControlledInputExample extends React.Component<{}, { value: string }> {
 //
 // Example showing a controlled input
 //
-class ControlledDateInputExample extends React.Component<{}, { value: moment.Moment | null, stringValue?: string }> {
+class ControlledDateInputExample extends React.Component<{}, { value?: moment.Moment, stringValue?: string }> {
     constructor() {
         super();
         this.state = {value: moment()};
     }
 
-    private handleChange = (newValue: moment.Moment) => this.setState({value: newValue});
-    private handleStringChange = (newValue: moment.Moment) => this.setState({stringValue: newValue.isValid() ? newValue.format('DD.MM.YYYY') : ''});
+    private handleChange = (newValue?: moment.Moment) => this.setState({value: newValue});
+    private handleStringChange = (newValue?: moment.Moment) => this.setState({stringValue: newValue && newValue.isValid() ? newValue.format('DD.MM.YYYY') : ''});
 
     render() {
         console.log('ControlledDateInputExample.render: value = ', this.state.value);
@@ -51,12 +51,12 @@ class ControlledDateInputExample extends React.Component<{}, { value: moment.Mom
                                format="DD.MM.YYYY"
                                acceptFormat="D.M.YYYY"
                                onDateChange={this.handleChange}/>
-                    <Button onClick={e => this.setState({value: null})}>Reset</Button>
+                    <Button onClick={e => this.setState({value: undefined })}>Reset</Button>
                     <span>The current value is {this.state.value ? this.state.value.format() : 'null'}</span>
                 </div>
                 <div>
                     <DateInput className="example-text-input" label="stored as string"
-                               dateValue={this.state.stringValue ? moment(this.state.stringValue, 'DD.MM.YYYY', true) : null}
+                               dateValue={this.state.stringValue ? moment(this.state.stringValue, 'DD.MM.YYYY', true) : undefined}
                                format="DD.MM.YYYY"
                                acceptFormat="D.M.YYYY"
                                onDateChange={this.handleStringChange}/>

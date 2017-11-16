@@ -6819,7 +6819,7 @@ class DateInput extends React.Component {
             this.props.onBlur && this.props.onBlur(e);
             this.hasFocus = false;
             let newValue = this.updateState(false);
-            if (newValue != null && newValue.isValid()) {
+            if (newValue && newValue.isValid()) {
                 this.inputRef.value = newValue.format(this.format);
                 this.props.onDateChange && this.props.onDateChange(newValue);
             }
@@ -6839,7 +6839,7 @@ class DateInput extends React.Component {
         return this.props.invalidMessage || 'Invalid date.';
     }
     updateState(strict) {
-        let dateValue = null;
+        let dateValue = undefined;
         let value = this.inputRef.value;
         if (value) {
             dateValue = moment(this.inputRef.value, this.acceptFormat, strict);
@@ -39473,7 +39473,7 @@ class ControlledDateInputExample extends React.Component {
     constructor() {
         super();
         this.handleChange = (newValue) => this.setState({ value: newValue });
-        this.handleStringChange = (newValue) => this.setState({ stringValue: newValue.isValid() ? newValue.format('DD.MM.YYYY') : '' });
+        this.handleStringChange = (newValue) => this.setState({ stringValue: newValue && newValue.isValid() ? newValue.format('DD.MM.YYYY') : '' });
         this.state = { value: moment() };
     }
     render() {
@@ -39481,12 +39481,12 @@ class ControlledDateInputExample extends React.Component {
         return (React.createElement("div", null,
             React.createElement("div", null,
                 React.createElement(DateInput_1.DateInput, { className: "example-text-input", label: "stored as moment object", dateValue: this.state.value, format: "DD.MM.YYYY", acceptFormat: "D.M.YYYY", onDateChange: this.handleChange }),
-                React.createElement(Button_1.Button, { onClick: e => this.setState({ value: null }) }, "Reset"),
+                React.createElement(Button_1.Button, { onClick: e => this.setState({ value: undefined }) }, "Reset"),
                 React.createElement("span", null,
                     "The current value is ",
                     this.state.value ? this.state.value.format() : 'null')),
             React.createElement("div", null,
-                React.createElement(DateInput_1.DateInput, { className: "example-text-input", label: "stored as string", dateValue: this.state.stringValue ? moment(this.state.stringValue, 'DD.MM.YYYY', true) : null, format: "DD.MM.YYYY", acceptFormat: "D.M.YYYY", onDateChange: this.handleStringChange }),
+                React.createElement(DateInput_1.DateInput, { className: "example-text-input", label: "stored as string", dateValue: this.state.stringValue ? moment(this.state.stringValue, 'DD.MM.YYYY', true) : undefined, format: "DD.MM.YYYY", acceptFormat: "D.M.YYYY", onDateChange: this.handleStringChange }),
                 React.createElement(Button_1.Button, { onClick: e => this.setState({ stringValue: '' }) }, "Reset"),
                 React.createElement("span", null,
                     "The current value is ",
