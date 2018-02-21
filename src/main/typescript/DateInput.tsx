@@ -36,7 +36,10 @@ export class DateInput extends React.Component<DateInputProps> {
         this.props.onDateChange && this.props.onDateChange(newValue);
     };
 
-    private handleFocus = () => this.hasFocus = true;
+    private handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+        this.props.onFocus && this.props.onFocus(e);
+        this.hasFocus = true;
+    };
 
     private handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         this.props.onBlur && this.props.onBlur(e);

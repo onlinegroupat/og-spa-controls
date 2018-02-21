@@ -6814,7 +6814,10 @@ class DateInput extends React.Component {
             let newValue = this.updateState(true);
             this.props.onDateChange && this.props.onDateChange(newValue);
         };
-        this.handleFocus = () => this.hasFocus = true;
+        this.handleFocus = (e) => {
+            this.props.onFocus && this.props.onFocus(e);
+            this.hasFocus = true;
+        };
         this.handleBlur = (e) => {
             this.props.onBlur && this.props.onBlur(e);
             this.hasFocus = false;
