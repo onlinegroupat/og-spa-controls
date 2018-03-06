@@ -39,7 +39,7 @@
     "webpack-dev-server": ">=2.4.5"
   },
   "dependencies": {
-    "moment": ">=2.18.1",
+    "moment": ">=2.19.3",
     "normalize.css": ">=7.0.0",
     "og-ts-enum": "git+https://github.com/onlinegroupat/og-ts-enum.git",
     "prop-types": ">=15.5.10",
