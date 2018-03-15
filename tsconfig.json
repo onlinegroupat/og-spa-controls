@@ -3,7 +3,8 @@
     "module": "commonjs",
     "target": "es2015",
     "lib": ["dom", "es6"],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "jsx": "react"
   },
   "include": [
     "__only_for_interpreting_webpack_config"

@@ -18,6 +18,7 @@ export declare class DateInput extends React.Component<DateInputProps> {
     private handleChange;
     private handleFocus;
     private handleBlur;
+    private notifyDateChange(newValue?);
     private updateState(strict);
     private handleInputRef;
     render(): JSX.Element;

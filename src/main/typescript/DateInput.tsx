@@ -33,7 +33,7 @@ export class DateInput extends React.Component<DateInputProps> {
         this.props.onChange && this.props.onChange(e);
 
         let newValue = this.updateState(true);
-        this.props.onDateChange && this.props.onDateChange(newValue);
+        this.notifyDateChange(newValue);
     };
 
     private handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -43,27 +43,28 @@ export class DateInput extends React.Component<DateInputProps> {
 
     private handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         this.props.onBlur && this.props.onBlur(e);
-
         this.hasFocus = false;
 
         let newValue = this.updateState(false);
         if (newValue && newValue.isValid()) {
             this.inputRef.value = newValue.format(this.format);
-            this.props.onDateChange && this.props.onDateChange(newValue);
+            this.notifyDateChange(newValue);
         }
-
     };
 
-    private updateState(strict: boolean) {
-        let dateValue = undefined;
-        let value = this.inputRef.value;
-
-        if (value) {
-            dateValue = moment(this.inputRef.value, this.acceptFormat, strict);
+    private notifyDateChange(newValue?:moment.Moment) {
+        try {
+            this.props.onDateChange && this.props.onDateChange(newValue);
+            this.inputRef.setCustomValidity((!newValue || newValue.isValid()) ? '' : this.invalidMessage);
         }
-        this.inputRef.setCustomValidity((!dateValue || dateValue.isValid()) ? '' : this.invalidMessage);
+        catch (error) {
+            this.inputRef.setCustomValidity(error.toString());
+        }
+    }
 
-        return dateValue;
+    private updateState(strict: boolean) {
+        const value = this.inputRef.value;
+        return value ? moment(value, this.acceptFormat, strict) : undefined;
     }
 
     private handleInputRef = (input: HTMLInputElement) => {

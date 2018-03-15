@@ -68,6 +68,38 @@ class ControlledDateInputExample extends React.Component<{}, { value?: moment.Mo
     }
 }
 
+//
+// Example showing a controlled input
+//
+class CustomValidationDateInputExample extends React.Component<{}, { dateValue?:moment.Moment }> {
+
+    constructor() {
+        super();
+        this.state = { dateValue: undefined };
+    }
+
+    private handleChange = (newValue?: moment.Moment) => {
+        this.setState({ dateValue: newValue });
+        if (newValue && !newValue.isAfter(moment())) {
+            throw 'Must not be before today';
+        }
+    };
+
+    render() {
+        return (
+            <div>
+                <div>
+                    <DateInput className="example-text-input" label="Not before today"
+                               dateValue={this.state.dateValue}
+                               format="DD.MM.YYYY"
+                               acceptFormat="D.M.YYYY"
+                               onDateChange={this.handleChange}/>
+                </div>
+            </div>
+        );
+    }
+}
+
 class ControlledNumberInputExample extends React.Component<{}, { numberValue?: number, yearNumberValue?:number }> {
     constructor() {
         super();
@@ -130,6 +162,7 @@ export const InputSection = () => (
             <Button className="example-button" primary icon={MaterialIcon.save}>Submit</Button>
         </form>
         <ControlledDateInputExample />
+        <CustomValidationDateInputExample />
         <ControlledNumberInputExample />
     </section>
 );
