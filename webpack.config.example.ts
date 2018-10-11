@@ -1,12 +1,7 @@
 const { CheckerPlugin } = require("awesome-typescript-loader");
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
-import * as ExtractTextPlugin from "extract-text-webpack-plugin";
 import {Configuration} from "webpack";
-
-const extractCss = new ExtractTextPlugin({
-    filename: "[name].css"
-});
-
+import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const exampleConfig:Configuration = {
     entry: {
@@ -37,14 +32,18 @@ const exampleConfig:Configuration = {
                     target: "es2015",
                     jsx: "react",
                     lib: ["dom", "es6"],
-                    strictNullChecks: true,
+                    strict: true,
                     declaration: false
                 }
             },
             // Handle less files
             {
                 test: /\.less$/,
-                use: extractCss.extract({fallback: "style-loader", use: "css-loader!less-loader"})
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    { loader: 'css-loader' },
+                    { loader: 'less-loader' }
+                ]
             }
         ]
     },
@@ -55,8 +54,10 @@ const exampleConfig:Configuration = {
     },
 
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css'
+        }),
         new CheckerPlugin(),
-        extractCss,
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'src/example/index.html'

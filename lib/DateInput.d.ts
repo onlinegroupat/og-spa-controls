@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 import { TextInputProps } from "./TextInput";
 import * as moment from "moment";
@@ -10,7 +9,7 @@ export interface DateInputProps extends TextInputProps {
     onDateChange?: (newValue?: moment.Moment) => void;
 }
 export declare class DateInput extends React.Component<DateInputProps> {
-    private inputRef;
+    private inputRef?;
     private hasFocus;
     readonly format: string;
     readonly acceptFormat: string;
@@ -18,8 +17,8 @@ export declare class DateInput extends React.Component<DateInputProps> {
     private handleChange;
     private handleFocus;
     private handleBlur;
-    private notifyDateChange(newValue?);
-    private updateState(strict);
+    private notifyDateChange;
+    private updateState;
     private handleInputRef;
     render(): JSX.Element;
 }

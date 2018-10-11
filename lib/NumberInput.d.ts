@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 import { TextInputProps } from "./TextInput";
 export interface NumberInputProps extends TextInputProps {
@@ -8,7 +7,7 @@ export interface NumberInputProps extends TextInputProps {
     onNumberChange?: (newValue?: number) => void;
 }
 export declare class NumberInput extends React.Component<NumberInputProps> {
-    private inputRef;
+    private inputRef?;
     private thousandSeparator;
     private decimalSeparator;
     private hasFocus;
@@ -17,14 +16,14 @@ export declare class NumberInput extends React.Component<NumberInputProps> {
     readonly numberFormat: Intl.NumberFormat;
     readonly invalidMessage: string;
     componentWillReceiveProps(nextProps: NumberInputProps): void;
-    private initFormat(props);
-    private static replaceAll(str, search, replacement);
+    private initFormat;
+    private static replaceAll;
     private handleChange;
     private handleFocus;
     private handleBlur;
-    private updateState();
-    private parseNumber(value);
-    private isValid(numberValue?);
+    private updateState;
+    private parseNumber;
+    private isValid;
     private handleInputRef;
     private handleKeyPress;
     render(): JSX.Element;

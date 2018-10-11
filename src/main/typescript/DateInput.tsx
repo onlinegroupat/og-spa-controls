@@ -14,8 +14,8 @@ const IsoDateFormat = 'YYYY-MM-DD';
 
 export class DateInput extends React.Component<DateInputProps> {
 
-    private inputRef: HTMLInputElement;
-    private hasFocus: boolean;
+    private inputRef?: HTMLInputElement;
+    private hasFocus = false;
 
     get format() {
         return this.props.format || IsoDateFormat;
@@ -42,29 +42,35 @@ export class DateInput extends React.Component<DateInputProps> {
     };
 
     private handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-        this.props.onBlur && this.props.onBlur(e);
-        this.hasFocus = false;
+        if (this.inputRef) {
+            this.props.onBlur && this.props.onBlur(e);
+            this.hasFocus = false;
 
-        let newValue = this.updateState(false);
-        if (newValue && newValue.isValid()) {
-            this.inputRef.value = newValue.format(this.format);
-            this.notifyDateChange(newValue);
+            let newValue = this.updateState(false);
+            if (newValue && newValue.isValid()) {
+                this.inputRef.value = newValue.format(this.format);
+                this.notifyDateChange(newValue);
+            }
         }
     };
 
     private notifyDateChange(newValue?:moment.Moment) {
-        try {
-            this.props.onDateChange && this.props.onDateChange(newValue);
-            this.inputRef.setCustomValidity((!newValue || newValue.isValid()) ? '' : this.invalidMessage);
-        }
-        catch (error) {
-            this.inputRef.setCustomValidity(error.toString());
+        if (this.inputRef) {
+            try {
+                this.props.onDateChange && this.props.onDateChange(newValue);
+                this.inputRef.setCustomValidity((!newValue || newValue.isValid()) ? '' : this.invalidMessage);
+            }
+            catch (error) {
+                this.inputRef.setCustomValidity(error.toString());
+            }
         }
     }
 
     private updateState(strict: boolean) {
-        const value = this.inputRef.value;
-        return value ? moment(value, this.acceptFormat, strict) : undefined;
+        if (this.inputRef) {
+            const value = this.inputRef.value;
+            return value ? moment(value, this.acceptFormat, strict) : undefined;
+        }
     }
 
     private handleInputRef = (input: HTMLInputElement) => {

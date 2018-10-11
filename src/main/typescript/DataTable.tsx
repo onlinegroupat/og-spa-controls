@@ -7,8 +7,8 @@ import {ChildrenProps, ClassNameProps} from "./types";
 
 export const SortIndicator = (props:{ direction?:'asc'|'desc' }) => {
     switch (props.direction) {
-        case 'asc': return <Icon>{MaterialIcon.arrow_upward}</Icon>;
-        case 'desc': return <Icon>{MaterialIcon.arrow_downward}</Icon>;
+        case 'asc': return <Icon children={MaterialIcon.arrow_upward}/>;
+        case 'desc': return <Icon children={MaterialIcon.arrow_downward} />;
         case undefined: return null;
     }
 };

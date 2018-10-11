@@ -7,9 +7,12 @@ import {CheckerPlugin} from "awesome-typescript-loader/dist/watch-mode";
 // config for library
 //
 const libraryConfig:Configuration = {
+    mode: 'none',
+
     entry: {
         "main": __dirname + "/src/main/typescript/index.ts"
     },
+
     output: {
         filename: "index.js",
         path: __dirname + "/lib",
@@ -37,7 +40,7 @@ const libraryConfig:Configuration = {
                     declarationDir: __dirname + '/lib',
                     experimentalDecorators: true,
                     traceResolution: true,
-                    strictNullChecks: true,
+                    strict: true,
                     sourceRoot: __dirname + '/src/main/typescript'
                 }
             }

@@ -16,9 +16,9 @@ const RadioGroupContextTypes = {
 
 export class RadioGroup extends React.PureComponent<RadioGroupProps> {
 
-    private name:string;
+    private name?:string;
 
-    constructor(props?: RadioGroupProps) {
+    constructor(props: RadioGroupProps) {
         super(props);
 
         this.state = {};
@@ -61,7 +61,7 @@ export interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputEle
 
 export class RadioButton extends React.Component<RadioButtonProps> {
 
-    constructor(props?: RadioButtonProps) {
+    constructor(props: RadioButtonProps) {
         super(props);
 
         this.state = {};
@@ -69,8 +69,8 @@ export class RadioButton extends React.Component<RadioButtonProps> {
 
     static contextTypes = RadioGroupContextTypes;
 
-    private id: string;
-    private ref: HTMLInputElement;
+    private id?: string;
+    private ref?: HTMLInputElement;
 
     private handleRef = (ref: HTMLInputElement) => {
         this.ref = ref;

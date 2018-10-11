@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 export interface SelectFieldProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
     className?: string;
@@ -10,12 +9,12 @@ export interface SelectFieldState {
     validationMessage: string;
 }
 export declare class SelectField extends React.PureComponent<SelectFieldProps, SelectFieldState> {
-    constructor(props?: SelectFieldProps);
-    private id;
-    private ref;
+    constructor(props: SelectFieldProps);
+    private id?;
+    private ref?;
     private handleChange;
     private handleRef;
-    private updateState();
+    private updateState;
     componentWillMount(): void;
     componentDidUpdate(): void;
     render(): JSX.Element;

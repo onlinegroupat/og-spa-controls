@@ -4,8 +4,8 @@ import {Button} from "../main/typescript/Button";
 import {MaterialIcon} from "../main/typescript/MaterialIcon";
 
 class ControlledRadioGroupExample extends React.Component<{}, { checked: string }> {
-    constructor(props: undefined) {
-        super(props);
+    constructor() {
+        super({});
         this.state = {checked: '1'};
     }
 

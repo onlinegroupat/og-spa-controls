@@ -7,7 +7,7 @@ import {MaterialIcon} from "../main/typescript/MaterialIcon";
 // Example showing a controlled input
 //
 class ControlledTextAreaExample extends React.Component<{}, { value: string }> {
-    constructor(props: undefined) {
+    constructor(props: {}) {
         super(props);
         this.state = {value: 'initialValue'};
     }

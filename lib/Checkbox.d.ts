@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 import * as PropTypes from "prop-types";
 export interface CheckboxGroupProps {
@@ -8,15 +7,15 @@ export interface CheckboxGroupProps {
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 export declare class CheckboxGroup extends React.PureComponent<CheckboxGroupProps> {
-    constructor(props?: CheckboxGroupProps);
+    constructor(props: CheckboxGroupProps);
     getChildContext(): {
         checkboxGroup: {
             checked: string[] | undefined;
-            onChange: React.EventHandler<React.ChangeEvent<HTMLInputElement>> | undefined;
+            onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
         };
     };
     static childContextTypes: {
-        checkboxGroup: PropTypes.Requireable<any>;
+        checkboxGroup: PropTypes.Requireable<object>;
     };
     render(): JSX.Element;
 }
@@ -25,12 +24,12 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
     inputRef?: (input: HTMLInputElement) => void;
 }
 export declare class Checkbox extends React.Component<CheckboxProps> {
-    constructor(props?: CheckboxProps);
+    constructor(props: CheckboxProps);
     static contextTypes: {
-        checkboxGroup: PropTypes.Requireable<any>;
+        checkboxGroup: PropTypes.Requireable<object>;
     };
-    private id;
-    private ref;
+    private id?;
+    private ref?;
     private handleRef;
     private handleChange;
     componentWillMount(): void;

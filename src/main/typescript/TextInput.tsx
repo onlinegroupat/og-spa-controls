@@ -16,7 +16,7 @@ export interface TextInputState {
 
 export class TextInput extends React.PureComponent<TextInputProps, TextInputState> {
 
-    constructor(props?:TextInputProps) {
+    constructor(props:TextInputProps) {
         super(props);
 
         this.state = {
@@ -25,8 +25,8 @@ export class TextInput extends React.PureComponent<TextInputProps, TextInputStat
         };
     }
 
-    private id:string;
-    private ref:HTMLInputElement;
+    private id?:string;
+    private ref?:HTMLInputElement;
 
     private handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         this.props.onChange && this.props.onChange(e);

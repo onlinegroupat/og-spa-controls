@@ -4,7 +4,7 @@ import {Button} from "../main/typescript/Button";
 import {MaterialIcon} from "../main/typescript/MaterialIcon";
 
 class ControlledCheckboxGroupExample extends React.Component<{}, { checked: string[] }> {
-    constructor(props: undefined) {
+    constructor(props: {}) {
         super(props);
         this.state = {checked: ['1']};
     }

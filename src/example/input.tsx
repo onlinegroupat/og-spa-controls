@@ -11,7 +11,7 @@ import {NumberInput} from "../main/typescript/NumberInput";
 //
 class ControlledInputExample extends React.Component<{}, { value: string }> {
     constructor() {
-        super();
+        super({});
         this.state = {value: 'initialValue'};
     }
 
@@ -33,7 +33,7 @@ class ControlledInputExample extends React.Component<{}, { value: string }> {
 //
 class ControlledDateInputExample extends React.Component<{}, { value?: moment.Moment, stringValue?: string }> {
     constructor() {
-        super();
+        super({});
         this.state = {value: moment()};
     }
 
@@ -74,7 +74,7 @@ class ControlledDateInputExample extends React.Component<{}, { value?: moment.Mo
 class CustomValidationDateInputExample extends React.Component<{}, { dateValue?:moment.Moment }> {
 
     constructor() {
-        super();
+        super({});
         this.state = { dateValue: undefined };
     }
 
@@ -102,7 +102,7 @@ class CustomValidationDateInputExample extends React.Component<{}, { dateValue?:
 
 class ControlledNumberInputExample extends React.Component<{}, { numberValue?: number, yearNumberValue?:number }> {
     constructor() {
-        super();
+        super({});
         this.state = { numberValue: undefined, yearNumberValue: undefined };
     }
 
@@ -111,8 +111,8 @@ class ControlledNumberInputExample extends React.Component<{}, { numberValue?: n
     private chineseNumberFormat = new Intl.NumberFormat('zh-Hans-CN-u-nu-hanidec', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     private yearNumberFormat = new Intl.NumberFormat('DE-de', {minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: false});
 
-    private handleNumberChange = (newValue: number) => this.setState({numberValue: newValue});
-    private handleYearNumberChange = (newValue: number) => this.setState({yearNumberValue: newValue});
+    private handleNumberChange = (newValue?: number) => this.setState({numberValue: newValue});
+    private handleYearNumberChange = (newValue?: number) => this.setState({yearNumberValue: newValue});
     private handleReset = () => this.setState({ numberValue: undefined});
 
     render() {

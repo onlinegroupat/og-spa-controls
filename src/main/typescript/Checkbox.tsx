@@ -16,7 +16,7 @@ const CheckboxGroupContextTypes = {
 
 export class CheckboxGroup extends React.PureComponent<CheckboxGroupProps> {
 
-    constructor(props?: CheckboxGroupProps) {
+    constructor(props: CheckboxGroupProps) {
         super(props);
 
         this.state = {};
@@ -54,7 +54,7 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
 
 export class Checkbox extends React.Component<CheckboxProps> {
 
-    constructor(props?: CheckboxProps) {
+    constructor(props: CheckboxProps) {
         super(props);
 
         this.state = {};
@@ -62,8 +62,8 @@ export class Checkbox extends React.Component<CheckboxProps> {
 
     static contextTypes = CheckboxGroupContextTypes;
 
-    private id: string;
-    private ref: HTMLInputElement;
+    private id?: string;
+    private ref?: HTMLInputElement;
 
     private handleRef = (ref: HTMLInputElement) => {
         this.ref = ref;

@@ -15,7 +15,7 @@ export interface SelectFieldState {
 // TODO: extract common functionality shared with TextInput and TextAreaInput
 export class SelectField extends React.PureComponent<SelectFieldProps, SelectFieldState> {
 
-    constructor(props?:SelectFieldProps) {
+    constructor(props:SelectFieldProps) {
         super(props);
 
         this.state = {
@@ -24,8 +24,8 @@ export class SelectField extends React.PureComponent<SelectFieldProps, SelectFie
         };
     }
 
-    private id:string;
-    private ref:HTMLSelectElement;
+    private id?:string;
+    private ref?:HTMLSelectElement;
 
     private handleChange = (e:React.ChangeEvent<HTMLSelectElement>) => {
         this.updateState();

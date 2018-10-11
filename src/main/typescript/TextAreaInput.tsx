@@ -16,7 +16,7 @@ export interface TextAreaInputState {
 // TODO: extract common base from TextInput and TextAreaInput
 export class TextAreaInput extends React.PureComponent<TextAreaInputProps, TextAreaInputState> {
 
-    constructor(props?:TextAreaInputProps) {
+    constructor(props:TextAreaInputProps) {
         super(props);
 
         this.state = {
@@ -25,8 +25,8 @@ export class TextAreaInput extends React.PureComponent<TextAreaInputProps, TextA
         };
     }
 
-    private id:string;
-    private ref:HTMLTextAreaElement;
+    private id?:string;
+    private ref?:HTMLTextAreaElement;
 
     private handleChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
         this.updateState();
@@ -40,8 +40,10 @@ export class TextAreaInput extends React.PureComponent<TextAreaInputProps, TextA
     };
 
     private updateHeight() {
-        this.ref.style.height = "";
-        this.ref.style.height = this.ref.scrollHeight + 1 + "px";
+        if (this.ref) {
+            this.ref.style.height = "";
+            this.ref.style.height = this.ref.scrollHeight + 1 + "px";
+        }
     }
 
     private updateState() {

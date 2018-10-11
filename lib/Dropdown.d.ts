@@ -1,7 +1,6 @@
-/// <reference types="react" />
 import * as React from "react";
 import { ChildrenProps, ClassNameProps } from "./types";
-export interface DropdownState {
+interface DropdownState {
     open: boolean;
 }
 export declare class Dropdown extends React.Component<React.HTMLAttributes<HTMLDivElement>, DropdownState> {
@@ -14,3 +13,4 @@ export declare class Dropdown extends React.Component<React.HTMLAttributes<HTMLD
 }
 export declare const DropdownToggle: (props: ChildrenProps & ClassNameProps) => JSX.Element;
 export declare const DropdownPopup: (props: ChildrenProps & ClassNameProps) => JSX.Element;
+export {};

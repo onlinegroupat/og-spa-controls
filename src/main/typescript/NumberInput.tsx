@@ -10,10 +10,10 @@ export interface NumberInputProps extends TextInputProps {
 
 export class NumberInput extends React.Component<NumberInputProps> {
 
-    private inputRef: HTMLInputElement;
+    private inputRef?: HTMLInputElement;
 
-    private thousandSeparator: string;
-    private decimalSeparator: string;
+    private thousandSeparator: string = '';
+    private decimalSeparator: string = '.';
 
     private hasFocus = false;
 
@@ -65,25 +65,29 @@ export class NumberInput extends React.Component<NumberInputProps> {
 
         let newValue = this.updateState();
         if (this.isValid(newValue) && newValue) {
-            this.inputRef.value = this.numberFormat.format(newValue);
+            if (this.inputRef) {
+                this.inputRef.value = this.numberFormat.format(newValue);
+            }
             this.props.onNumberChange && this.props.onNumberChange(newValue);
         }
     };
 
     private updateState(): number | undefined {
-        let numberValue: number | undefined = undefined;
-        const value: string = this.inputRef.value;
+        if (this.inputRef) {
+            let numberValue: number | undefined = undefined;
+            const value: string = this.inputRef.value;
 
-        let validity = '';
-        if (value) {
-            numberValue = this.parseNumber(value);
+            let validity = '';
+            if (value) {
+                numberValue = this.parseNumber(value);
 
-            if (!this.isValid(numberValue)) {
-                validity = this.invalidMessage;
+                if (!this.isValid(numberValue)) {
+                    validity = this.invalidMessage;
+                }
             }
+            this.inputRef.setCustomValidity(validity);
+            return numberValue;
         }
-        this.inputRef.setCustomValidity(validity);
-        return numberValue;
     }
 
     private parseNumber(value: string) {
