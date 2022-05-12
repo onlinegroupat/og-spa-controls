@@ -13,8 +13,8 @@ export declare class NumberInput extends React.Component<NumberInputProps> {
     private hasFocus;
     private static readonly DefaultNumberFormat;
     constructor(props: NumberInputProps);
-    readonly numberFormat: Intl.NumberFormat;
-    readonly invalidMessage: string;
+    get numberFormat(): Intl.NumberFormat;
+    get invalidMessage(): string;
     componentWillReceiveProps(nextProps: NumberInputProps): void;
     private initFormat;
     private static replaceAll;

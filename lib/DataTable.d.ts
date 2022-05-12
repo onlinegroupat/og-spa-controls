@@ -2,7 +2,7 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 import { ChildrenProps, ClassNameProps } from "./types";
 export declare const SortIndicator: (props: {
-    direction?: "asc" | "desc" | undefined;
+    direction?: 'asc' | 'desc';
 }) => JSX.Element | null;
 export interface DataTableProps extends ClassNameProps, ChildrenProps {
     selectable?: boolean;
@@ -26,7 +26,7 @@ export declare const DataTableHead: (props: React.HTMLAttributes<HTMLTableSectio
 export declare const DataTableFoot: (props: React.HTMLAttributes<HTMLTableSectionElement>) => JSX.Element;
 export declare const DataTableRowGroup: (props: React.HTMLAttributes<HTMLTableSectionElement>) => JSX.Element;
 export declare const DataTableBody: (props: {
-    emptyMessage?: import("./ClassList").ClassNameType;
+    emptyMessage?: string;
 } & React.HTMLAttributes<HTMLTableSectionElement>) => JSX.Element;
 export declare const DataTableRow: (props: React.HTMLAttributes<HTMLTableRowElement>) => JSX.Element;
 export interface DataTableCellProps extends React.HTMLAttributes<HTMLTableCellElement> {

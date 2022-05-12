@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as uuid from "uuid";
 import * as PropTypes from "prop-types";
+import {PropsWithChildren} from "react";
 
 export interface RadioGroupProps {
     className?: string;
@@ -14,7 +15,7 @@ const RadioGroupContextTypes = {
     radioGroup: PropTypes.object
 };
 
-export class RadioGroup extends React.PureComponent<RadioGroupProps> {
+export class RadioGroup extends React.PureComponent<PropsWithChildren<RadioGroupProps>> {
 
     private name?:string;
 

@@ -11,9 +11,9 @@ export interface DateInputProps extends TextInputProps {
 export declare class DateInput extends React.Component<DateInputProps> {
     private inputRef?;
     private hasFocus;
-    readonly format: string;
-    readonly acceptFormat: string;
-    readonly invalidMessage: string;
+    get format(): string;
+    get acceptFormat(): string;
+    get invalidMessage(): string;
     private handleChange;
     private handleFocus;
     private handleBlur;

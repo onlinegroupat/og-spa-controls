@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as uuid from "uuid";
 import * as PropTypes from "prop-types";
+import {PropsWithChildren} from "react";
 
 
 export interface CheckboxGroupProps {
@@ -14,7 +15,7 @@ const CheckboxGroupContextTypes = {
     checkboxGroup: PropTypes.object
 };
 
-export class CheckboxGroup extends React.PureComponent<CheckboxGroupProps> {
+export class CheckboxGroup extends React.PureComponent<PropsWithChildren<CheckboxGroupProps>> {
 
     constructor(props: CheckboxGroupProps) {
         super(props);
