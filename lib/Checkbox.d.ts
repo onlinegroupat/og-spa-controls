@@ -1,12 +1,13 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import { PropsWithChildren } from "react";
 export interface CheckboxGroupProps {
     className?: string;
     label?: string;
     checked?: string[];
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
-export declare class CheckboxGroup extends React.PureComponent<CheckboxGroupProps> {
+export declare class CheckboxGroup extends React.PureComponent<PropsWithChildren<CheckboxGroupProps>> {
     constructor(props: CheckboxGroupProps);
     getChildContext(): {
         checkboxGroup: {

@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import { PropsWithChildren } from "react";
 export interface RadioGroupProps {
     className?: string;
     label?: string;
@@ -7,7 +8,7 @@ export interface RadioGroupProps {
     checked?: string;
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
-export declare class RadioGroup extends React.PureComponent<RadioGroupProps> {
+export declare class RadioGroup extends React.PureComponent<PropsWithChildren<RadioGroupProps>> {
     private name?;
     constructor(props: RadioGroupProps);
     componentWillMount(): void;
