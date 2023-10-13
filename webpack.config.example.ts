@@ -63,6 +63,6 @@ const exampleConfig:Configuration = {
             template: 'src/example/index.html'
         })
     ]
-};
+} as Configuration;
 
 export = exampleConfig;

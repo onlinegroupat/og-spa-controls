@@ -49,8 +49,8 @@ export class DateInput extends React.Component<DateInputProps> {
             let newValue = this.updateState(false);
             if (newValue && newValue.isValid()) {
                 this.inputRef.value = newValue.format(this.format);
-                this.notifyDateChange(newValue);
             }
+            this.notifyDateChange(newValue);
         }
     };
 
